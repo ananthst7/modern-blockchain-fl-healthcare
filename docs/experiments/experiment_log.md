@@ -24,4 +24,22 @@ Results:Epoch	Train Loss	Test Accuracy	F1 Score
 Observations: EfficientNet-B0 achieved its highest performance at Epoch 4, obtaining 98.00% accuracy and F1-score on the COVID-vs-Normal classification task. Performance degradation observed at Epoch 5 suggests early signs of overfitting despite the relatively small dataset.
 
 
-## EXP-001
+## EXP-002
+Date: 11/6/2026
+Objective: Evaluate the effect of standard FedAvg on COVID classification using EfficientNet-B0.
+Dataset: COVID-19 Radiography Database
+Hyperparameters:Clients - 4
+                Local Epochs - 	1
+                Global Rounds -	5
+                Model -	EfficientNet-B0
+                Aggregation - FedAvg
+                Dataset - COVID Binary
+                Device - RTX 3060
+
+Results:Round	Accuracy	F1	Comm Cost	Time
+            1	81.00%	80.62%	123.66 MB	43.83s
+            2	89.75%	89.74%	123.66 MB	43.78s
+            3	93.50%	93.48%	123.66 MB	50.62s
+            4	95.50%	95.50%	123.66 MB	50.74s
+            5	97.50%	97.50%	123.66 MB	50.73s
+Observations: FedAvg steadily improved across rounds and reached 97.50% accuracy, close to the centralized EfficientNet best result of 98.00%.
