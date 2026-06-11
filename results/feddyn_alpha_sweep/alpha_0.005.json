@@ -1,0 +1,245 @@
+{
+    "experiment": "EXP-004A",
+    "method": "FedDyn Alpha Sweep + EfficientNet-B0 + Extreme Non-IID",
+    "dataset": "COVID Radiography Binary",
+    "num_clients": 4,
+    "global_rounds": 5,
+    "local_epochs": 1,
+    "learning_rate": 0.0001,
+    "alpha": 0.005,
+    "device": "cuda",
+    "total_time_sec": 368.44651913642883,
+    "best_round": 5,
+    "best_accuracy": 0.9225,
+    "best_f1": 0.9224878887326144,
+    "history": [
+        {
+            "round": 1,
+            "avg_client_loss": 0.4679834373295307,
+            "client_losses": [
+                0.47774493396282197,
+                0.4732366728782654,
+                0.46230344772338866,
+                0.45864869475364684
+            ],
+            "client_sizes": [
+                400,
+                400,
+                400,
+                400
+            ],
+            "communication_cost_mb": 123.6640625,
+            "round_time_sec": 72.90589427947998,
+            "alpha": 0.005,
+            "loss": NaN,
+            "accuracy": 0.5,
+            "precision": 0.25,
+            "recall": 0.5,
+            "f1": 0.33333333333333326,
+            "confusion_matrix": [
+                [
+                    200,
+                    0
+                ],
+                [
+                    200,
+                    0
+                ]
+            ],
+            "classes": [
+                "COVID",
+                "Normal"
+            ]
+        },
+        {
+            "round": 2,
+            "avg_client_loss": 0.34482956722378727,
+            "client_losses": [
+                0.3246769171953201,
+                0.3294974273443222,
+                0.3683982843160629,
+                0.356745640039444
+            ],
+            "client_sizes": [
+                400,
+                400,
+                400,
+                400
+            ],
+            "communication_cost_mb": 123.6640625,
+            "round_time_sec": 73.11745834350586,
+            "alpha": 0.005,
+            "loss": NaN,
+            "accuracy": 0.5,
+            "precision": 0.25,
+            "recall": 0.5,
+            "f1": 0.33333333333333326,
+            "confusion_matrix": [
+                [
+                    200,
+                    0
+                ],
+                [
+                    200,
+                    0
+                ]
+            ],
+            "classes": [
+                "COVID",
+                "Normal"
+            ]
+        },
+        {
+            "round": 3,
+            "avg_client_loss": 0.21419033193960788,
+            "client_losses": [
+                0.20657969355583192,
+                0.18598342023789882,
+                0.2269330830872059,
+                0.23726513087749482
+            ],
+            "client_sizes": [
+                400,
+                400,
+                400,
+                400
+            ],
+            "communication_cost_mb": 123.6640625,
+            "round_time_sec": 73.53392267227173,
+            "alpha": 0.005,
+            "loss": 0.5584794235229492,
+            "accuracy": 0.7175,
+            "precision": 0.8143177137902381,
+            "recall": 0.7175,
+            "f1": 0.69393075521909,
+            "confusion_matrix": [
+                [
+                    88,
+                    112
+                ],
+                [
+                    1,
+                    199
+                ]
+            ],
+            "classes": [
+                "COVID",
+                "Normal"
+            ]
+        },
+        {
+            "round": 4,
+            "avg_client_loss": 0.14000972181558607,
+            "client_losses": [
+                0.14926906429231168,
+                0.14233313173055648,
+                0.13570544861257075,
+                0.13273124262690544
+            ],
+            "client_sizes": [
+                400,
+                400,
+                400,
+                400
+            ],
+            "communication_cost_mb": 123.6640625,
+            "round_time_sec": 74.15223717689514,
+            "alpha": 0.005,
+            "loss": 0.4928209447860718,
+            "accuracy": 0.7575,
+            "precision": 0.8285381646518453,
+            "recall": 0.7575,
+            "f1": 0.7436422620266796,
+            "confusion_matrix": [
+                [
+                    105,
+                    95
+                ],
+                [
+                    2,
+                    198
+                ]
+            ],
+            "classes": [
+                "COVID",
+                "Normal"
+            ]
+        },
+        {
+            "round": 5,
+            "avg_client_loss": 0.09273730473592877,
+            "client_losses": [
+                0.09921678274869919,
+                0.09585862252861262,
+                0.0785986040905118,
+                0.09727520957589149
+            ],
+            "client_sizes": [
+                400,
+                400,
+                400,
+                400
+            ],
+            "communication_cost_mb": 123.6640625,
+            "round_time_sec": 74.54989576339722,
+            "alpha": 0.005,
+            "loss": 0.3197384297847748,
+            "accuracy": 0.9225,
+            "precision": 0.9227642276422765,
+            "recall": 0.9225,
+            "f1": 0.9224878887326144,
+            "confusion_matrix": [
+                [
+                    182,
+                    18
+                ],
+                [
+                    13,
+                    187
+                ]
+            ],
+            "classes": [
+                "COVID",
+                "Normal"
+            ]
+        }
+    ],
+    "final_metrics": {
+        "round": 5,
+        "avg_client_loss": 0.09273730473592877,
+        "client_losses": [
+            0.09921678274869919,
+            0.09585862252861262,
+            0.0785986040905118,
+            0.09727520957589149
+        ],
+        "client_sizes": [
+            400,
+            400,
+            400,
+            400
+        ],
+        "communication_cost_mb": 123.6640625,
+        "round_time_sec": 74.54989576339722,
+        "alpha": 0.005,
+        "loss": 0.3197384297847748,
+        "accuracy": 0.9225,
+        "precision": 0.9227642276422765,
+        "recall": 0.9225,
+        "f1": 0.9224878887326144,
+        "confusion_matrix": [
+            [
+                182,
+                18
+            ],
+            [
+                13,
+                187
+            ]
+        ],
+        "classes": [
+            "COVID",
+            "Normal"
+        ]
+    }
+}

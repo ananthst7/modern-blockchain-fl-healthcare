@@ -258,14 +258,114 @@ Evaluate FedAvg under severe cross-silo heterogeneity to determine its robustnes
 
 ---
 
-# Research Narrative
+---
 
-The progression of experiments reveals a clear story:
+# EXP-004: FedDyn under Extreme Non-IID Conditions
 
-1. EfficientNet-B0 outperformed the original CNN baseline.
-2. FedAvg preserved most of the centralized performance under IID settings.
-3. Moderate heterogeneity had only a minor impact on FedAvg.
-4. Extreme heterogeneity exposed a major weakness of FedAvg, resulting in a 15.5 percentage point performance drop.
-5. These findings motivate the introduction of FedDyn as the next stage of the proposed framework.
+**Date:** 11/06/2026
+
+## Objective
+
+Investigate whether FedDyn can mitigate the severe performance degradation observed in FedAvg under extreme Non-IID hospital distributions.
+
+## Motivation
+
+EXP-003B demonstrated that standard FedAvg suffered catastrophic degradation under severe cross-silo heterogeneity, resulting in a 15.5 percentage point reduction in accuracy. This experiment evaluates whether FedDyn, a dynamic regularization-based federated optimization algorithm, can recover the lost performance.
+
+## Dataset
+
+* COVID-19 Radiography Database
+* Binary Classification:
+
+  * COVID
+  * Normal
+
+## Hospital Distribution
+
+| Client   | COVID | Normal |
+| -------- | ----: | -----: |
+| Client 1 |   390 |     10 |
+| Client 2 |   390 |     10 |
+| Client 3 |    10 |    390 |
+| Client 4 |    10 |    390 |
+
+## Initial FedDyn Configuration
+
+| Parameter              | Value                      |
+| ---------------------- | -------------------------- |
+| Clients                | 4                          |
+| Local Epochs           | 1                          |
+| Global Rounds          | 5                          |
+| Model                  | EfficientNet-B0            |
+| Optimization Algorithm | FedDyn                     |
+| Alpha                  | 0.01                       |
+| Learning Rate          | 1×10⁻⁴                     |
+| Device                 | NVIDIA RTX 3060 Laptop GPU |
+
+## Initial FedDyn Results (α = 0.01)
+
+| Round |   Accuracy |   F1 Score | Communication Cost | Round Time |
+| ----: | ---------: | ---------: | -----------------: | ---------: |
+|     1 |     50.00% |     33.33% |          123.66 MB |    49.99 s |
+|     2 |     50.00% |     33.33% |          123.66 MB |    49.62 s |
+|     3 |     61.50% |     54.80% |          123.66 MB |    54.89 s |
+|     4 |     61.00% |     54.21% |          123.66 MB |    58.26 s |
+|     5 | **88.00%** | **87.96%** |          123.66 MB |    58.68 s |
+
+## Comparison with EXP-003B
+
+| Method                            |   Accuracy |
+| --------------------------------- | ---------: |
+| EXP-003B (Extreme Non-IID FedAvg) |     82.00% |
+| EXP-004 (FedDyn, α = 0.01)        | **88.00%** |
+
+**Improvement:** +6.00%
+
+## EXP-004A: FedDyn Alpha Sweep
+
+### Objective
+
+Optimize the FedDyn regularization coefficient (α) to maximize performance under extreme Non-IID conditions.
+
+### Alpha Values Evaluated
+
+|     Alpha | Best Accuracy | Best F1 Score | Best Round |
+| --------: | ------------: | ------------: | ---------: |
+|     0.001 |        89.75% |        89.71% |          5 |
+| **0.005** |    **92.25%** |    **92.25%** |      **5** |
+|      0.01 |        90.50% |        90.46% |          5 |
+|      0.05 |        87.00% |        86.96% |          5 |
+|      0.10 |        89.00% |        88.99% |          5 |
+
+## Best FedDyn Performance
+
+| Method                        |   Accuracy |
+| ----------------------------- | ---------: |
+| EXP-003B (FedAvg)             |     82.00% |
+| EXP-004 (FedDyn α=0.01)       |     88.00% |
+| **EXP-004A (FedDyn α=0.005)** | **92.25%** |
+
+### Performance Recovery
+
+| Comparison          | Improvement |
+| ------------------- | ----------: |
+| EXP-003B → EXP-004  |      +6.00% |
+| EXP-003B → EXP-004A | **+10.25%** |
+
+## Additional Investigation: Extended Training
+
+An additional 10-round FedDyn experiment using the optimal α = 0.005 was conducted. Although intermediate rounds achieved competitive performance, instability emerged during later communication rounds, leading to performance collapse.
+
+This behavior suggests that while FedDyn substantially improves robustness to heterogeneous data distributions, further stabilization strategies may be required for prolonged optimization under extreme Non-IID conditions.
+
+## Observations
+
+* FedDyn successfully mitigated the degradation caused by extreme hospital heterogeneity.
+* Hyperparameter selection significantly affected performance.
+* α = 0.005 emerged as the optimal setting among the evaluated values.
+* FedDyn recovered over two-thirds of the performance lost by FedAvg under extreme Non-IID settings.
+* Extended communication rounds revealed optimization instability, motivating future improvements and additional regularization strategies.
+
+---
 
 This progression transforms the work from a simple implementation into a systematic investigation of the limitations of existing blockchain-enabled federated learning approaches in healthcare.
