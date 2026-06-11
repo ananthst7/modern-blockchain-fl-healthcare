@@ -1,0 +1,235 @@
+{
+    "experiment": "EXP-003",
+    "method": "FedAvg + EfficientNet-B0 + Non-IID clients",
+    "dataset": "COVID Radiography Binary",
+    "num_clients": 4,
+    "global_rounds": 5,
+    "local_epochs": 1,
+    "learning_rate": 0.0001,
+    "device": "cuda",
+    "total_time_sec": 272.8347692489624,
+    "history": [
+        {
+            "round": 1,
+            "avg_client_loss": 0.5682724407315254,
+            "client_losses": [
+                0.524287588596344,
+                0.5402013778686523,
+                0.6029863476753234,
+                0.6056144487857819
+            ],
+            "client_sizes": [
+                400,
+                400,
+                400,
+                400
+            ],
+            "communication_cost_mb": 123.6640625,
+            "round_time_sec": 51.72015976905823,
+            "loss": 0.5922773349285125,
+            "accuracy": 0.7525,
+            "precision": 0.7715710790244953,
+            "recall": 0.7525,
+            "f1": 0.7480771799912208,
+            "confusion_matrix": [
+                [
+                    177,
+                    23
+                ],
+                [
+                    76,
+                    124
+                ]
+            ],
+            "classes": [
+                "COVID",
+                "Normal"
+            ]
+        },
+        {
+            "round": 2,
+            "avg_client_loss": 0.4654299399256706,
+            "client_losses": [
+                0.4694735789299011,
+                0.423409628868103,
+                0.48910436272621155,
+                0.4797321891784668
+            ],
+            "client_sizes": [
+                400,
+                400,
+                400,
+                400
+            ],
+            "communication_cost_mb": 123.6640625,
+            "round_time_sec": 51.394062995910645,
+            "loss": 0.4522642266750336,
+            "accuracy": 0.8675,
+            "precision": 0.8690592754387286,
+            "recall": 0.8675,
+            "f1": 0.867359898893206,
+            "confusion_matrix": [
+                [
+                    180,
+                    20
+                ],
+                [
+                    33,
+                    167
+                ]
+            ],
+            "classes": [
+                "COVID",
+                "Normal"
+            ]
+        },
+        {
+            "round": 3,
+            "avg_client_loss": 0.3715181471407414,
+            "client_losses": [
+                0.3867752194404602,
+                0.34008836925029756,
+                0.3784883189201355,
+                0.3807206809520721
+            ],
+            "client_sizes": [
+                400,
+                400,
+                400,
+                400
+            ],
+            "communication_cost_mb": 123.6640625,
+            "round_time_sec": 55.1139612197876,
+            "loss": 0.26196031987667084,
+            "accuracy": 0.925,
+            "precision": 0.9284706119568505,
+            "recall": 0.925,
+            "f1": 0.9248478168290788,
+            "confusion_matrix": [
+                [
+                    176,
+                    24
+                ],
+                [
+                    6,
+                    194
+                ]
+            ],
+            "classes": [
+                "COVID",
+                "Normal"
+            ]
+        },
+        {
+            "round": 4,
+            "avg_client_loss": 0.31521830171346665,
+            "client_losses": [
+                0.3273534566164017,
+                0.29037165582180025,
+                0.3067441385984421,
+                0.3364039558172226
+            ],
+            "client_sizes": [
+                400,
+                400,
+                400,
+                400
+            ],
+            "communication_cost_mb": 123.6640625,
+            "round_time_sec": 56.836181640625,
+            "loss": 0.18755819797515869,
+            "accuracy": 0.955,
+            "precision": 0.9554098688819938,
+            "recall": 0.955,
+            "f1": 0.9549898727213624,
+            "confusion_matrix": [
+                [
+                    188,
+                    12
+                ],
+                [
+                    6,
+                    194
+                ]
+            ],
+            "classes": [
+                "COVID",
+                "Normal"
+            ]
+        },
+        {
+            "round": 5,
+            "avg_client_loss": 0.2522151806950569,
+            "client_losses": [
+                0.3094654560089111,
+                0.22525631695985793,
+                0.2150864365696907,
+                0.25905251324176787
+            ],
+            "client_sizes": [
+                400,
+                400,
+                400,
+                400
+            ],
+            "communication_cost_mb": 123.6640625,
+            "round_time_sec": 57.77040362358093,
+            "loss": 0.14757641673088073,
+            "accuracy": 0.97,
+            "precision": 0.97,
+            "recall": 0.97,
+            "f1": 0.97,
+            "confusion_matrix": [
+                [
+                    194,
+                    6
+                ],
+                [
+                    6,
+                    194
+                ]
+            ],
+            "classes": [
+                "COVID",
+                "Normal"
+            ]
+        }
+    ],
+    "final_metrics": {
+        "round": 5,
+        "avg_client_loss": 0.2522151806950569,
+        "client_losses": [
+            0.3094654560089111,
+            0.22525631695985793,
+            0.2150864365696907,
+            0.25905251324176787
+        ],
+        "client_sizes": [
+            400,
+            400,
+            400,
+            400
+        ],
+        "communication_cost_mb": 123.6640625,
+        "round_time_sec": 57.77040362358093,
+        "loss": 0.14757641673088073,
+        "accuracy": 0.97,
+        "precision": 0.97,
+        "recall": 0.97,
+        "f1": 0.97,
+        "confusion_matrix": [
+            [
+                194,
+                6
+            ],
+            [
+                6,
+                194
+            ]
+        ],
+        "classes": [
+            "COVID",
+            "Normal"
+        ]
+    }
+}

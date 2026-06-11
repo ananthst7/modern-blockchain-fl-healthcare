@@ -1,0 +1,129 @@
+{
+    "model": "EfficientNet-B0",
+    "dataset": "COVID Radiography Binary",
+    "classes": [
+        "COVID",
+        "Normal"
+    ],
+    "epochs": 5,
+    "batch_size": 16,
+    "learning_rate": 0.0001,
+    "device": "cuda",
+    "total_training_time_sec": 140.48682403564453,
+    "history": [
+        {
+            "epoch": 1,
+            "train_loss": 0.38990114748477933,
+            "loss": 0.15067261666059495,
+            "accuracy": 0.96,
+            "precision": 0.96,
+            "recall": 0.96,
+            "f1": 0.96,
+            "confusion_matrix": [
+                [
+                    192,
+                    8
+                ],
+                [
+                    8,
+                    192
+                ]
+            ]
+        },
+        {
+            "epoch": 2,
+            "train_loss": 0.1705812431499362,
+            "loss": 0.09978472758084536,
+            "accuracy": 0.9675,
+            "precision": 0.9694835680751175,
+            "recall": 0.9675,
+            "f1": 0.9674656355775788,
+            "confusion_matrix": [
+                [
+                    187,
+                    13
+                ],
+                [
+                    0,
+                    200
+                ]
+            ]
+        },
+        {
+            "epoch": 3,
+            "train_loss": 0.10452816799283028,
+            "loss": 0.06457431554794311,
+            "accuracy": 0.975,
+            "precision": 0.975047504750475,
+            "recall": 0.975,
+            "f1": 0.9749993749843746,
+            "confusion_matrix": [
+                [
+                    194,
+                    6
+                ],
+                [
+                    4,
+                    196
+                ]
+            ]
+        },
+        {
+            "epoch": 4,
+            "train_loss": 0.08735438596457243,
+            "loss": 0.057498754132539034,
+            "accuracy": 0.98,
+            "precision": 0.9801920768307323,
+            "recall": 0.98,
+            "f1": 0.97999799979998,
+            "confusion_matrix": [
+                [
+                    198,
+                    2
+                ],
+                [
+                    6,
+                    194
+                ]
+            ]
+        },
+        {
+            "epoch": 5,
+            "train_loss": 0.07242323588579894,
+            "loss": 0.10415105800610036,
+            "accuracy": 0.9525,
+            "precision": 0.9550597108736645,
+            "recall": 0.9525,
+            "f1": 0.9524331090596151,
+            "confusion_matrix": [
+                [
+                    183,
+                    17
+                ],
+                [
+                    2,
+                    198
+                ]
+            ]
+        }
+    ],
+    "final_metrics": {
+        "epoch": 5,
+        "train_loss": 0.07242323588579894,
+        "loss": 0.10415105800610036,
+        "accuracy": 0.9525,
+        "precision": 0.9550597108736645,
+        "recall": 0.9525,
+        "f1": 0.9524331090596151,
+        "confusion_matrix": [
+            [
+                183,
+                17
+            ],
+            [
+                2,
+                198
+            ]
+        ]
+    }
+}
