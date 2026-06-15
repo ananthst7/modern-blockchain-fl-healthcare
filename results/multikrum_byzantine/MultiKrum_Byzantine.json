@@ -1,0 +1,388 @@
+{
+    "experiment": "EXP-005",
+    "method": "MultiKrum_Byzantine",
+    "dataset": "COVID Radiography Binary",
+    "setting": "Extreme Non-IID + 1 Byzantine sign-flip client",
+    "num_clients": 4,
+    "global_rounds": 5,
+    "local_epochs": 1,
+    "learning_rate": 0.0001,
+    "malicious_client_index": 0,
+    "attack_scale": 5.0,
+    "device": "cuda",
+    "total_time_sec": 342.78056287765503,
+    "history": [
+        {
+            "round": 1,
+            "aggregation_method": "MultiKrum_Byzantine",
+            "malicious_client_index": 0,
+            "attack_scale": 5.0,
+            "avg_client_loss": 0.4575615833699704,
+            "client_losses": [
+                0.4883460259437561,
+                0.4897140181064606,
+                0.43066151916980744,
+                0.4215247702598572
+            ],
+            "client_sizes": [
+                400,
+                400,
+                400,
+                400
+            ],
+            "selected_indices": [
+                2,
+                3
+            ],
+            "krum_scores": [
+                [
+                    37231.56640625,
+                    2
+                ],
+                [
+                    37231.56640625,
+                    3
+                ],
+                [
+                    72177.5390625,
+                    1
+                ],
+                [
+                    796073728.0,
+                    0
+                ]
+            ],
+            "communication_cost_mb": 123.6640625,
+            "round_time_sec": 67.21733331680298,
+            "loss": 0.7609837996959686,
+            "accuracy": 0.5225,
+            "precision": 0.7557544757033249,
+            "recall": 0.5225,
+            "f1": 0.3814716764222508,
+            "confusion_matrix": [
+                [
+                    9,
+                    191
+                ],
+                [
+                    0,
+                    200
+                ]
+            ],
+            "classes": [
+                "COVID",
+                "Normal"
+            ]
+        },
+        {
+            "round": 2,
+            "aggregation_method": "MultiKrum_Byzantine",
+            "malicious_client_index": 0,
+            "attack_scale": 5.0,
+            "avg_client_loss": 0.6272462280839681,
+            "client_losses": [
+                1.0916711378097534,
+                1.09189222574234,
+                0.17102239578962325,
+                0.15439915299415588
+            ],
+            "client_sizes": [
+                400,
+                400,
+                400,
+                400
+            ],
+            "selected_indices": [
+                2,
+                3
+            ],
+            "krum_scores": [
+                [
+                    60819.58984375,
+                    2
+                ],
+                [
+                    60819.58984375,
+                    3
+                ],
+                [
+                    172895.1875,
+                    1
+                ],
+                [
+                    787649216.0,
+                    0
+                ]
+            ],
+            "communication_cost_mb": 123.6640625,
+            "round_time_sec": 57.49637317657471,
+            "loss": 1.0380501222610474,
+            "accuracy": 0.5125,
+            "precision": 0.7531645569620252,
+            "recall": 0.5125,
+            "f1": 0.3605246976839516,
+            "confusion_matrix": [
+                [
+                    5,
+                    195
+                ],
+                [
+                    0,
+                    200
+                ]
+            ],
+            "classes": [
+                "COVID",
+                "Normal"
+            ]
+        },
+        {
+            "round": 3,
+            "aggregation_method": "MultiKrum_Byzantine",
+            "malicious_client_index": 0,
+            "attack_scale": 5.0,
+            "avg_client_loss": 0.9894102033972739,
+            "client_losses": [
+                1.8964022493362427,
+                1.884605131149292,
+                0.08936047367751598,
+                0.08727295942604542
+            ],
+            "client_sizes": [
+                400,
+                400,
+                400,
+                400
+            ],
+            "selected_indices": [
+                2,
+                3
+            ],
+            "krum_scores": [
+                [
+                    31403.9921875,
+                    2
+                ],
+                [
+                    31403.9921875,
+                    3
+                ],
+                [
+                    294600.53125,
+                    1
+                ],
+                [
+                    793262080.0,
+                    0
+                ]
+            ],
+            "communication_cost_mb": 123.6640625,
+            "round_time_sec": 84.89452123641968,
+            "loss": 1.2433240749314427,
+            "accuracy": 0.5125,
+            "precision": 0.7531645569620252,
+            "recall": 0.5125,
+            "f1": 0.3605246976839516,
+            "confusion_matrix": [
+                [
+                    5,
+                    195
+                ],
+                [
+                    0,
+                    200
+                ]
+            ],
+            "classes": [
+                "COVID",
+                "Normal"
+            ]
+        },
+        {
+            "round": 4,
+            "aggregation_method": "MultiKrum_Byzantine",
+            "malicious_client_index": 0,
+            "attack_scale": 5.0,
+            "avg_client_loss": 1.3094696018192917,
+            "client_losses": [
+                2.5680431938171386,
+                2.5422258234024047,
+                0.06176046952605248,
+                0.06584892053157092
+            ],
+            "client_sizes": [
+                400,
+                400,
+                400,
+                400
+            ],
+            "selected_indices": [
+                2,
+                3
+            ],
+            "krum_scores": [
+                [
+                    28382.03125,
+                    2
+                ],
+                [
+                    28382.03125,
+                    3
+                ],
+                [
+                    330968.375,
+                    1
+                ],
+                [
+                    789562432.0,
+                    0
+                ]
+            ],
+            "communication_cost_mb": 123.6640625,
+            "round_time_sec": 66.7748510837555,
+            "loss": 1.2822744357585907,
+            "accuracy": 0.5525,
+            "precision": 0.7638522427440634,
+            "recall": 0.5525,
+            "f1": 0.4404457677849936,
+            "confusion_matrix": [
+                [
+                    21,
+                    179
+                ],
+                [
+                    0,
+                    200
+                ]
+            ],
+            "classes": [
+                "COVID",
+                "Normal"
+            ]
+        },
+        {
+            "round": 5,
+            "aggregation_method": "MultiKrum_Byzantine",
+            "malicious_client_index": 0,
+            "attack_scale": 5.0,
+            "avg_client_loss": 1.5053879376454278,
+            "client_losses": [
+                2.9771790409088137,
+                2.965992817878723,
+                0.03975070973858237,
+                0.038629182055592536
+            ],
+            "client_sizes": [
+                400,
+                400,
+                400,
+                400
+            ],
+            "selected_indices": [
+                2,
+                3
+            ],
+            "krum_scores": [
+                [
+                    42264.265625,
+                    2
+                ],
+                [
+                    42264.265625,
+                    3
+                ],
+                [
+                    369788.78125,
+                    1
+                ],
+                [
+                    795254144.0,
+                    0
+                ]
+            ],
+            "communication_cost_mb": 123.6640625,
+            "round_time_sec": 66.3933789730072,
+            "loss": 1.2629834712017327,
+            "accuracy": 0.6025,
+            "precision": 0.7785515320334262,
+            "recall": 0.6025,
+            "f1": 0.5279062344583911,
+            "confusion_matrix": [
+                [
+                    41,
+                    159
+                ],
+                [
+                    0,
+                    200
+                ]
+            ],
+            "classes": [
+                "COVID",
+                "Normal"
+            ]
+        }
+    ],
+    "final_metrics": {
+        "round": 5,
+        "aggregation_method": "MultiKrum_Byzantine",
+        "malicious_client_index": 0,
+        "attack_scale": 5.0,
+        "avg_client_loss": 1.5053879376454278,
+        "client_losses": [
+            2.9771790409088137,
+            2.965992817878723,
+            0.03975070973858237,
+            0.038629182055592536
+        ],
+        "client_sizes": [
+            400,
+            400,
+            400,
+            400
+        ],
+        "selected_indices": [
+            2,
+            3
+        ],
+        "krum_scores": [
+            [
+                42264.265625,
+                2
+            ],
+            [
+                42264.265625,
+                3
+            ],
+            [
+                369788.78125,
+                1
+            ],
+            [
+                795254144.0,
+                0
+            ]
+        ],
+        "communication_cost_mb": 123.6640625,
+        "round_time_sec": 66.3933789730072,
+        "loss": 1.2629834712017327,
+        "accuracy": 0.6025,
+        "precision": 0.7785515320334262,
+        "recall": 0.6025,
+        "f1": 0.5279062344583911,
+        "confusion_matrix": [
+            [
+                41,
+                159
+            ],
+            [
+                0,
+                200
+            ]
+        ],
+        "classes": [
+            "COVID",
+            "Normal"
+        ]
+    }
+}

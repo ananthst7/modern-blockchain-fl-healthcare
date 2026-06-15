@@ -1,0 +1,268 @@
+{
+    "experiment": "EXP-005",
+    "method": "FedAvg_Byzantine",
+    "dataset": "COVID Radiography Binary",
+    "setting": "Extreme Non-IID + 1 Byzantine sign-flip client",
+    "num_clients": 4,
+    "global_rounds": 5,
+    "local_epochs": 1,
+    "learning_rate": 0.0001,
+    "malicious_client_index": 0,
+    "attack_scale": 5.0,
+    "device": "cuda",
+    "total_time_sec": 334.1709418296814,
+    "history": [
+        {
+            "round": 1,
+            "aggregation_method": "FedAvg_Byzantine",
+            "malicious_client_index": 0,
+            "attack_scale": 5.0,
+            "avg_client_loss": 0.5716042906045914,
+            "client_losses": [
+                0.5761222803592682,
+                0.5781338167190552,
+                0.5656695532798767,
+                0.5664915120601655
+            ],
+            "client_sizes": [
+                400,
+                400,
+                400,
+                400
+            ],
+            "selected_indices": null,
+            "krum_scores": null,
+            "communication_cost_mb": 123.6640625,
+            "round_time_sec": 69.75222206115723,
+            "loss": NaN,
+            "accuracy": 0.5,
+            "precision": 0.25,
+            "recall": 0.5,
+            "f1": 0.33333333333333326,
+            "confusion_matrix": [
+                [
+                    200,
+                    0
+                ],
+                [
+                    200,
+                    0
+                ]
+            ],
+            "classes": [
+                "COVID",
+                "Normal"
+            ]
+        },
+        {
+            "round": 2,
+            "aggregation_method": "FedAvg_Byzantine",
+            "malicious_client_index": 0,
+            "attack_scale": 5.0,
+            "avg_client_loss": 0.6786723560094834,
+            "client_losses": [
+                0.6760528016090394,
+                0.7001791536808014,
+                0.6398986899852752,
+                0.6985587787628174
+            ],
+            "client_sizes": [
+                400,
+                400,
+                400,
+                400
+            ],
+            "selected_indices": null,
+            "krum_scores": null,
+            "communication_cost_mb": 123.6640625,
+            "round_time_sec": 63.57709503173828,
+            "loss": NaN,
+            "accuracy": 0.5,
+            "precision": 0.25,
+            "recall": 0.5,
+            "f1": 0.33333333333333326,
+            "confusion_matrix": [
+                [
+                    200,
+                    0
+                ],
+                [
+                    200,
+                    0
+                ]
+            ],
+            "classes": [
+                "COVID",
+                "Normal"
+            ]
+        },
+        {
+            "round": 3,
+            "aggregation_method": "FedAvg_Byzantine",
+            "malicious_client_index": 0,
+            "attack_scale": 5.0,
+            "avg_client_loss": 0.5734919264912606,
+            "client_losses": [
+                0.571917165517807,
+                0.5732303845882416,
+                0.5619068157672882,
+                0.5869133400917054
+            ],
+            "client_sizes": [
+                400,
+                400,
+                400,
+                400
+            ],
+            "selected_indices": null,
+            "krum_scores": null,
+            "communication_cost_mb": 123.6640625,
+            "round_time_sec": 62.22412371635437,
+            "loss": NaN,
+            "accuracy": 0.5,
+            "precision": 0.25,
+            "recall": 0.5,
+            "f1": 0.33333333333333326,
+            "confusion_matrix": [
+                [
+                    200,
+                    0
+                ],
+                [
+                    200,
+                    0
+                ]
+            ],
+            "classes": [
+                "COVID",
+                "Normal"
+            ]
+        },
+        {
+            "round": 4,
+            "aggregation_method": "FedAvg_Byzantine",
+            "malicious_client_index": 0,
+            "attack_scale": 5.0,
+            "avg_client_loss": 0.6346749314665795,
+            "client_losses": [
+                0.6107726633548737,
+                0.6552616715431213,
+                0.6294168186187744,
+                0.6432485723495484
+            ],
+            "client_sizes": [
+                400,
+                400,
+                400,
+                400
+            ],
+            "selected_indices": null,
+            "krum_scores": null,
+            "communication_cost_mb": 123.6640625,
+            "round_time_sec": 69.02604794502258,
+            "loss": NaN,
+            "accuracy": 0.5,
+            "precision": 0.25,
+            "recall": 0.5,
+            "f1": 0.33333333333333326,
+            "confusion_matrix": [
+                [
+                    200,
+                    0
+                ],
+                [
+                    200,
+                    0
+                ]
+            ],
+            "classes": [
+                "COVID",
+                "Normal"
+            ]
+        },
+        {
+            "round": 5,
+            "aggregation_method": "FedAvg_Byzantine",
+            "malicious_client_index": 0,
+            "attack_scale": 5.0,
+            "avg_client_loss": 0.6585882073640824,
+            "client_losses": [
+                0.6521206092834473,
+                0.6718834400177002,
+                0.6543570327758789,
+                0.655991747379303
+            ],
+            "client_sizes": [
+                400,
+                400,
+                400,
+                400
+            ],
+            "selected_indices": null,
+            "krum_scores": null,
+            "communication_cost_mb": 123.6640625,
+            "round_time_sec": 69.57672953605652,
+            "loss": NaN,
+            "accuracy": 0.5,
+            "precision": 0.25,
+            "recall": 0.5,
+            "f1": 0.33333333333333326,
+            "confusion_matrix": [
+                [
+                    200,
+                    0
+                ],
+                [
+                    200,
+                    0
+                ]
+            ],
+            "classes": [
+                "COVID",
+                "Normal"
+            ]
+        }
+    ],
+    "final_metrics": {
+        "round": 5,
+        "aggregation_method": "FedAvg_Byzantine",
+        "malicious_client_index": 0,
+        "attack_scale": 5.0,
+        "avg_client_loss": 0.6585882073640824,
+        "client_losses": [
+            0.6521206092834473,
+            0.6718834400177002,
+            0.6543570327758789,
+            0.655991747379303
+        ],
+        "client_sizes": [
+            400,
+            400,
+            400,
+            400
+        ],
+        "selected_indices": null,
+        "krum_scores": null,
+        "communication_cost_mb": 123.6640625,
+        "round_time_sec": 69.57672953605652,
+        "loss": NaN,
+        "accuracy": 0.5,
+        "precision": 0.25,
+        "recall": 0.5,
+        "f1": 0.33333333333333326,
+        "confusion_matrix": [
+            [
+                200,
+                0
+            ],
+            [
+                200,
+                0
+            ]
+        ],
+        "classes": [
+            "COVID",
+            "Normal"
+        ]
+    }
+}

@@ -1,0 +1,7 @@
+{
+    "experiment": "EXP-005",
+    "fedavg_byzantine_final_accuracy": 0.5,
+    "fedavg_byzantine_final_f1": 0.33333333333333326,
+    "multikrum_byzantine_final_accuracy": 0.505,
+    "multikrum_byzantine_final_f1": 0.34434915063412697
+}
