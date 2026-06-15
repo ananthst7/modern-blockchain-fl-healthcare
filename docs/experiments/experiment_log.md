@@ -2,7 +2,7 @@
 
 ## Research Objective
 
-Develop a modern blockchain-enabled privacy-preserving federated learning framework for healthcare image classification by extending the 2025 FL-HE framework using improved deep learning architectures and robust federated optimization techniques.
+Develop a modern blockchain-enabled privacy-preserving federated learning framework for healthcare image classification by extending the 2025 FL-HE framework using improved deep learning architectures, robust federated optimization, and Byzantine-resilient aggregation.
 
 ---
 
@@ -10,7 +10,7 @@ Develop a modern blockchain-enabled privacy-preserving federated learning framew
 
 **Title:** Blockchain-based Federated Learning with Homomorphic Encryption for Privacy-Preserving Healthcare Data Sharing (2025)
 
-### COVID Dataset Baseline Performance
+## COVID Dataset Baseline Performance
 
 | Method                    | Accuracy |
 | ------------------------- | -------: |
@@ -71,7 +71,7 @@ Establish a strong centralized baseline on the same COVID dataset used by the 20
 ## Observations
 
 * EfficientNet-B0 achieved peak performance at Epoch 4.
-* Accuracy degradation at Epoch 5 suggests overfitting.
+* Accuracy degradation at Epoch 5 suggests possible overfitting.
 * EfficientNet-B0 outperformed the CNN baseline of the 2025 paper.
 
 ---
@@ -82,7 +82,7 @@ Establish a strong centralized baseline on the same COVID dataset used by the 20
 
 ## Objective
 
-Evaluate the effect of standard FedAvg on COVID classification under IID hospital distributions.
+Evaluate standard FedAvg on COVID classification under IID hospital distributions.
 
 ## Dataset
 
@@ -141,7 +141,7 @@ Evaluate the effect of standard FedAvg on COVID classification under IID hospita
 
 # EXP-003: Moderate Non-IID FedAvg
 
-**Date:** 11/06/2026
+**Date:** 11/06/2026**
 
 ## Objective
 
@@ -179,11 +179,11 @@ Investigate the effect of heterogeneous hospital distributions on standard FedAv
 
 ## Comparison
 
-| Method               | Accuracy |
-| -------------------- | -------: |
-| 2025 Paper           |   97.25% |
-| EXP-002 (IID FedAvg) |   97.50% |
-| EXP-003              |   97.00% |
+| Method                          | Accuracy |
+| ------------------------------- | -------: |
+| 2025 Paper                      |   97.25% |
+| EXP-002 IID FedAvg              |   97.50% |
+| EXP-003 Moderate Non-IID FedAvg |   97.00% |
 
 ## Observations
 
@@ -199,7 +199,7 @@ Investigate the effect of heterogeneous hospital distributions on standard FedAv
 
 ## Objective
 
-Evaluate FedAvg under severe cross-silo heterogeneity to determine its robustness under realistic worst-case healthcare scenarios.
+Evaluate FedAvg under severe cross-silo heterogeneity to determine its robustness under worst-case healthcare scenarios.
 
 ## Hospital Distribution
 
@@ -233,13 +233,13 @@ Evaluate FedAvg under severe cross-silo heterogeneity to determine its robustnes
 
 ## Comparison
 
-| Method                     |   Accuracy |
-| -------------------------- | ---------: |
-| 2025 Paper                 |     97.25% |
-| EXP-001 (Centralized)      |     98.00% |
-| EXP-002 (IID FedAvg)       |     97.50% |
-| EXP-003 (Moderate Non-IID) |     97.00% |
-| EXP-003B (Extreme Non-IID) | **82.00%** |
+| Method                          |   Accuracy |
+| ------------------------------- | ---------: |
+| 2025 Paper                      |     97.25% |
+| EXP-001 Centralized             |     98.00% |
+| EXP-002 IID FedAvg              |     97.50% |
+| EXP-003 Moderate Non-IID FedAvg |     97.00% |
+| EXP-003B Extreme Non-IID FedAvg | **82.00%** |
 
 ## Performance Drop
 
@@ -253,10 +253,8 @@ Evaluate FedAvg under severe cross-silo heterogeneity to determine its robustnes
 
 * FedAvg failed to maintain performance under extreme heterogeneity.
 * Severe Non-IID distributions caused catastrophic degradation.
-* The experiment experimentally validates one of the primary limitations identified by the 2025 paper.
-* These findings provide a strong justification for investigating more robust optimization techniques such as FedDyn.
-
----
+* This validates one of the main limitations of the 2025 paper.
+* These findings justify investigating robust optimization methods such as FedDyn.
 
 ---
 
@@ -266,11 +264,11 @@ Evaluate FedAvg under severe cross-silo heterogeneity to determine its robustnes
 
 ## Objective
 
-Investigate whether FedDyn can mitigate the severe performance degradation observed in FedAvg under extreme Non-IID hospital distributions.
+Investigate whether FedDyn can mitigate the performance degradation observed in FedAvg under extreme Non-IID hospital distributions.
 
 ## Motivation
 
-EXP-003B demonstrated that standard FedAvg suffered catastrophic degradation under severe cross-silo heterogeneity, resulting in a 15.5 percentage point reduction in accuracy. This experiment evaluates whether FedDyn, a dynamic regularization-based federated optimization algorithm, can recover the lost performance.
+EXP-003B showed that FedAvg suffered a 15.5 percentage point accuracy drop under severe cross-silo heterogeneity. This experiment evaluates whether FedDyn can recover the lost performance.
 
 ## Dataset
 
@@ -302,7 +300,7 @@ EXP-003B demonstrated that standard FedAvg suffered catastrophic degradation und
 | Learning Rate          | 1×10⁻⁴                     |
 | Device                 | NVIDIA RTX 3060 Laptop GPU |
 
-## Initial FedDyn Results (α = 0.01)
+## Initial FedDyn Results, α = 0.01
 
 | Round |   Accuracy |   F1 Score | Communication Cost | Round Time |
 | ----: | ---------: | ---------: | -----------------: | ---------: |
@@ -314,10 +312,10 @@ EXP-003B demonstrated that standard FedAvg suffered catastrophic degradation und
 
 ## Comparison with EXP-003B
 
-| Method                            |   Accuracy |
-| --------------------------------- | ---------: |
-| EXP-003B (Extreme Non-IID FedAvg) |     82.00% |
-| EXP-004 (FedDyn, α = 0.01)        | **88.00%** |
+| Method                          |   Accuracy |
+| ------------------------------- | ---------: |
+| EXP-003B Extreme Non-IID FedAvg |     82.00% |
+| EXP-004 FedDyn, α = 0.01        | **88.00%** |
 
 **Improvement:** +6.00%
 
@@ -325,7 +323,7 @@ EXP-003B demonstrated that standard FedAvg suffered catastrophic degradation und
 
 ### Objective
 
-Optimize the FedDyn regularization coefficient (α) to maximize performance under extreme Non-IID conditions.
+Optimize the FedDyn regularization coefficient α to maximize performance under extreme Non-IID conditions.
 
 ### Alpha Values Evaluated
 
@@ -339,13 +337,13 @@ Optimize the FedDyn regularization coefficient (α) to maximize performance unde
 
 ## Best FedDyn Performance
 
-| Method                        |   Accuracy |
-| ----------------------------- | ---------: |
-| EXP-003B (FedAvg)             |     82.00% |
-| EXP-004 (FedDyn α=0.01)       |     88.00% |
-| **EXP-004A (FedDyn α=0.005)** | **92.25%** |
+| Method                         |   Accuracy |
+| ------------------------------ | ---------: |
+| EXP-003B FedAvg                |     82.00% |
+| EXP-004 FedDyn, α = 0.01       |     88.00% |
+| **EXP-004A FedDyn, α = 0.005** | **92.25%** |
 
-### Performance Recovery
+## Performance Recovery
 
 | Comparison          | Improvement |
 | ------------------- | ----------: |
@@ -354,18 +352,220 @@ Optimize the FedDyn regularization coefficient (α) to maximize performance unde
 
 ## Additional Investigation: Extended Training
 
-An additional 10-round FedDyn experiment using the optimal α = 0.005 was conducted. Although intermediate rounds achieved competitive performance, instability emerged during later communication rounds, leading to performance collapse.
+An additional 10-round FedDyn experiment using α = 0.005 was conducted. Although intermediate rounds achieved competitive performance, instability emerged during later communication rounds, leading to performance collapse.
 
-This behavior suggests that while FedDyn substantially improves robustness to heterogeneous data distributions, further stabilization strategies may be required for prolonged optimization under extreme Non-IID conditions.
+This suggests that while FedDyn substantially improves robustness to heterogeneous data, further stabilization strategies may be required for prolonged optimization under extreme Non-IID settings.
 
 ## Observations
 
-* FedDyn successfully mitigated the degradation caused by extreme hospital heterogeneity.
+* FedDyn successfully mitigated degradation caused by extreme hospital heterogeneity.
 * Hyperparameter selection significantly affected performance.
 * α = 0.005 emerged as the optimal setting among the evaluated values.
-* FedDyn recovered over two-thirds of the performance lost by FedAvg under extreme Non-IID settings.
-* Extended communication rounds revealed optimization instability, motivating future improvements and additional regularization strategies.
+* FedDyn recovered over 10 percentage points of accuracy lost by FedAvg under extreme Non-IID conditions.
+* Extended communication rounds revealed optimization instability, motivating future stabilization strategies.
 
 ---
 
-This progression transforms the work from a simple implementation into a systematic investigation of the limitations of existing blockchain-enabled federated learning approaches in healthcare.
+# EXP-005: Byzantine Robustness Analysis
+
+**Date:** 11/06/2026
+
+## Objective
+
+Investigate the vulnerability of federated learning to malicious participants and evaluate whether Byzantine-resilient aggregation can mitigate adversarial degradation.
+
+The 2025 paper assumes that all hospitals behave honestly. In practice, compromised or malfunctioning institutions may submit adversarial updates that poison the global model.
+
+---
+
+# EXP-005E: IID Byzantine Attack with Multi-Krum
+
+## Objective
+
+Evaluate Multi-Krum under IID conditions to isolate malicious-update robustness from data heterogeneity.
+
+## Setup
+
+| Parameter          | Value                |
+| ------------------ | -------------------- |
+| Clients            | 4                    |
+| Malicious Clients  | 1                    |
+| Attack             | Sign-Flip Attack     |
+| Attack Scale       | 5.0                  |
+| Dataset Split      | IID                  |
+| Model              | EfficientNet-B0      |
+| Aggregation        | FedAvg vs Multi-Krum |
+| Global Rounds      | 5                    |
+| Communication Cost | 123.66 MB / round    |
+
+## Results
+
+| Method                        |   Accuracy |   F1 Score |
+| ----------------------------- | ---------: | ---------: |
+| EXP-002 IID FedAvg, No Attack |     97.50% |     97.50% |
+| FedAvg + Byzantine            |     50.00% |     33.33% |
+| **Multi-Krum + Byzantine**    | **97.00%** | **97.00%** |
+
+## Round-wise Multi-Krum Results
+
+| Round |   Accuracy |   F1 Score | Selected Clients |
+| ----: | ---------: | ---------: | ---------------- |
+|     1 |     83.50% |     83.49% | [1, 2]           |
+|     2 |     90.00% |     90.00% | [2, 3]           |
+|     3 |     94.75% |     94.75% | [1, 2]           |
+|     4 |     95.50% |     95.50% | [2, 3]           |
+|     5 | **97.00%** | **97.00%** | [1, 3]           |
+
+## Observations
+
+* A single malicious client reduced FedAvg to random guessing.
+* Multi-Krum recovered nearly the entire lost performance.
+* Byzantine-resilient aggregation preserved model utility under IID settings.
+
+---
+
+# EXP-005F: Moderate Non-IID Byzantine Attack with Multi-Krum
+
+## Objective
+
+Evaluate Byzantine resilience under realistic moderate healthcare heterogeneity.
+
+## Setup
+
+| Parameter          | Value                |
+| ------------------ | -------------------- |
+| Clients            | 4                    |
+| Malicious Clients  | 1                    |
+| Attack             | Sign-Flip Attack     |
+| Attack Scale       | 5.0                  |
+| Dataset Split      | Moderate Non-IID     |
+| Model              | EfficientNet-B0      |
+| Aggregation        | FedAvg vs Multi-Krum |
+| Global Rounds      | 5                    |
+| Communication Cost | 123.66 MB / round    |
+
+## Hospital Distribution
+
+| Client   | COVID | Normal |
+| -------- | ----: | -----: |
+| Client 1 |   320 |     80 |
+| Client 2 |   280 |    120 |
+| Client 3 |   120 |    280 |
+| Client 4 |    80 |    320 |
+
+## Results
+
+| Method                                     |   Accuracy |   F1 Score |
+| ------------------------------------------ | ---------: | ---------: |
+| EXP-003 Moderate Non-IID FedAvg, No Attack |     97.00% |     97.00% |
+| FedAvg + Byzantine                         |     50.00% |     33.33% |
+| **Multi-Krum + Byzantine**                 | **93.50%** | **93.47%** |
+
+## Round-wise Multi-Krum Results
+
+| Round |   Accuracy |   F1 Score | Selected Clients |
+| ----: | ---------: | ---------: | ---------------- |
+|     1 |     74.75% |     73.56% | [2, 3]           |
+|     2 |     86.00% |     85.92% | [2, 3]           |
+|     3 |     89.25% |     89.12% | [2, 3]           |
+|     4 |     93.00% |     92.97% | [2, 3]           |
+|     5 | **93.50%** | **93.47%** | [2, 3]           |
+
+## Observations
+
+* Multi-Krum successfully rejected malicious updates even under heterogeneous hospital distributions.
+* FedAvg collapsed to random guessing under the same attack.
+* Compared with no-attack moderate Non-IID FedAvg, Multi-Krum retained most useful model performance under attack.
+* This provides stronger Byzantine-resilience evidence than the extreme Non-IID stress test.
+
+---
+
+# Additional Byzantine Stress Tests
+
+## EXP-005A: Extreme Non-IID FedAvg + Byzantine
+
+| Method                            | Accuracy | F1 Score |
+| --------------------------------- | -------: | -------: |
+| Extreme Non-IID FedAvg, No Attack |   82.00% |   82.00% |
+| FedAvg + Byzantine                |   50.00% |   33.33% |
+
+**Observation:** Extreme heterogeneity combined with malicious behavior caused complete collapse of standard FedAvg.
+
+---
+
+## EXP-005B: Extreme Non-IID Multi-Krum + Byzantine
+
+| Method                 | Accuracy | F1 Score |
+| ---------------------- | -------: | -------: |
+| FedAvg + Byzantine     |   50.00% |   33.33% |
+| Multi-Krum + Byzantine |   60.25% |   52.79% |
+
+**Observation:** Multi-Krum partially recovered performance but struggled under severe heterogeneity.
+
+---
+
+## EXP-005C: FedDyn + Multi-Krum + Byzantine
+
+| Method                          | Accuracy | F1 Score |
+| ------------------------------- | -------: | -------: |
+| FedAvg + Byzantine              |   50.00% |   33.33% |
+| FedDyn + Multi-Krum + Byzantine |   58.75% |   50.29% |
+
+**Observation:** Combining FedDyn and Multi-Krum without additional stabilization did not outperform Multi-Krum alone.
+
+---
+
+## EXP-005D: 8-Client Extreme Non-IID Multi-Krum Stress Test
+
+| Method                            | Accuracy | F1 Score |
+| --------------------------------- | -------: | -------: |
+| FedAvg + Byzantine, 8 Clients     |   50.00% |   33.33% |
+| Multi-Krum + Byzantine, 8 Clients |   50.50% |   34.43% |
+
+**Observation:** Increasing clients alone was insufficient under severe heterogeneity. Multi-Krum selected mostly non-malicious clients, but the selected clients were still heavily class-skewed, causing the global model to collapse.
+
+---
+
+# Master Results Summary
+
+| Experiment | Setting                      | Method          |   Accuracy |   F1 Score |
+| ---------- | ---------------------------- | --------------- | ---------: | ---------: |
+| 2025 Paper | COVID                        | CNN + FedAvg    |     97.25% |        N/A |
+| EXP-001    | Centralized                  | EfficientNet-B0 | **98.00%** | **98.00%** |
+| EXP-002    | IID                          | FedAvg          |     97.50% |     97.50% |
+| EXP-003    | Moderate Non-IID             | FedAvg          |     97.00% |     97.00% |
+| EXP-003B   | Extreme Non-IID              | FedAvg          |     82.00% |     82.00% |
+| EXP-004A   | Extreme Non-IID              | FedDyn          | **92.25%** | **92.25%** |
+| EXP-005E   | IID + Byzantine              | Multi-Krum      | **97.00%** | **97.00%** |
+| EXP-005F   | Moderate Non-IID + Byzantine | Multi-Krum      | **93.50%** | **93.47%** |
+
+---
+
+# Research Narrative
+
+The experimental progression reveals three major limitations of the original 2025 framework and corresponding improvements:
+
+1. EfficientNet-B0 improved upon the original CNN baseline.
+2. FedAvg remained effective under IID and moderate Non-IID conditions.
+3. FedAvg failed under extreme heterogeneity, dropping to 82.00%.
+4. FedDyn recovered performance under extreme Non-IID conditions, reaching 92.25%.
+5. Standard FedAvg was highly vulnerable to Byzantine attacks, collapsing to 50.00% accuracy.
+6. Multi-Krum restored performance to 97.00% under IID attack and 93.50% under moderate Non-IID attack.
+7. Extreme heterogeneity combined with malicious behavior remains an open challenge requiring future investigation.
+
+---
+
+# Current State of the Proposed Framework
+
+| Component                     | Status    |
+| ----------------------------- | --------- |
+| EfficientNet-B0 Baseline      | Completed |
+| FedAvg Evaluation             | Completed |
+| Non-IID Analysis              | Completed |
+| FedDyn Optimization           | Completed |
+| Byzantine Attack Simulation   | Completed |
+| Multi-Krum Robust Aggregation | Completed |
+| Differential Privacy          | Next      |
+| CKKS Homomorphic Encryption   | Pending   |
+| Proof-of-Authority Blockchain | Pending   |
+| Brain MRI Validation          | Pending   |
