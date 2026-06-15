@@ -1,0 +1,265 @@
+{
+    "experiment": "EXP-006B",
+    "method": "FedDyn + Approximate Update-Level DP + Extreme Non-IID",
+    "dataset": "COVID Radiography Binary",
+    "num_clients": 4,
+    "global_rounds": 5,
+    "local_epochs": 1,
+    "learning_rate": 0.0001,
+    "alpha": 0.005,
+    "noise_std": 1e-06,
+    "clip_norm": 100.0,
+    "dp_type": "classifier-only update-level DP",
+    "formal_epsilon": null,
+    "epsilon_note": "This update-level DP approximation does not provide a formal epsilon guarantee. Formal DP accounting requires per-sample gradients such as Opacus DP-SGD.",
+    "device": "cuda",
+    "total_time_sec": 334.1322920322418,
+    "history": [
+        {
+            "round": 1,
+            "avg_client_loss": 0.46027032762765885,
+            "client_losses": [
+                0.4335980981588364,
+                0.43719285547733305,
+                0.4914617371559143,
+                0.4788286197185516
+            ],
+            "client_sizes": [
+                400,
+                400,
+                400,
+                400
+            ],
+            "communication_cost_mb": 123.6640625,
+            "round_time_sec": 60.0447793006897,
+            "alpha": 0.005,
+            "noise_std": 1e-06,
+            "clip_norm": 100.0,
+            "dp_type": "classifier-only update-level DP",
+            "loss": NaN,
+            "accuracy": 0.5,
+            "precision": 0.25,
+            "recall": 0.5,
+            "f1": 0.33333333333333326,
+            "confusion_matrix": [
+                [
+                    200,
+                    0
+                ],
+                [
+                    200,
+                    0
+                ]
+            ],
+            "classes": [
+                "COVID",
+                "Normal"
+            ]
+        },
+        {
+            "round": 2,
+            "avg_client_loss": 0.3255261514335871,
+            "client_losses": [
+                0.3237417402863503,
+                0.3344370025396347,
+                0.31560034036636353,
+                0.3283255225419998
+            ],
+            "client_sizes": [
+                400,
+                400,
+                400,
+                400
+            ],
+            "communication_cost_mb": 123.6640625,
+            "round_time_sec": 72.42389726638794,
+            "alpha": 0.005,
+            "noise_std": 1e-06,
+            "clip_norm": 100.0,
+            "dp_type": "classifier-only update-level DP",
+            "loss": NaN,
+            "accuracy": 0.5,
+            "precision": 0.25,
+            "recall": 0.5,
+            "f1": 0.33333333333333326,
+            "confusion_matrix": [
+                [
+                    200,
+                    0
+                ],
+                [
+                    200,
+                    0
+                ]
+            ],
+            "classes": [
+                "COVID",
+                "Normal"
+            ]
+        },
+        {
+            "round": 3,
+            "avg_client_loss": 0.19248816898092627,
+            "client_losses": [
+                0.21662299439311028,
+                0.21036969631910324,
+                0.17951102524995804,
+                0.16344895996153355
+            ],
+            "client_sizes": [
+                400,
+                400,
+                400,
+                400
+            ],
+            "communication_cost_mb": 123.6640625,
+            "round_time_sec": 77.07291579246521,
+            "alpha": 0.005,
+            "noise_std": 1e-06,
+            "clip_norm": 100.0,
+            "dp_type": "classifier-only update-level DP",
+            "loss": 0.5535729575157166,
+            "accuracy": 0.73,
+            "precision": 0.7952124245924784,
+            "recall": 0.73,
+            "f1": 0.7142176708740177,
+            "confusion_matrix": [
+                [
+                    99,
+                    101
+                ],
+                [
+                    7,
+                    193
+                ]
+            ],
+            "classes": [
+                "COVID",
+                "Normal"
+            ]
+        },
+        {
+            "round": 4,
+            "avg_client_loss": 0.12700529558584095,
+            "client_losses": [
+                0.1357575237751007,
+                0.1436834867298603,
+                0.11173671744763851,
+                0.11684345439076424
+            ],
+            "client_sizes": [
+                400,
+                400,
+                400,
+                400
+            ],
+            "communication_cost_mb": 123.6640625,
+            "round_time_sec": 65.31755113601685,
+            "alpha": 0.005,
+            "noise_std": 1e-06,
+            "clip_norm": 100.0,
+            "dp_type": "classifier-only update-level DP",
+            "loss": 0.5115948402881623,
+            "accuracy": 0.7225,
+            "precision": 0.8215434083601286,
+            "recall": 0.7225,
+            "f1": 0.6993479099939733,
+            "confusion_matrix": [
+                [
+                    89,
+                    111
+                ],
+                [
+                    0,
+                    200
+                ]
+            ],
+            "classes": [
+                "COVID",
+                "Normal"
+            ]
+        },
+        {
+            "round": 5,
+            "avg_client_loss": 0.0905688232369721,
+            "client_losses": [
+                0.10304112579673529,
+                0.0972602667659521,
+                0.0694633611664176,
+                0.09251053921878338
+            ],
+            "client_sizes": [
+                400,
+                400,
+                400,
+                400
+            ],
+            "communication_cost_mb": 123.6640625,
+            "round_time_sec": 59.2721471786499,
+            "alpha": 0.005,
+            "noise_std": 1e-06,
+            "clip_norm": 100.0,
+            "dp_type": "classifier-only update-level DP",
+            "loss": 0.28457664519548415,
+            "accuracy": 0.9225,
+            "precision": 0.9225105627640692,
+            "recall": 0.9225,
+            "f1": 0.9224995156219726,
+            "confusion_matrix": [
+                [
+                    184,
+                    16
+                ],
+                [
+                    15,
+                    185
+                ]
+            ],
+            "classes": [
+                "COVID",
+                "Normal"
+            ]
+        }
+    ],
+    "final_metrics": {
+        "round": 5,
+        "avg_client_loss": 0.0905688232369721,
+        "client_losses": [
+            0.10304112579673529,
+            0.0972602667659521,
+            0.0694633611664176,
+            0.09251053921878338
+        ],
+        "client_sizes": [
+            400,
+            400,
+            400,
+            400
+        ],
+        "communication_cost_mb": 123.6640625,
+        "round_time_sec": 59.2721471786499,
+        "alpha": 0.005,
+        "noise_std": 1e-06,
+        "clip_norm": 100.0,
+        "dp_type": "classifier-only update-level DP",
+        "loss": 0.28457664519548415,
+        "accuracy": 0.9225,
+        "precision": 0.9225105627640692,
+        "recall": 0.9225,
+        "f1": 0.9224995156219726,
+        "confusion_matrix": [
+            [
+                184,
+                16
+            ],
+            [
+                15,
+                185
+            ]
+        ],
+        "classes": [
+            "COVID",
+            "Normal"
+        ]
+    }
+}

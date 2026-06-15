@@ -526,24 +526,193 @@ Evaluate Byzantine resilience under realistic moderate healthcare heterogeneity.
 
 ---
 
+---
+
+# EXP-006: Differential Privacy Analysis
+
+**Date:** 11/06/2026
+
+## Objective
+
+Evaluate the impact of privacy-preserving noise mechanisms on federated medical image classification and analyze the trade-off between model utility and privacy strength.
+
+The original 2025 paper uses homomorphic encryption but does not evaluate differential privacy. In this experiment, both approximate update-level perturbation and formal DP-SGD using Opacus were investigated.
+
+---
+
+# EXP-006A: FedAvg with Approximate Update-Level Differential Privacy
+
+## Objective
+
+Evaluate whether lightweight update-level perturbation can preserve utility in IID federated learning.
+
+## Setup
+
+| Parameter | Value |
+|---|---|
+| Dataset Split | IID |
+| Clients | 4 |
+| Model | EfficientNet-B0 |
+| Aggregation | FedAvg |
+| DP Type | Classifier-only update-level perturbation |
+| Noise Std | 1×10⁻⁶ |
+| Clip Norm | 100.0 |
+| Formal Epsilon | Not available |
+| Global Rounds | 5 |
+
+## Results
+
+| Round | Accuracy | F1 Score | Communication Cost | Round Time |
+|---:|---:|---:|---:|---:|
+| 1 | 80.75% | 80.43% | 123.66 MB | 44.46 s |
+| 2 | 88.75% | 88.71% | 123.66 MB | 43.86 s |
+| 3 | 95.25% | 95.25% | 123.66 MB | 47.40 s |
+| 4 | 96.75% | 96.75% | 123.66 MB | 58.35 s |
+| 5 | **97.50%** | **97.50%** | 123.66 MB | 58.76 s |
+
+## Comparison
+
+| Method | Accuracy | F1 Score | Formal DP |
+|---|---:|---:|---|
+| EXP-002 FedAvg, No DP | 97.50% | 97.50% | No |
+| EXP-006A Approximate DP | **97.50%** | **97.50%** | No |
+
+## Observations
+
+- Classifier-only update-level perturbation preserved the baseline FedAvg performance.
+- This method does not provide formal ε-DP guarantees.
+- The result shows that lightweight update perturbation can preserve utility, but should be described as approximate privacy rather than strict differential privacy.
+
+---
+
+# EXP-006B: FedDyn with Approximate Update-Level DP under Extreme Non-IID
+
+## Objective
+
+Evaluate whether approximate update-level DP affects the robustness gains achieved by FedDyn under extreme Non-IID hospital distributions.
+
+## Setup
+
+| Parameter | Value |
+|---|---|
+| Dataset Split | Extreme Non-IID |
+| Clients | 4 |
+| Model | EfficientNet-B0 |
+| Optimization Algorithm | FedDyn |
+| Alpha | 0.005 |
+| DP Type | Classifier-only update-level perturbation |
+| Noise Std | 1×10⁻⁶ |
+| Clip Norm | 100.0 |
+| Formal Epsilon | Not available |
+| Global Rounds | 5 |
+
+## Results
+
+| Round | Accuracy | F1 Score | Communication Cost | Round Time |
+|---:|---:|---:|---:|---:|
+| 1 | 50.00% | 33.33% | 123.66 MB | 60.04 s |
+| 2 | 50.00% | 33.33% | 123.66 MB | 72.42 s |
+| 3 | 73.00% | 71.42% | 123.66 MB | 77.07 s |
+| 4 | 72.25% | 69.93% | 123.66 MB | 65.32 s |
+| 5 | **92.25%** | **92.25%** | 123.66 MB | 59.27 s |
+
+## Comparison
+
+| Method | Accuracy | F1 Score | Formal DP |
+|---|---:|---:|---|
+| EXP-004A FedDyn, No DP | 92.25% | 92.25% | No |
+| EXP-006B FedDyn + Approximate DP | **92.25%** | **92.25%** | No |
+
+## Observations
+
+- Approximate DP did not reduce the final FedDyn performance.
+- FedDyn retained its extreme Non-IID robustness even after classifier-level perturbation.
+- This result is useful as a lightweight privacy-preserving mechanism, but it cannot be claimed as formal DP.
+
+---
+
+# EXP-006C: Formal DP-SGD using Opacus
+
+## Objective
+
+Evaluate formal differential privacy using Opacus DP-SGD and measure the privacy–utility trade-off.
+
+## Setup
+
+| Parameter | Value |
+|---|---|
+| Dataset Split | IID |
+| Clients | 4 |
+| Model | EfficientNet-B0 |
+| Trainable Parameters | Classifier head only |
+| Frozen Parameters | EfficientNet feature extractor |
+| Aggregation | FedAvg |
+| DP Library | Opacus |
+| DP Mechanism | Per-sample gradient clipping + Gaussian noise |
+| Delta | 1×10⁻⁵ |
+| Communication Cost | 123.66 MB / round |
+
+## DP Configurations Tested
+
+| Configuration | Noise Multiplier | Local Epochs | Learning Rate | Max Grad Norm | Epsilon | Best Accuracy | Final Accuracy | Formal DP |
+|---|---:|---:|---:|---:|---:|---:|---:|---|
+| Full EfficientNet DP | 0.1 | 1 | 1×10⁻⁴ | 1.0 | 351.06 | 50.00% | 50.00% | Yes |
+| Classifier-only DP | 1.0 | 1 | 1×10⁻⁴ | 1.0 | 1.76 | 57.00% | 57.00% | Yes |
+| Classifier-only DP | 0.3 | 1 | 5×10⁻⁴ | 1.0 | 32.72 | 69.50% | 67.50% | Yes |
+| Classifier-only DP | 0.3 | 3 | 5×10⁻⁴ | 1.0 | 50.50 | 75.25% | 75.25% | Yes |
+| Classifier-only DP | 0.2 | 5 | 1×10⁻³ | 0.5 | 173.04 | **84.75%** | **84.75%** | Yes |
+
+## Best Opacus Run: Classifier-only DP, σ = 0.2, Local Epochs = 5
+
+| Round | Accuracy | F1 Score | Avg Epsilon | Communication Cost | Round Time |
+|---:|---:|---:|---:|---:|---:|
+| 1 | 64.50% | 60.31% | 173.04 | 123.66 MB | 87.72 s |
+| 2 | 82.25% | 82.06% | 173.04 | 123.66 MB | 98.48 s |
+| 3 | 83.50% | 83.42% | 173.04 | 123.66 MB | 95.52 s |
+| 4 | 84.25% | 84.19% | 173.04 | 123.66 MB | 104.80 s |
+| 5 | **84.75%** | **84.70%** | 173.04 | 123.66 MB | 114.93 s |
+
+## Privacy–Utility Trade-off
+
+| Method | Accuracy | F1 Score | Epsilon | Formal DP |
+|---|---:|---:|---:|---|
+| FedAvg, No DP | 97.50% | 97.50% | N/A | No |
+| Approximate Update-Level DP | 97.50% | 97.50% | N/A | No |
+| Opacus DP-SGD, Strong Privacy | 57.00% | 55.21% | 1.76 | Yes |
+| Opacus DP-SGD, Best Utility | **84.75%** | **84.70%** | 173.04 | Yes |
+
+## Observations
+
+- Approximate update-level perturbation preserved accuracy but did not provide a formal privacy budget.
+- Formal DP-SGD using Opacus provided measurable ε-DP guarantees but caused significant utility degradation.
+- Strong privacy with ε ≈ 1.76 resulted in only 57.00% accuracy.
+- The best formal DP utility result reached 84.75% accuracy, but required a very weak privacy budget of ε ≈ 173.04.
+- These results demonstrate the difficulty of applying strict DP-SGD to EfficientNet-based federated medical imaging.
+- For this framework, CKKS homomorphic encryption may provide a more practical privacy-preserving mechanism than strict DP-SGD.
+
+---
+
 # Master Results Summary
 
-| Experiment | Setting                      | Method          |   Accuracy |   F1 Score |
-| ---------- | ---------------------------- | --------------- | ---------: | ---------: |
-| 2025 Paper | COVID                        | CNN + FedAvg    |     97.25% |        N/A |
-| EXP-001    | Centralized                  | EfficientNet-B0 | **98.00%** | **98.00%** |
-| EXP-002    | IID                          | FedAvg          |     97.50% |     97.50% |
-| EXP-003    | Moderate Non-IID             | FedAvg          |     97.00% |     97.00% |
-| EXP-003B   | Extreme Non-IID              | FedAvg          |     82.00% |     82.00% |
-| EXP-004A   | Extreme Non-IID              | FedDyn          | **92.25%** | **92.25%** |
-| EXP-005E   | IID + Byzantine              | Multi-Krum      | **97.00%** | **97.00%** |
-| EXP-005F   | Moderate Non-IID + Byzantine | Multi-Krum      | **93.50%** | **93.47%** |
+| Experiment | Setting | Method | Accuracy | F1 Score |
+|---|---|---|---:|---:|
+| 2025 Paper | COVID | CNN + FedAvg | 97.25% | N/A |
+| EXP-001 | Centralized | EfficientNet-B0 | **98.00%** | **98.00%** |
+| EXP-002 | IID | FedAvg | 97.50% | 97.50% |
+| EXP-003 | Moderate Non-IID | FedAvg | 97.00% | 97.00% |
+| EXP-003B | Extreme Non-IID | FedAvg | 82.00% | 82.00% |
+| EXP-004A | Extreme Non-IID | FedDyn | **92.25%** | **92.25%** |
+| EXP-005E | IID + Byzantine | Multi-Krum | **97.00%** | **97.00%** |
+| EXP-005F | Moderate Non-IID + Byzantine | Multi-Krum | **93.50%** | **93.47%** |
+| EXP-006A | IID + Approximate DP | FedAvg + Update DP | **97.50%** | **97.50%** |
+| EXP-006B | Extreme Non-IID + Approximate DP | FedDyn + Update DP | **92.25%** | **92.25%** |
+| EXP-006C | IID + Formal DP-SGD | FedAvg + Opacus | 84.75% | 84.70% |
 
 ---
 
 # Research Narrative
 
-The experimental progression reveals three major limitations of the original 2025 framework and corresponding improvements:
+The experimental progression reveals several major limitations of the original 2025 framework and corresponding improvements:
 
 1. EfficientNet-B0 improved upon the original CNN baseline.
 2. FedAvg remained effective under IID and moderate Non-IID conditions.
@@ -551,21 +720,25 @@ The experimental progression reveals three major limitations of the original 202
 4. FedDyn recovered performance under extreme Non-IID conditions, reaching 92.25%.
 5. Standard FedAvg was highly vulnerable to Byzantine attacks, collapsing to 50.00% accuracy.
 6. Multi-Krum restored performance to 97.00% under IID attack and 93.50% under moderate Non-IID attack.
-7. Extreme heterogeneity combined with malicious behavior remains an open challenge requiring future investigation.
+7. Approximate update-level DP preserved model utility but did not provide formal ε guarantees.
+8. Formal Opacus DP-SGD provided measurable privacy guarantees but introduced a strong privacy–utility trade-off.
+9. Extreme heterogeneity combined with malicious behavior remains an open challenge requiring future investigation.
+10. CKKS homomorphic encryption is the next major privacy-preserving component to evaluate.
 
 ---
 
 # Current State of the Proposed Framework
 
-| Component                     | Status    |
-| ----------------------------- | --------- |
-| EfficientNet-B0 Baseline      | Completed |
-| FedAvg Evaluation             | Completed |
-| Non-IID Analysis              | Completed |
-| FedDyn Optimization           | Completed |
-| Byzantine Attack Simulation   | Completed |
+| Component | Status |
+|---|---|
+| EfficientNet-B0 Baseline | Completed |
+| FedAvg Evaluation | Completed |
+| Non-IID Analysis | Completed |
+| FedDyn Optimization | Completed |
+| Byzantine Attack Simulation | Completed |
 | Multi-Krum Robust Aggregation | Completed |
-| Differential Privacy          | Next      |
-| CKKS Homomorphic Encryption   | Pending   |
-| Proof-of-Authority Blockchain | Pending   |
-| Brain MRI Validation          | Pending   |
+| Approximate Update-Level DP | Completed |
+| Formal Opacus DP-SGD Analysis | Completed |
+| CKKS Homomorphic Encryption | Next |
+| Proof-of-Authority Blockchain | Pending |
+| Brain MRI Validation | Pending |
