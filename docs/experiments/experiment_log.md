@@ -20,7 +20,6 @@ Develop a modern blockchain-enabled privacy-preserving federated learning framew
 
 # EXP-001: Centralized EfficientNet-B0 Baseline
 
-**Date:** 11/06/2026
 
 ## Objective
 
@@ -78,7 +77,6 @@ Establish a strong centralized baseline on the same COVID dataset used by the 20
 
 # EXP-002: IID FedAvg with EfficientNet-B0
 
-**Date:** 11/06/2026
 
 ## Objective
 
@@ -141,7 +139,6 @@ Evaluate standard FedAvg on COVID classification under IID hospital distribution
 
 # EXP-003: Moderate Non-IID FedAvg
 
-**Date:** 11/06/2026**
 
 ## Objective
 
@@ -195,7 +192,6 @@ Investigate the effect of heterogeneous hospital distributions on standard FedAv
 
 # EXP-003B: Extreme Non-IID FedAvg Stress Test
 
-**Date:** 11/06/2026
 
 ## Objective
 
@@ -260,7 +256,6 @@ Evaluate FedAvg under severe cross-silo heterogeneity to determine its robustnes
 
 # EXP-004: FedDyn under Extreme Non-IID Conditions
 
-**Date:** 11/06/2026
 
 ## Objective
 
@@ -368,7 +363,6 @@ This suggests that while FedDyn substantially improves robustness to heterogeneo
 
 # EXP-005: Byzantine Robustness Analysis
 
-**Date:** 11/06/2026
 
 ## Objective
 
@@ -530,7 +524,7 @@ Evaluate Byzantine resilience under realistic moderate healthcare heterogeneity.
 
 # EXP-006: Differential Privacy Analysis
 
-**Date:** 11/06/2026
+
 
 ## Objective
 
@@ -739,6 +733,6 @@ The experimental progression reveals several major limitations of the original 2
 | Multi-Krum Robust Aggregation | Completed |
 | Approximate Update-Level DP | Completed |
 | Formal Opacus DP-SGD Analysis | Completed |
-| CKKS Homomorphic Encryption | Next |
+| CKKS Homomorphic Encryption | Completed |
 | Proof-of-Authority Blockchain | Pending |
 | Brain MRI Validation | Pending |

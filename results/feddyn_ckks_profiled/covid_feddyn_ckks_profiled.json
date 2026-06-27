@@ -1,0 +1,401 @@
+{
+    "experiment": "EXP-007B",
+    "method": "FedDyn + Selective CKKS Profiling using TenSEAL",
+    "dataset": "COVID Radiography Binary",
+    "setting": "Extreme Non-IID",
+    "num_clients": 4,
+    "global_rounds": 5,
+    "local_epochs": 1,
+    "learning_rate": 0.0001,
+    "alpha": 0.005,
+    "model": "EfficientNet-B0",
+    "aggregation": "FedDyn",
+    "he_library": "TenSEAL",
+    "he_scheme": "CKKS",
+    "selected_layer_scope": "classifier-only",
+    "ckks_usage": "secure transmission and overhead profiling",
+    "ckks_poly_modulus_degree": 8192,
+    "ckks_coeff_mod_bit_sizes": [
+        60,
+        40,
+        40,
+        60
+    ],
+    "ckks_global_scale": 1099511627776,
+    "device": "cuda",
+    "total_time_sec": 345.22298526763916,
+    "history": [
+        {
+            "round": 1,
+            "avg_client_loss": 0.44114643201231957,
+            "client_losses": [
+                0.4509617269039154,
+                0.4631569230556488,
+                0.4278940033912659,
+                0.4225730746984482
+            ],
+            "client_sizes": [
+                400,
+                400,
+                400,
+                400
+            ],
+            "alpha": 0.005,
+            "ckks_usage": "secure transmission and overhead profiling",
+            "aggregation_note": "FedDyn aggregation is kept unchanged; CKKS classifier aggregation is profiled but not injected.",
+            "ckks_poly_modulus_degree": 8192,
+            "ckks_coeff_mod_bit_sizes": [
+                60,
+                40,
+                40,
+                60
+            ],
+            "ckks_global_scale": 1099511627776,
+            "selected_layer_scope": "classifier-only",
+            "selected_tensor_count": 2,
+            "selected_total_values": 2562,
+            "avg_encryption_time_sec": 0.006532728672027588,
+            "total_encryption_time_sec": 0.02613091468811035,
+            "encrypted_aggregation_time_sec": 0.0060002803802490234,
+            "decryption_time_sec": 0.002015829086303711,
+            "crypto_time_sec": 0.034147024154663086,
+            "crypto_overhead_percent": 0.05313924654200591,
+            "avg_plain_selected_size_bytes": 10248.0,
+            "avg_encrypted_selected_size_bytes": 333975.0,
+            "avg_size_expansion_ratio": 32.58928571428571,
+            "selective_plain_upload_mb": 0.039093017578125,
+            "selective_encrypted_upload_mb": 1.2740135192871094,
+            "full_model_communication_cost_mb": 123.6640625,
+            "round_time_sec": 64.25951886177063,
+            "loss": NaN,
+            "accuracy": 0.5,
+            "precision": 0.25,
+            "recall": 0.5,
+            "f1": 0.33333333333333326,
+            "confusion_matrix": [
+                [
+                    200,
+                    0
+                ],
+                [
+                    200,
+                    0
+                ]
+            ],
+            "classes": [
+                "COVID",
+                "Normal"
+            ]
+        },
+        {
+            "round": 2,
+            "avg_client_loss": 0.284853293672204,
+            "client_losses": [
+                0.3012975937128067,
+                0.3212285941839218,
+                0.26039760679006574,
+                0.2564893800020218
+            ],
+            "client_sizes": [
+                400,
+                400,
+                400,
+                400
+            ],
+            "alpha": 0.005,
+            "ckks_usage": "secure transmission and overhead profiling",
+            "aggregation_note": "FedDyn aggregation is kept unchanged; CKKS classifier aggregation is profiled but not injected.",
+            "ckks_poly_modulus_degree": 8192,
+            "ckks_coeff_mod_bit_sizes": [
+                60,
+                40,
+                40,
+                60
+            ],
+            "ckks_global_scale": 1099511627776,
+            "selected_layer_scope": "classifier-only",
+            "selected_tensor_count": 2,
+            "selected_total_values": 2562,
+            "avg_encryption_time_sec": 0.006340384483337402,
+            "total_encryption_time_sec": 0.02536153793334961,
+            "encrypted_aggregation_time_sec": 0.0049974918365478516,
+            "decryption_time_sec": 0.000997781753540039,
+            "crypto_time_sec": 0.0313568115234375,
+            "crypto_overhead_percent": 0.05017360823801206,
+            "avg_plain_selected_size_bytes": 10248.0,
+            "avg_encrypted_selected_size_bytes": 334145.5,
+            "avg_size_expansion_ratio": 32.6059231069477,
+            "selective_plain_upload_mb": 0.039093017578125,
+            "selective_encrypted_upload_mb": 1.2746639251708984,
+            "full_model_communication_cost_mb": 123.6640625,
+            "round_time_sec": 62.49662446975708,
+            "loss": NaN,
+            "accuracy": 0.5,
+            "precision": 0.25,
+            "recall": 0.5,
+            "f1": 0.33333333333333326,
+            "confusion_matrix": [
+                [
+                    200,
+                    0
+                ],
+                [
+                    200,
+                    0
+                ]
+            ],
+            "classes": [
+                "COVID",
+                "Normal"
+            ]
+        },
+        {
+            "round": 3,
+            "avg_client_loss": 0.15697223208844663,
+            "client_losses": [
+                0.15115539588034152,
+                0.16218414679169654,
+                0.16176908373832702,
+                0.15278030194342138
+            ],
+            "client_sizes": [
+                400,
+                400,
+                400,
+                400
+            ],
+            "alpha": 0.005,
+            "ckks_usage": "secure transmission and overhead profiling",
+            "aggregation_note": "FedDyn aggregation is kept unchanged; CKKS classifier aggregation is profiled but not injected.",
+            "ckks_poly_modulus_degree": 8192,
+            "ckks_coeff_mod_bit_sizes": [
+                60,
+                40,
+                40,
+                60
+            ],
+            "ckks_global_scale": 1099511627776,
+            "selected_layer_scope": "classifier-only",
+            "selected_tensor_count": 2,
+            "selected_total_values": 2562,
+            "avg_encryption_time_sec": 0.00548321008682251,
+            "total_encryption_time_sec": 0.02193284034729004,
+            "encrypted_aggregation_time_sec": 0.004015207290649414,
+            "decryption_time_sec": 0.0015037059783935547,
+            "crypto_time_sec": 0.027451753616333008,
+            "crypto_overhead_percent": 0.042883290700323345,
+            "avg_plain_selected_size_bytes": 10248.0,
+            "avg_encrypted_selected_size_bytes": 334011.25,
+            "avg_size_expansion_ratio": 32.59282298985168,
+            "selective_plain_upload_mb": 0.039093017578125,
+            "selective_encrypted_upload_mb": 1.2741518020629883,
+            "full_model_communication_cost_mb": 123.6640625,
+            "round_time_sec": 64.0150351524353,
+            "loss": 0.5135748624801636,
+            "accuracy": 0.785,
+            "precision": 0.7934816187828236,
+            "recall": 0.785,
+            "f1": 0.7834353201883608,
+            "confusion_matrix": [
+                [
+                    174,
+                    26
+                ],
+                [
+                    60,
+                    140
+                ]
+            ],
+            "classes": [
+                "COVID",
+                "Normal"
+            ]
+        },
+        {
+            "round": 4,
+            "avg_client_loss": 0.11618129429407417,
+            "client_losses": [
+                0.1223400941491127,
+                0.12422322876751422,
+                0.11475269034504891,
+                0.10340916391462088
+            ],
+            "client_sizes": [
+                400,
+                400,
+                400,
+                400
+            ],
+            "alpha": 0.005,
+            "ckks_usage": "secure transmission and overhead profiling",
+            "aggregation_note": "FedDyn aggregation is kept unchanged; CKKS classifier aggregation is profiled but not injected.",
+            "ckks_poly_modulus_degree": 8192,
+            "ckks_coeff_mod_bit_sizes": [
+                60,
+                40,
+                40,
+                60
+            ],
+            "ckks_global_scale": 1099511627776,
+            "selected_layer_scope": "classifier-only",
+            "selected_tensor_count": 2,
+            "selected_total_values": 2562,
+            "avg_encryption_time_sec": 0.005071878433227539,
+            "total_encryption_time_sec": 0.020287513732910156,
+            "encrypted_aggregation_time_sec": 0.0045053958892822266,
+            "decryption_time_sec": 0.0009999275207519531,
+            "crypto_time_sec": 0.025792837142944336,
+            "crypto_overhead_percent": 0.04017605656542768,
+            "avg_plain_selected_size_bytes": 10248.0,
+            "avg_encrypted_selected_size_bytes": 334356.25,
+            "avg_size_expansion_ratio": 32.626488095238095,
+            "selective_plain_upload_mb": 0.039093017578125,
+            "selective_encrypted_upload_mb": 1.275467872619629,
+            "full_model_communication_cost_mb": 123.6640625,
+            "round_time_sec": 64.19952416419983,
+            "loss": 0.4919879388809204,
+            "accuracy": 0.7425,
+            "precision": 0.8131557707828894,
+            "recall": 0.7425,
+            "f1": 0.7271071369432025,
+            "confusion_matrix": [
+                [
+                    101,
+                    99
+                ],
+                [
+                    4,
+                    196
+                ]
+            ],
+            "classes": [
+                "COVID",
+                "Normal"
+            ]
+        },
+        {
+            "round": 5,
+            "avg_client_loss": 0.08789704590104522,
+            "client_losses": [
+                0.15352975126355886,
+                0.1275959924608469,
+                0.03453594073653221,
+                0.035926499143242835
+            ],
+            "client_sizes": [
+                400,
+                400,
+                400,
+                400
+            ],
+            "alpha": 0.005,
+            "ckks_usage": "secure transmission and overhead profiling",
+            "aggregation_note": "FedDyn aggregation is kept unchanged; CKKS classifier aggregation is profiled but not injected.",
+            "ckks_poly_modulus_degree": 8192,
+            "ckks_coeff_mod_bit_sizes": [
+                60,
+                40,
+                40,
+                60
+            ],
+            "ckks_global_scale": 1099511627776,
+            "selected_layer_scope": "classifier-only",
+            "selected_tensor_count": 2,
+            "selected_total_values": 2562,
+            "avg_encryption_time_sec": 0.007291436195373535,
+            "total_encryption_time_sec": 0.02916574478149414,
+            "encrypted_aggregation_time_sec": 0.00550532341003418,
+            "decryption_time_sec": 0.0020279884338378906,
+            "crypto_time_sec": 0.03669905662536621,
+            "crypto_overhead_percent": 0.04066274620454486,
+            "avg_plain_selected_size_bytes": 10248.0,
+            "avg_encrypted_selected_size_bytes": 334369.25,
+            "avg_size_expansion_ratio": 32.62775663544106,
+            "selective_plain_upload_mb": 0.039093017578125,
+            "selective_encrypted_upload_mb": 1.275517463684082,
+            "full_model_communication_cost_mb": 123.6640625,
+            "round_time_sec": 90.25228261947632,
+            "loss": 0.5991065832972526,
+            "accuracy": 0.6575,
+            "precision": 0.7967359050445103,
+            "recall": 0.6575,
+            "f1": 0.6119832048204714,
+            "confusion_matrix": [
+                [
+                    200,
+                    0
+                ],
+                [
+                    137,
+                    63
+                ]
+            ],
+            "classes": [
+                "COVID",
+                "Normal"
+            ]
+        }
+    ],
+    "final_metrics": {
+        "round": 5,
+        "avg_client_loss": 0.08789704590104522,
+        "client_losses": [
+            0.15352975126355886,
+            0.1275959924608469,
+            0.03453594073653221,
+            0.035926499143242835
+        ],
+        "client_sizes": [
+            400,
+            400,
+            400,
+            400
+        ],
+        "alpha": 0.005,
+        "ckks_usage": "secure transmission and overhead profiling",
+        "aggregation_note": "FedDyn aggregation is kept unchanged; CKKS classifier aggregation is profiled but not injected.",
+        "ckks_poly_modulus_degree": 8192,
+        "ckks_coeff_mod_bit_sizes": [
+            60,
+            40,
+            40,
+            60
+        ],
+        "ckks_global_scale": 1099511627776,
+        "selected_layer_scope": "classifier-only",
+        "selected_tensor_count": 2,
+        "selected_total_values": 2562,
+        "avg_encryption_time_sec": 0.007291436195373535,
+        "total_encryption_time_sec": 0.02916574478149414,
+        "encrypted_aggregation_time_sec": 0.00550532341003418,
+        "decryption_time_sec": 0.0020279884338378906,
+        "crypto_time_sec": 0.03669905662536621,
+        "crypto_overhead_percent": 0.04066274620454486,
+        "avg_plain_selected_size_bytes": 10248.0,
+        "avg_encrypted_selected_size_bytes": 334369.25,
+        "avg_size_expansion_ratio": 32.62775663544106,
+        "selective_plain_upload_mb": 0.039093017578125,
+        "selective_encrypted_upload_mb": 1.275517463684082,
+        "full_model_communication_cost_mb": 123.6640625,
+        "round_time_sec": 90.25228261947632,
+        "loss": 0.5991065832972526,
+        "accuracy": 0.6575,
+        "precision": 0.7967359050445103,
+        "recall": 0.6575,
+        "f1": 0.6119832048204714,
+        "confusion_matrix": [
+            [
+                200,
+                0
+            ],
+            [
+                137,
+                63
+            ]
+        ],
+        "classes": [
+            "COVID",
+            "Normal"
+        ]
+    }
+}

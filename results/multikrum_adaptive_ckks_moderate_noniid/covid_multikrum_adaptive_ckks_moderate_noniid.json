@@ -1,0 +1,584 @@
+{
+    "experiment": "EXP-007E",
+    "method": "Multi-Krum + Adaptive Selective CKKS Profiling using TenSEAL",
+    "dataset": "COVID Radiography Binary",
+    "setting": "Moderate Non-IID + Byzantine sign-flip attack",
+    "num_clients": 4,
+    "global_rounds": 5,
+    "local_epochs": 1,
+    "learning_rate": 0.0001,
+    "model": "EfficientNet-B0",
+    "aggregation": "Multi-Krum",
+    "he_library": "TenSEAL",
+    "he_scheme": "CKKS",
+    "selection_strategy": "top-k trainable tensors by update norm",
+    "adaptive_top_k": 4,
+    "selected_layer_scope": "adaptive top-k update tensors",
+    "ckks_usage": "adaptive secure transmission and overhead profiling",
+    "malicious_client_index": 0,
+    "attack_scale": 5.0,
+    "ckks_poly_modulus_degree": 8192,
+    "ckks_coeff_mod_bit_sizes": [
+        60,
+        40,
+        40,
+        60
+    ],
+    "ckks_global_scale": 1099511627776,
+    "device": "cuda",
+    "total_time_sec": 244.01002383232117,
+    "history": [
+        {
+            "round": 1,
+            "avg_client_loss": 0.5738913279771805,
+            "client_losses": [
+                0.6092966413497924,
+                0.6188195490837097,
+                0.5683883047103881,
+                0.49906081676483155
+            ],
+            "client_sizes": [
+                400,
+                400,
+                400,
+                400
+            ],
+            "malicious_client_index": 0,
+            "attack_scale": 5.0,
+            "selected_indices": [
+                1,
+                2
+            ],
+            "krum_scores": [
+                [
+                    26654.125,
+                    1
+                ],
+                [
+                    26654.125,
+                    2
+                ],
+                [
+                    36029.2890625,
+                    3
+                ],
+                [
+                    785341888.0,
+                    0
+                ]
+            ],
+            "adaptive_top_k": 4,
+            "selected_keys": [
+                "features.2.0.block.3.1.weight",
+                "features.3.0.block.3.1.weight",
+                "features.1.0.block.2.1.weight",
+                "features.2.0.block.1.1.weight"
+            ],
+            "ckks_usage": "adaptive secure transmission and overhead profiling",
+            "aggregation_note": "Multi-Krum aggregation is kept unchanged; adaptive CKKS aggregation is profiled.",
+            "ckks_poly_modulus_degree": 8192,
+            "ckks_coeff_mod_bit_sizes": [
+                60,
+                40,
+                40,
+                60
+            ],
+            "ckks_global_scale": 1099511627776,
+            "selected_layer_scope": "adaptive top-k update tensors",
+            "selected_tensor_count": 4,
+            "selected_total_values": 176,
+            "avg_encryption_time_sec": 0.005767703056335449,
+            "total_encryption_time_sec": 0.023070812225341797,
+            "encrypted_aggregation_time_sec": 0.0043506622314453125,
+            "decryption_time_sec": 0.0010023117065429688,
+            "crypto_time_sec": 0.028423786163330078,
+            "crypto_overhead_percent": 0.057937687744195755,
+            "avg_plain_selected_size_bytes": 704.0,
+            "avg_encrypted_selected_size_bytes": 334416.0,
+            "avg_size_expansion_ratio": 475.0227272727273,
+            "selective_plain_upload_mb": 0.002685546875,
+            "selective_encrypted_upload_mb": 1.27569580078125,
+            "full_model_communication_cost_mb": 123.6640625,
+            "round_time_sec": 49.059234619140625,
+            "loss": 0.5509630370140076,
+            "accuracy": 0.7725,
+            "precision": 0.7914516430920614,
+            "recall": 0.7725,
+            "f1": 0.7687405892032351,
+            "confusion_matrix": [
+                [
+                    129,
+                    71
+                ],
+                [
+                    20,
+                    180
+                ]
+            ],
+            "classes": [
+                "COVID",
+                "Normal"
+            ]
+        },
+        {
+            "round": 2,
+            "avg_client_loss": 0.4502670732140541,
+            "client_losses": [
+                0.528296217918396,
+                0.44968783140182494,
+                0.40526466965675356,
+                0.41781957387924196
+            ],
+            "client_sizes": [
+                400,
+                400,
+                400,
+                400
+            ],
+            "malicious_client_index": 0,
+            "attack_scale": 5.0,
+            "selected_indices": [
+                1,
+                2
+            ],
+            "krum_scores": [
+                [
+                    31835.419921875,
+                    1
+                ],
+                [
+                    31835.419921875,
+                    2
+                ],
+                [
+                    36158.1875,
+                    3
+                ],
+                [
+                    785810304.0,
+                    0
+                ]
+            ],
+            "adaptive_top_k": 4,
+            "selected_keys": [
+                "features.2.0.block.3.1.weight",
+                "features.3.0.block.3.1.weight",
+                "features.1.0.block.2.1.weight",
+                "features.2.0.block.1.1.weight"
+            ],
+            "ckks_usage": "adaptive secure transmission and overhead profiling",
+            "aggregation_note": "Multi-Krum aggregation is kept unchanged; adaptive CKKS aggregation is profiled.",
+            "ckks_poly_modulus_degree": 8192,
+            "ckks_coeff_mod_bit_sizes": [
+                60,
+                40,
+                40,
+                60
+            ],
+            "ckks_global_scale": 1099511627776,
+            "selected_layer_scope": "adaptive top-k update tensors",
+            "selected_tensor_count": 4,
+            "selected_total_values": 176,
+            "avg_encryption_time_sec": 0.005399167537689209,
+            "total_encryption_time_sec": 0.021596670150756836,
+            "encrypted_aggregation_time_sec": 0.004034996032714844,
+            "decryption_time_sec": 0.002240896224975586,
+            "crypto_time_sec": 0.027872562408447266,
+            "crypto_overhead_percent": 0.058360091026885656,
+            "avg_plain_selected_size_bytes": 704.0,
+            "avg_encrypted_selected_size_bytes": 334330.25,
+            "avg_size_expansion_ratio": 474.9009232954546,
+            "selective_plain_upload_mb": 0.002685546875,
+            "selective_encrypted_upload_mb": 1.2753686904907227,
+            "full_model_communication_cost_mb": 123.6640625,
+            "round_time_sec": 47.75962805747986,
+            "loss": 0.3947336161136627,
+            "accuracy": 0.875,
+            "precision": 0.8753378040236212,
+            "recall": 0.875,
+            "f1": 0.8749718686704508,
+            "confusion_matrix": [
+                [
+                    178,
+                    22
+                ],
+                [
+                    28,
+                    172
+                ]
+            ],
+            "classes": [
+                "COVID",
+                "Normal"
+            ]
+        },
+        {
+            "round": 3,
+            "avg_client_loss": 0.3608823154866695,
+            "client_losses": [
+                0.44042183995246886,
+                0.3666690677404404,
+                0.32036630153656004,
+                0.31607205271720884
+            ],
+            "client_sizes": [
+                400,
+                400,
+                400,
+                400
+            ],
+            "malicious_client_index": 0,
+            "attack_scale": 5.0,
+            "selected_indices": [
+                2,
+                3
+            ],
+            "krum_scores": [
+                [
+                    34075.375,
+                    2
+                ],
+                [
+                    34075.375,
+                    3
+                ],
+                [
+                    55082.37109375,
+                    1
+                ],
+                [
+                    792028224.0,
+                    0
+                ]
+            ],
+            "adaptive_top_k": 4,
+            "selected_keys": [
+                "features.2.0.block.3.1.weight",
+                "features.3.0.block.3.1.weight",
+                "features.1.0.block.2.1.weight",
+                "features.2.0.block.1.1.weight"
+            ],
+            "ckks_usage": "adaptive secure transmission and overhead profiling",
+            "aggregation_note": "Multi-Krum aggregation is kept unchanged; adaptive CKKS aggregation is profiled.",
+            "ckks_poly_modulus_degree": 8192,
+            "ckks_coeff_mod_bit_sizes": [
+                60,
+                40,
+                40,
+                60
+            ],
+            "ckks_global_scale": 1099511627776,
+            "selected_layer_scope": "adaptive top-k update tensors",
+            "selected_tensor_count": 4,
+            "selected_total_values": 176,
+            "avg_encryption_time_sec": 0.005598008632659912,
+            "total_encryption_time_sec": 0.02239203453063965,
+            "encrypted_aggregation_time_sec": 0.004506587982177734,
+            "decryption_time_sec": 0.0015208721160888672,
+            "crypto_time_sec": 0.02841949462890625,
+            "crypto_overhead_percent": 0.05823602067408048,
+            "avg_plain_selected_size_bytes": 704.0,
+            "avg_encrypted_selected_size_bytes": 334282.0,
+            "avg_size_expansion_ratio": 474.8323863636364,
+            "selective_plain_upload_mb": 0.002685546875,
+            "selective_encrypted_upload_mb": 1.2751846313476562,
+            "full_model_communication_cost_mb": 123.6640625,
+            "round_time_sec": 48.800543546676636,
+            "loss": 0.33314112067222595,
+            "accuracy": 0.86,
+            "precision": 0.890625,
+            "recall": 0.86,
+            "f1": 0.8572011423908609,
+            "confusion_matrix": [
+                [
+                    144,
+                    56
+                ],
+                [
+                    0,
+                    200
+                ]
+            ],
+            "classes": [
+                "COVID",
+                "Normal"
+            ]
+        },
+        {
+            "round": 4,
+            "avg_client_loss": 0.3864491325616836,
+            "client_losses": [
+                0.6755170285701751,
+                0.4442779302597046,
+                0.21718786358833314,
+                0.20881370782852174
+            ],
+            "client_sizes": [
+                400,
+                400,
+                400,
+                400
+            ],
+            "malicious_client_index": 0,
+            "attack_scale": 5.0,
+            "selected_indices": [
+                2,
+                3
+            ],
+            "krum_scores": [
+                [
+                    52890.66796875,
+                    2
+                ],
+                [
+                    52890.66796875,
+                    3
+                ],
+                [
+                    59072.12109375,
+                    1
+                ],
+                [
+                    801939648.0,
+                    0
+                ]
+            ],
+            "adaptive_top_k": 4,
+            "selected_keys": [
+                "features.2.0.block.3.1.weight",
+                "features.3.0.block.3.1.weight",
+                "features.1.0.block.2.1.weight",
+                "features.2.0.block.1.1.weight"
+            ],
+            "ckks_usage": "adaptive secure transmission and overhead profiling",
+            "aggregation_note": "Multi-Krum aggregation is kept unchanged; adaptive CKKS aggregation is profiled.",
+            "ckks_poly_modulus_degree": 8192,
+            "ckks_coeff_mod_bit_sizes": [
+                60,
+                40,
+                40,
+                60
+            ],
+            "ckks_global_scale": 1099511627776,
+            "selected_layer_scope": "adaptive top-k update tensors",
+            "selected_tensor_count": 4,
+            "selected_total_values": 176,
+            "avg_encryption_time_sec": 0.00550389289855957,
+            "total_encryption_time_sec": 0.02201557159423828,
+            "encrypted_aggregation_time_sec": 0.004524707794189453,
+            "decryption_time_sec": 0.0009989738464355469,
+            "crypto_time_sec": 0.02753925323486328,
+            "crypto_overhead_percent": 0.055989776422325506,
+            "avg_plain_selected_size_bytes": 704.0,
+            "avg_encrypted_selected_size_bytes": 334352.0,
+            "avg_size_expansion_ratio": 474.9318181818182,
+            "selective_plain_upload_mb": 0.002685546875,
+            "selective_encrypted_upload_mb": 1.27545166015625,
+            "full_model_communication_cost_mb": 123.6640625,
+            "round_time_sec": 49.18621754646301,
+            "loss": 0.2122791438549757,
+            "accuracy": 0.935,
+            "precision": 0.9424778761061947,
+            "recall": 0.935,
+            "f1": 0.9347242097863473,
+            "confusion_matrix": [
+                [
+                    174,
+                    26
+                ],
+                [
+                    0,
+                    200
+                ]
+            ],
+            "classes": [
+                "COVID",
+                "Normal"
+            ]
+        },
+        {
+            "round": 5,
+            "avg_client_loss": 0.3764151345565915,
+            "client_losses": [
+                0.7591520571708679,
+                0.49209304571151735,
+                0.14457933470606804,
+                0.10983610063791276
+            ],
+            "client_sizes": [
+                400,
+                400,
+                400,
+                400
+            ],
+            "malicious_client_index": 0,
+            "attack_scale": 5.0,
+            "selected_indices": [
+                2,
+                3
+            ],
+            "krum_scores": [
+                [
+                    26932.08203125,
+                    2
+                ],
+                [
+                    26932.08203125,
+                    3
+                ],
+                [
+                    121182.8984375,
+                    1
+                ],
+                [
+                    801644800.0,
+                    0
+                ]
+            ],
+            "adaptive_top_k": 4,
+            "selected_keys": [
+                "features.2.0.block.3.1.weight",
+                "features.3.0.block.3.1.weight",
+                "features.1.0.block.2.1.weight",
+                "features.2.0.block.1.1.weight"
+            ],
+            "ckks_usage": "adaptive secure transmission and overhead profiling",
+            "aggregation_note": "Multi-Krum aggregation is kept unchanged; adaptive CKKS aggregation is profiled.",
+            "ckks_poly_modulus_degree": 8192,
+            "ckks_coeff_mod_bit_sizes": [
+                60,
+                40,
+                40,
+                60
+            ],
+            "ckks_global_scale": 1099511627776,
+            "selected_layer_scope": "adaptive top-k update tensors",
+            "selected_tensor_count": 4,
+            "selected_total_values": 176,
+            "avg_encryption_time_sec": 0.005553543567657471,
+            "total_encryption_time_sec": 0.022214174270629883,
+            "encrypted_aggregation_time_sec": 0.004417896270751953,
+            "decryption_time_sec": 0.0009438991546630859,
+            "crypto_time_sec": 0.027575969696044922,
+            "crypto_overhead_percent": 0.05604370678431887,
+            "avg_plain_selected_size_bytes": 704.0,
+            "avg_encrypted_selected_size_bytes": 334339.25,
+            "avg_size_expansion_ratio": 474.9137073863636,
+            "selective_plain_upload_mb": 0.002685546875,
+            "selective_encrypted_upload_mb": 1.2754030227661133,
+            "full_model_communication_cost_mb": 123.6640625,
+            "round_time_sec": 49.204400062561035,
+            "loss": 0.1408464265614748,
+            "accuracy": 0.9575,
+            "precision": 0.9608294930875576,
+            "recall": 0.9575,
+            "f1": 0.9574230954661858,
+            "confusion_matrix": [
+                [
+                    183,
+                    17
+                ],
+                [
+                    0,
+                    200
+                ]
+            ],
+            "classes": [
+                "COVID",
+                "Normal"
+            ]
+        }
+    ],
+    "final_metrics": {
+        "round": 5,
+        "avg_client_loss": 0.3764151345565915,
+        "client_losses": [
+            0.7591520571708679,
+            0.49209304571151735,
+            0.14457933470606804,
+            0.10983610063791276
+        ],
+        "client_sizes": [
+            400,
+            400,
+            400,
+            400
+        ],
+        "malicious_client_index": 0,
+        "attack_scale": 5.0,
+        "selected_indices": [
+            2,
+            3
+        ],
+        "krum_scores": [
+            [
+                26932.08203125,
+                2
+            ],
+            [
+                26932.08203125,
+                3
+            ],
+            [
+                121182.8984375,
+                1
+            ],
+            [
+                801644800.0,
+                0
+            ]
+        ],
+        "adaptive_top_k": 4,
+        "selected_keys": [
+            "features.2.0.block.3.1.weight",
+            "features.3.0.block.3.1.weight",
+            "features.1.0.block.2.1.weight",
+            "features.2.0.block.1.1.weight"
+        ],
+        "ckks_usage": "adaptive secure transmission and overhead profiling",
+        "aggregation_note": "Multi-Krum aggregation is kept unchanged; adaptive CKKS aggregation is profiled.",
+        "ckks_poly_modulus_degree": 8192,
+        "ckks_coeff_mod_bit_sizes": [
+            60,
+            40,
+            40,
+            60
+        ],
+        "ckks_global_scale": 1099511627776,
+        "selected_layer_scope": "adaptive top-k update tensors",
+        "selected_tensor_count": 4,
+        "selected_total_values": 176,
+        "avg_encryption_time_sec": 0.005553543567657471,
+        "total_encryption_time_sec": 0.022214174270629883,
+        "encrypted_aggregation_time_sec": 0.004417896270751953,
+        "decryption_time_sec": 0.0009438991546630859,
+        "crypto_time_sec": 0.027575969696044922,
+        "crypto_overhead_percent": 0.05604370678431887,
+        "avg_plain_selected_size_bytes": 704.0,
+        "avg_encrypted_selected_size_bytes": 334339.25,
+        "avg_size_expansion_ratio": 474.9137073863636,
+        "selective_plain_upload_mb": 0.002685546875,
+        "selective_encrypted_upload_mb": 1.2754030227661133,
+        "full_model_communication_cost_mb": 123.6640625,
+        "round_time_sec": 49.204400062561035,
+        "loss": 0.1408464265614748,
+        "accuracy": 0.9575,
+        "precision": 0.9608294930875576,
+        "recall": 0.9575,
+        "f1": 0.9574230954661858,
+        "confusion_matrix": [
+            [
+                183,
+                17
+            ],
+            [
+                0,
+                200
+            ]
+        ],
+        "classes": [
+            "COVID",
+            "Normal"
+        ]
+    }
+}
