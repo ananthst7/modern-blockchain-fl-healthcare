@@ -1,0 +1,368 @@
+{
+    "experiment": "EXP-007",
+    "method": "Selective CKKS Encrypted Aggregation using TenSEAL",
+    "dataset": "COVID Radiography Binary",
+    "num_clients": 4,
+    "global_rounds": 5,
+    "local_epochs": 1,
+    "learning_rate": 0.0001,
+    "model": "EfficientNet-B0",
+    "aggregation": "FedAvg",
+    "he_library": "TenSEAL",
+    "he_scheme": "CKKS",
+    "selected_layer_scope": "classifier-only",
+    "ckks_poly_modulus_degree": 8192,
+    "ckks_coeff_mod_bit_sizes": [
+        60,
+        40,
+        40,
+        60
+    ],
+    "ckks_global_scale": 1099511627776,
+    "device": "cuda",
+    "total_time_sec": 243.31752824783325,
+    "history": [
+        {
+            "round": 1,
+            "avg_client_loss": 0.5648144036531448,
+            "client_losses": [
+                0.5707767295837403,
+                0.556201856136322,
+                0.5650447881221772,
+                0.56723424077034
+            ],
+            "client_sizes": [
+                400,
+                400,
+                400,
+                400
+            ],
+            "ckks_poly_modulus_degree": 8192,
+            "ckks_coeff_mod_bit_sizes": [
+                60,
+                40,
+                40,
+                60
+            ],
+            "ckks_global_scale": 1099511627776,
+            "selected_layer_scope": "classifier-only",
+            "selected_tensor_count": 2,
+            "selected_total_values": 2562,
+            "avg_encryption_time_sec": 0.005961000919342041,
+            "total_encryption_time_sec": 0.023844003677368164,
+            "encrypted_aggregation_time_sec": 0.004228115081787109,
+            "decryption_time_sec": 0.002513408660888672,
+            "avg_plain_selected_size_bytes": 10248.0,
+            "avg_encrypted_selected_size_bytes": 334238.75,
+            "avg_size_expansion_ratio": 32.61502244340359,
+            "selective_plain_upload_mb": 0.039093017578125,
+            "selective_encrypted_upload_mb": 1.275019645690918,
+            "full_model_communication_cost_mb": 123.6640625,
+            "round_time_sec": 51.045737504959106,
+            "loss": 0.4897567868232727,
+            "accuracy": 0.84,
+            "precision": 0.8412284223203532,
+            "recall": 0.84,
+            "f1": 0.8398558702832548,
+            "confusion_matrix": [
+                [
+                    162,
+                    38
+                ],
+                [
+                    26,
+                    174
+                ]
+            ],
+            "classes": [
+                "COVID",
+                "Normal"
+            ]
+        },
+        {
+            "round": 2,
+            "avg_client_loss": 0.4077280288934707,
+            "client_losses": [
+                0.40630707144737244,
+                0.3664971733093262,
+                0.437838704586029,
+                0.4202691662311554
+            ],
+            "client_sizes": [
+                400,
+                400,
+                400,
+                400
+            ],
+            "ckks_poly_modulus_degree": 8192,
+            "ckks_coeff_mod_bit_sizes": [
+                60,
+                40,
+                40,
+                60
+            ],
+            "ckks_global_scale": 1099511627776,
+            "selected_layer_scope": "classifier-only",
+            "selected_tensor_count": 2,
+            "selected_total_values": 2562,
+            "avg_encryption_time_sec": 0.0055013298988342285,
+            "total_encryption_time_sec": 0.022005319595336914,
+            "encrypted_aggregation_time_sec": 0.004746675491333008,
+            "decryption_time_sec": 0.00099945068359375,
+            "avg_plain_selected_size_bytes": 10248.0,
+            "avg_encrypted_selected_size_bytes": 334343.75,
+            "avg_size_expansion_ratio": 32.62526834504293,
+            "selective_plain_upload_mb": 0.039093017578125,
+            "selective_encrypted_upload_mb": 1.2754201889038086,
+            "full_model_communication_cost_mb": 123.6640625,
+            "round_time_sec": 46.78823399543762,
+            "loss": 0.3845373523235321,
+            "accuracy": 0.865,
+            "precision": 0.8818391045088398,
+            "recall": 0.865,
+            "f1": 0.8634950327359135,
+            "confusion_matrix": [
+                [
+                    194,
+                    6
+                ],
+                [
+                    48,
+                    152
+                ]
+            ],
+            "classes": [
+                "COVID",
+                "Normal"
+            ]
+        },
+        {
+            "round": 3,
+            "avg_client_loss": 0.29439513228833675,
+            "client_losses": [
+                0.2829601615667343,
+                0.29111129671335223,
+                0.3132592052221298,
+                0.2902498656511307
+            ],
+            "client_sizes": [
+                400,
+                400,
+                400,
+                400
+            ],
+            "ckks_poly_modulus_degree": 8192,
+            "ckks_coeff_mod_bit_sizes": [
+                60,
+                40,
+                40,
+                60
+            ],
+            "ckks_global_scale": 1099511627776,
+            "selected_layer_scope": "classifier-only",
+            "selected_tensor_count": 2,
+            "selected_total_values": 2562,
+            "avg_encryption_time_sec": 0.00570148229598999,
+            "total_encryption_time_sec": 0.02280592918395996,
+            "encrypted_aggregation_time_sec": 0.003974199295043945,
+            "decryption_time_sec": 0.001005411148071289,
+            "avg_plain_selected_size_bytes": 10248.0,
+            "avg_encrypted_selected_size_bytes": 333945.75,
+            "avg_size_expansion_ratio": 32.58643149882904,
+            "selective_plain_upload_mb": 0.039093017578125,
+            "selective_encrypted_upload_mb": 1.2739019393920898,
+            "full_model_communication_cost_mb": 123.6640625,
+            "round_time_sec": 47.633953332901,
+            "loss": 0.1821940363943577,
+            "accuracy": 0.9425,
+            "precision": 0.9457203293797687,
+            "recall": 0.9425,
+            "f1": 0.9423959526895456,
+            "confusion_matrix": [
+                [
+                    180,
+                    20
+                ],
+                [
+                    3,
+                    197
+                ]
+            ],
+            "classes": [
+                "COVID",
+                "Normal"
+            ]
+        },
+        {
+            "round": 4,
+            "avg_client_loss": 0.22471094280481338,
+            "client_losses": [
+                0.22739480465650558,
+                0.18284789741039276,
+                0.26264497578144075,
+                0.22595609337091446
+            ],
+            "client_sizes": [
+                400,
+                400,
+                400,
+                400
+            ],
+            "ckks_poly_modulus_degree": 8192,
+            "ckks_coeff_mod_bit_sizes": [
+                60,
+                40,
+                40,
+                60
+            ],
+            "ckks_global_scale": 1099511627776,
+            "selected_layer_scope": "classifier-only",
+            "selected_tensor_count": 2,
+            "selected_total_values": 2562,
+            "avg_encryption_time_sec": 0.004897415637969971,
+            "total_encryption_time_sec": 0.019589662551879883,
+            "encrypted_aggregation_time_sec": 0.0,
+            "decryption_time_sec": 0.0009195804595947266,
+            "avg_plain_selected_size_bytes": 10248.0,
+            "avg_encrypted_selected_size_bytes": 334344.0,
+            "avg_size_expansion_ratio": 32.62529274004684,
+            "selective_plain_upload_mb": 0.039093017578125,
+            "selective_encrypted_upload_mb": 1.275421142578125,
+            "full_model_communication_cost_mb": 123.6640625,
+            "round_time_sec": 47.580870151519775,
+            "loss": 0.12983157500624656,
+            "accuracy": 0.9675,
+            "precision": 0.9675116877921949,
+            "recall": 0.9675,
+            "f1": 0.9674997968737304,
+            "confusion_matrix": [
+                [
+                    193,
+                    7
+                ],
+                [
+                    6,
+                    194
+                ]
+            ],
+            "classes": [
+                "COVID",
+                "Normal"
+            ]
+        },
+        {
+            "round": 5,
+            "avg_client_loss": 0.18188979469239713,
+            "client_losses": [
+                0.19758312940597533,
+                0.16487814575433732,
+                0.17658813059329986,
+                0.18850977301597596
+            ],
+            "client_sizes": [
+                400,
+                400,
+                400,
+                400
+            ],
+            "ckks_poly_modulus_degree": 8192,
+            "ckks_coeff_mod_bit_sizes": [
+                60,
+                40,
+                40,
+                60
+            ],
+            "ckks_global_scale": 1099511627776,
+            "selected_layer_scope": "classifier-only",
+            "selected_tensor_count": 2,
+            "selected_total_values": 2562,
+            "avg_encryption_time_sec": 0.005366265773773193,
+            "total_encryption_time_sec": 0.021465063095092773,
+            "encrypted_aggregation_time_sec": 0.003912210464477539,
+            "decryption_time_sec": 0.0009975433349609375,
+            "avg_plain_selected_size_bytes": 10248.0,
+            "avg_encrypted_selected_size_bytes": 334290.25,
+            "avg_size_expansion_ratio": 32.620047814207645,
+            "selective_plain_upload_mb": 0.039093017578125,
+            "selective_encrypted_upload_mb": 1.2752161026000977,
+            "full_model_communication_cost_mb": 123.6640625,
+            "round_time_sec": 50.26623821258545,
+            "loss": 0.09979720756411553,
+            "accuracy": 0.9775,
+            "precision": 0.9776074616788777,
+            "recall": 0.9775,
+            "f1": 0.9774987343038046,
+            "confusion_matrix": [
+                [
+                    194,
+                    6
+                ],
+                [
+                    3,
+                    197
+                ]
+            ],
+            "classes": [
+                "COVID",
+                "Normal"
+            ]
+        }
+    ],
+    "final_metrics": {
+        "round": 5,
+        "avg_client_loss": 0.18188979469239713,
+        "client_losses": [
+            0.19758312940597533,
+            0.16487814575433732,
+            0.17658813059329986,
+            0.18850977301597596
+        ],
+        "client_sizes": [
+            400,
+            400,
+            400,
+            400
+        ],
+        "ckks_poly_modulus_degree": 8192,
+        "ckks_coeff_mod_bit_sizes": [
+            60,
+            40,
+            40,
+            60
+        ],
+        "ckks_global_scale": 1099511627776,
+        "selected_layer_scope": "classifier-only",
+        "selected_tensor_count": 2,
+        "selected_total_values": 2562,
+        "avg_encryption_time_sec": 0.005366265773773193,
+        "total_encryption_time_sec": 0.021465063095092773,
+        "encrypted_aggregation_time_sec": 0.003912210464477539,
+        "decryption_time_sec": 0.0009975433349609375,
+        "avg_plain_selected_size_bytes": 10248.0,
+        "avg_encrypted_selected_size_bytes": 334290.25,
+        "avg_size_expansion_ratio": 32.620047814207645,
+        "selective_plain_upload_mb": 0.039093017578125,
+        "selective_encrypted_upload_mb": 1.2752161026000977,
+        "full_model_communication_cost_mb": 123.6640625,
+        "round_time_sec": 50.26623821258545,
+        "loss": 0.09979720756411553,
+        "accuracy": 0.9775,
+        "precision": 0.9776074616788777,
+        "recall": 0.9775,
+        "f1": 0.9774987343038046,
+        "confusion_matrix": [
+            [
+                194,
+                6
+            ],
+            [
+                3,
+                197
+            ]
+        ],
+        "classes": [
+            "COVID",
+            "Normal"
+        ]
+    }
+}
