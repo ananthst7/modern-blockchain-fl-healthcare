@@ -1,7 +1,5 @@
 # EXP-007: Selective and Adaptive CKKS Homomorphic Encryption using TenSEAL
 
-**Date:** 27/06/2026
-
 ## Objective
 
 Implement a modern homomorphic encryption layer for federated learning using TenSEAL CKKS and compare it against the 2025 paper's heavier Pyfhel/Microsoft SEAL-based encryption approach.
