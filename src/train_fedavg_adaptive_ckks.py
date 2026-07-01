@@ -15,6 +15,10 @@ from encryption.adaptive_tenseal_ckks import (
     encrypted_weighted_average,
     decrypt_selected_state,
 )
+from encryption.adaptive_metrics import (
+    compute_adaptive_encryption_metrics,
+    aggregate_adaptive_metrics,
+)
 
 
 CLIENTS_ROOT = Path("data/processed/covid_clients")
@@ -28,7 +32,8 @@ LOCAL_EPOCHS = 1
 LR = 1e-4
 NUM_CLASSES = 2
 
-TOP_K = 4
+TOP_K = 50
+MAX_SELECTED_BYTES = 1_000_000
 
 CKKS_POLY_MODULUS_DEGREE = 8192
 CKKS_COEFF_MOD_BIT_SIZES = [60, 40, 40, 60]
@@ -58,14 +63,14 @@ def merge_selected_into_global(global_state, selected_state, selected_keys):
     return merged_state
 
 
-def get_common_selected_keys(client_states, global_state, top_k):
+def get_common_selected_keys(client_states, global_state, top_k, max_selected_bytes):
     key_scores = {}
 
     for state in client_states:
         _, scores = select_topk_update_keys(
             client_state=state,
             global_state=global_state,
-            top_k=top_k,
+            top_k=100,
         )
 
         for item in scores:
@@ -73,7 +78,34 @@ def get_common_selected_keys(client_states, global_state, top_k):
             key_scores[key] = key_scores.get(key, 0.0) + item["score"]
 
     ranked = sorted(key_scores.items(), key=lambda x: x[1], reverse=True)
-    return [key for key, _ in ranked[:top_k]]
+
+    selected_keys = []
+    selected_bytes = 0
+
+    for key, _ in ranked:
+        if key not in global_state:
+            continue
+
+        tensor = global_state[key]
+
+        if not torch.is_floating_point(tensor):
+            continue
+
+        tensor_bytes = tensor.numel() * tensor.element_size()
+
+        if selected_bytes + tensor_bytes > max_selected_bytes:
+            continue
+
+        selected_keys.append(key)
+        selected_bytes += tensor_bytes
+
+        if len(selected_keys) >= top_k:
+            break
+
+    if not selected_keys:
+        raise ValueError("No adaptive CKKS tensors selected under the byte budget.")
+
+    return selected_keys, selected_bytes
 
 
 def main():
@@ -101,7 +133,7 @@ def main():
     start_total = time.time()
 
     for round_idx in range(1, GLOBAL_ROUNDS + 1):
-        print(f"\n===== Adaptive CKKS FedAvg Round {round_idx}/{GLOBAL_ROUNDS} =====")
+        print(f"\n===== Budgeted Adaptive CKKS FedAvg Round {round_idx}/{GLOBAL_ROUNDS} =====")
         round_start = time.time()
 
         global_state_cpu = {
@@ -131,15 +163,36 @@ def main():
             client_sizes.append(size)
             client_losses.append(loss)
 
-        selected_keys = get_common_selected_keys(
+        selected_keys, selected_plain_budget_bytes = get_common_selected_keys(
             client_states=client_states,
             global_state=global_state_cpu,
             top_k=TOP_K,
+            max_selected_bytes=MAX_SELECTED_BYTES,
         )
 
-        print("Adaptive CKKS selected keys:")
+        print("Budgeted Adaptive CKKS selected keys:")
         for key in selected_keys:
             print(" -", key)
+
+        fixed_keys = [
+            key
+            for key in global_state_cpu.keys()
+            if "classifier" in key and torch.is_floating_point(global_state_cpu[key])
+        ]
+
+        adaptive_metric_rows = []
+
+        for state in client_states:
+            adaptive_metric_rows.append(
+                compute_adaptive_encryption_metrics(
+                    client_state=state,
+                    global_state=global_state_cpu,
+                    selected_keys=selected_keys,
+                    fixed_keys=fixed_keys,
+                )
+            )
+
+        adaptive_metrics = aggregate_adaptive_metrics(adaptive_metric_rows)
 
         encrypted_vectors = []
         encryption_times = []
@@ -216,11 +269,13 @@ def main():
             "client_losses": client_losses,
             "client_sizes": client_sizes,
             "adaptive_top_k": TOP_K,
+            "max_selected_bytes": MAX_SELECTED_BYTES,
+            "selected_plain_budget_bytes": selected_plain_budget_bytes,
             "selected_keys": selected_keys,
             "ckks_poly_modulus_degree": CKKS_POLY_MODULUS_DEGREE,
             "ckks_coeff_mod_bit_sizes": CKKS_COEFF_MOD_BIT_SIZES,
             "ckks_global_scale": CKKS_GLOBAL_SCALE,
-            "selected_layer_scope": "adaptive top-k update tensors",
+            "selected_layer_scope": "budgeted adaptive top-k update tensors",
             "selected_tensor_count": len(metadata["selected_keys"]),
             "selected_total_values": metadata["total_values"],
             "avg_encryption_time_sec": avg_encryption_time,
@@ -236,6 +291,8 @@ def main():
             "selective_encrypted_upload_mb": selective_encrypted_upload_mb,
             "full_model_communication_cost_mb": full_model_comm_mb,
             "round_time_sec": round_time,
+            "adaptive_encryption_metrics_per_client": adaptive_metric_rows,
+            **adaptive_metrics,
             **metrics,
         }
 
@@ -245,6 +302,10 @@ def main():
             f"Round {round_idx} | "
             f"Acc: {metrics['accuracy']:.4f} | "
             f"F1: {metrics['f1']:.4f} | "
+            f"UCR: {adaptive_metrics.get('avg_update_coverage_ratio', 0):.4f} | "
+            f"PER: {adaptive_metrics.get('avg_parameter_encryption_ratio', 0):.6f} | "
+            f"AEQ: {adaptive_metrics.get('avg_adaptive_encryption_quality', 0):.2f} | "
+            f"ILR/RRS: {adaptive_metrics.get('avg_information_leakage_ratio', 0):.4f} | "
             f"Avg Enc: {avg_encryption_time:.4f}s | "
             f"HE Agg: {encrypted_aggregation_time:.4f}s | "
             f"Dec: {decryption_time:.4f}s | "
@@ -257,7 +318,7 @@ def main():
 
     final_results = {
         "experiment": "EXP-007D",
-        "method": "Adaptive Selective CKKS Encrypted Aggregation using TenSEAL",
+        "method": "Budgeted Adaptive Selective CKKS Encrypted Aggregation using TenSEAL",
         "dataset": "COVID Radiography Binary",
         "num_clients": NUM_CLIENTS,
         "global_rounds": GLOBAL_ROUNDS,
@@ -267,8 +328,9 @@ def main():
         "aggregation": "FedAvg",
         "he_library": "TenSEAL",
         "he_scheme": "CKKS",
-        "selection_strategy": "top-k tensors by update norm",
+        "selection_strategy": "budgeted top-k trainable tensors by update norm",
         "adaptive_top_k": TOP_K,
+        "max_selected_bytes": MAX_SELECTED_BYTES,
         "ckks_poly_modulus_degree": CKKS_POLY_MODULUS_DEGREE,
         "ckks_coeff_mod_bit_sizes": CKKS_COEFF_MOD_BIT_SIZES,
         "ckks_global_scale": CKKS_GLOBAL_SCALE,
@@ -286,7 +348,7 @@ def main():
         RESULTS_DIR / "covid_fedavg_adaptive_ckks.pth",
     )
 
-    print("\nSaved Adaptive CKKS FedAvg results to:", RESULTS_DIR)
+    print("\nSaved Budgeted Adaptive CKKS FedAvg results to:", RESULTS_DIR)
 
 
 if __name__ == "__main__":

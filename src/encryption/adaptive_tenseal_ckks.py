@@ -51,7 +51,7 @@ def select_topk_update_keys(client_state, global_state, top_k=4):
             "key": key,
             "update_norm": update_norm,
             "num_params": num_params,
-            "score": normalized_score,
+            "score": update_norm,
         })
 
     scores = sorted(scores, key=lambda x: x["score"], reverse=True)
