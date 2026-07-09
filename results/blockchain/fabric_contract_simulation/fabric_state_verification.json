@@ -1,0 +1,8 @@
+{
+  "valid": true,
+  "channel_name": "fl-healthcare-channel",
+  "world_state_assets": 49,
+  "history_transactions": 49,
+  "world_state_root_hash": "9966c22a67e8034593f6eb39d116474d12d3ebdbf72379991a6fe8c1f397df6d",
+  "history_root_hash": "b13fb4be541d0c884f603da10d3dd1392a4bbb20e9fd75c12307fcea45112bc7"
+}

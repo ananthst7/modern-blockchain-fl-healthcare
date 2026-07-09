@@ -1,0 +1,13 @@
+{
+  "tamper_detected": true,
+  "validation_after_tamper": {
+    "valid": false,
+    "errors": [
+      "Block 1: transaction hash mismatch",
+      "Block 1: Merkle root mismatch",
+      "Block 1: block hash mismatch"
+    ],
+    "num_blocks": 6,
+    "num_transactions": 31
+  }
+}

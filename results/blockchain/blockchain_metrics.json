@@ -1,0 +1,34 @@
+{
+  "experiment_id": "EXP-008",
+  "blockchain_type": "Proof-of-Authority audit ledger",
+  "consensus": "Authorized rotating validators",
+  "source_results": "standalone_synthetic_from_final_metrics",
+  "algorithm": "EfficientNet-B0 + FedDyn/FedAvg + Multi-Krum + CKKS",
+  "num_clients": 4,
+  "num_validators": 3,
+  "num_blocks_including_genesis": 6,
+  "num_training_round_blocks": 5,
+  "num_transactions": 31,
+  "avg_block_creation_time_ms": 0.1057,
+  "max_block_creation_time_ms": 0.1176,
+  "verification_time_ms": 0.4853,
+  "ledger_size_kb": 28.192383,
+  "chain_valid": true,
+  "tamper_detected": true,
+  "security_properties": [
+    "hash-linked blocks",
+    "Merkle root per block",
+    "authorized validator check",
+    "tamper detection",
+    "off-chain raw data and model weights",
+    "on-chain hash pointers for auditability",
+    "hospital contribution reward logging"
+  ],
+  "base_paper_comparison": {
+    "base_paper_blockchain_environment": "Ganache Truffle GUI local Ethereum environment",
+    "our_blockchain_environment": "Pure Python Proof-of-Authority audit ledger",
+    "base_paper_records": "hospital local update transactions and contribution rewards",
+    "our_records": "client update hashes, encrypted update hashes, aggregation hash, global model hash, metrics, and rewards",
+    "improvement": "more reproducible, lightweight, directly integrated with the PyTorch FL experiment pipeline, and includes explicit tamper verification metrics"
+  }
+}

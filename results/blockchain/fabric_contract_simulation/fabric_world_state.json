@@ -1,0 +1,549 @@
+{
+  "HOSPITAL::hospital_1": {
+    "hospital_id": "hospital_1",
+    "organization": "HospitalOrg1",
+    "role": "hospital",
+    "public_key_hash": "5d2bfe62f007e6aebd57400be929df95acb4a02b51d6a2f066e62c22fca8e6f0",
+    "active": true,
+    "registered_at": 1783595467.131975
+  },
+  "HOSPITAL::hospital_2": {
+    "hospital_id": "hospital_2",
+    "organization": "HospitalOrg2",
+    "role": "hospital",
+    "public_key_hash": "b1cf20eb74177b30e78fd0a52d3b91751d7a5d1f138f1bb30611b4f18a9d337e",
+    "active": true,
+    "registered_at": 1783595467.131975
+  },
+  "HOSPITAL::hospital_3": {
+    "hospital_id": "hospital_3",
+    "organization": "HospitalOrg3",
+    "role": "hospital",
+    "public_key_hash": "2abbae83b434d61b744a3ed5dd4be644c20d46a786fa0249e88c767afe5a7d7d",
+    "active": true,
+    "registered_at": 1783595467.131975
+  },
+  "HOSPITAL::hospital_4": {
+    "hospital_id": "hospital_4",
+    "organization": "HospitalOrg4",
+    "role": "hospital",
+    "public_key_hash": "c7e4abfacb6ae2db8b50a2fee50789521dd242c525c18eeb9081ce75e75ac14f",
+    "active": true,
+    "registered_at": 1783595467.131975
+  },
+  "ROUND::1::UPDATE::hospital_1": {
+    "update_id": "ROUND::1::UPDATE::hospital_1",
+    "round_number": 1,
+    "hospital_id": "hospital_1",
+    "update_hash": "6d5f1794c9681715806e05df2a5e9d1bfc9456c99d1ad7519b35450b38c07895",
+    "encrypted_update_hash": "64cc569f153693700e3caac4c67289385ad74e16bbffe99083a4952edff9646d",
+    "sample_count": 400,
+    "local_metrics": {
+      "accuracy_proxy": 0.83
+    },
+    "accepted": true,
+    "timestamp": 1783595467.131975
+  },
+  "ROUND::1::UPDATE::hospital_2": {
+    "update_id": "ROUND::1::UPDATE::hospital_2",
+    "round_number": 1,
+    "hospital_id": "hospital_2",
+    "update_hash": "b8a46f6f106bb11ff0edb3f56a8136c95ed8b29902ca3d4000b64212794c8d17",
+    "encrypted_update_hash": "ed2f6ec3437da83e8d340156c5599ae3fbbf6b026b2b67980dad0702fc14989c",
+    "sample_count": 400,
+    "local_metrics": {
+      "accuracy_proxy": 0.83
+    },
+    "accepted": true,
+    "timestamp": 1783595467.131975
+  },
+  "ROUND::1::UPDATE::hospital_3": {
+    "update_id": "ROUND::1::UPDATE::hospital_3",
+    "round_number": 1,
+    "hospital_id": "hospital_3",
+    "update_hash": "7d0d448ce42603fdd8457a3be51eb5b9bf224ccc2e038ff060b421563267c5da",
+    "encrypted_update_hash": "52681059d95bbbc41a80a7a7597b7eb63cdb1a5023073ca9c7ef16091d15dfb4",
+    "sample_count": 400,
+    "local_metrics": {
+      "accuracy_proxy": 0.83
+    },
+    "accepted": true,
+    "timestamp": 1783595467.131975
+  },
+  "ROUND::1::UPDATE::hospital_4": {
+    "update_id": "ROUND::1::UPDATE::hospital_4",
+    "round_number": 1,
+    "hospital_id": "hospital_4",
+    "update_hash": "d629c0f436b0c7e615d717f281b8477a0b174dd9f851bc99f149ca5aa34ef1f1",
+    "encrypted_update_hash": "9141fad24339c70785fcd1db39e581fe843dd7fc3f1e924e8c9294e9930eb891",
+    "sample_count": 400,
+    "local_metrics": {
+      "accuracy_proxy": 0.83
+    },
+    "accepted": true,
+    "timestamp": 1783595467.131975
+  },
+  "ROUND::1::AGGREGATION": {
+    "aggregation_id": "ROUND::1::AGGREGATION",
+    "round_number": 1,
+    "edge_server_id": "edge_server_1",
+    "algorithm": "EfficientNet-B0 + Multi-Krum + ILA CKKS + Fabric-style Blockchain",
+    "selected_hospitals": [
+      "hospital_1",
+      "hospital_2",
+      "hospital_3",
+      "hospital_4"
+    ],
+    "aggregation_hash": "c4c00a44af2d224a5507da628d3474e4e0b207861289dada1a7efbec21dd33ac",
+    "global_model_hash": "7eb3dbca3192e40b691f5d639bc28de997462b397225a6cb4429099dbb83a048",
+    "global_metrics": {
+      "accuracy": 0.83,
+      "f1": 0.83
+    },
+    "timestamp": 1783595467.131975
+  },
+  "ROUND::1::REWARD::hospital_1": {
+    "reward_id": "ROUND::1::REWARD::hospital_1",
+    "round_number": 1,
+    "hospital_id": "hospital_1",
+    "reward_score": 0.25,
+    "policy": "normalized accepted contribution score",
+    "timestamp": 1783595467.131975
+  },
+  "ROUND::1::REWARD::hospital_2": {
+    "reward_id": "ROUND::1::REWARD::hospital_2",
+    "round_number": 1,
+    "hospital_id": "hospital_2",
+    "reward_score": 0.25,
+    "policy": "normalized accepted contribution score",
+    "timestamp": 1783595467.131975
+  },
+  "ROUND::1::REWARD::hospital_3": {
+    "reward_id": "ROUND::1::REWARD::hospital_3",
+    "round_number": 1,
+    "hospital_id": "hospital_3",
+    "reward_score": 0.25,
+    "policy": "normalized accepted contribution score",
+    "timestamp": 1783595467.131975
+  },
+  "ROUND::1::REWARD::hospital_4": {
+    "reward_id": "ROUND::1::REWARD::hospital_4",
+    "round_number": 1,
+    "hospital_id": "hospital_4",
+    "reward_score": 0.25,
+    "policy": "normalized accepted contribution score",
+    "timestamp": 1783595467.131975
+  },
+  "ROUND::2::UPDATE::hospital_1": {
+    "update_id": "ROUND::2::UPDATE::hospital_1",
+    "round_number": 2,
+    "hospital_id": "hospital_1",
+    "update_hash": "011789e28da7db9f1fc9ad4530a3c310bfe4d040193f7d39fc80e81548653d3b",
+    "encrypted_update_hash": "c95ddbdcea6643b248e16838966352828e07d49494c401ec661db93fee8e765c",
+    "sample_count": 400,
+    "local_metrics": {
+      "accuracy_proxy": 0.86
+    },
+    "accepted": true,
+    "timestamp": 1783595467.131975
+  },
+  "ROUND::2::UPDATE::hospital_2": {
+    "update_id": "ROUND::2::UPDATE::hospital_2",
+    "round_number": 2,
+    "hospital_id": "hospital_2",
+    "update_hash": "e1ae87bc776d56064dc5bb4b5fc10b46f3cd8907b2d18f1c0c2ee355d706468c",
+    "encrypted_update_hash": "81b0b2e914ae788a2e214e73654c2046aa0e49ea29840a140df2a1ba306aa8cb",
+    "sample_count": 400,
+    "local_metrics": {
+      "accuracy_proxy": 0.86
+    },
+    "accepted": true,
+    "timestamp": 1783595467.131975
+  },
+  "ROUND::2::UPDATE::hospital_3": {
+    "update_id": "ROUND::2::UPDATE::hospital_3",
+    "round_number": 2,
+    "hospital_id": "hospital_3",
+    "update_hash": "b77783a8fe0b1e79c72bc8be4c36b3fd9c7c49fd429c9d4077e5a05874322d91",
+    "encrypted_update_hash": "0fd954f50d4fc218067a132e4625e72766c29e4562fc356e6a0701aa24a6d414",
+    "sample_count": 400,
+    "local_metrics": {
+      "accuracy_proxy": 0.86
+    },
+    "accepted": true,
+    "timestamp": 1783595467.131975
+  },
+  "ROUND::2::UPDATE::hospital_4": {
+    "update_id": "ROUND::2::UPDATE::hospital_4",
+    "round_number": 2,
+    "hospital_id": "hospital_4",
+    "update_hash": "40ac49fa774da4eb38c4a1c131c81840c8e2b47ca5a1f074fa4cd9ce913403db",
+    "encrypted_update_hash": "a57074889426eb05210b16ddf47808741e154738436bdbe5e3905a09eebc718f",
+    "sample_count": 400,
+    "local_metrics": {
+      "accuracy_proxy": 0.86
+    },
+    "accepted": true,
+    "timestamp": 1783595467.131975
+  },
+  "ROUND::2::AGGREGATION": {
+    "aggregation_id": "ROUND::2::AGGREGATION",
+    "round_number": 2,
+    "edge_server_id": "edge_server_1",
+    "algorithm": "EfficientNet-B0 + Multi-Krum + ILA CKKS + Fabric-style Blockchain",
+    "selected_hospitals": [
+      "hospital_1",
+      "hospital_2",
+      "hospital_3",
+      "hospital_4"
+    ],
+    "aggregation_hash": "774305d05cd3705f8edac467e772064b8ba5a44983fe66b770c1d0d09db388e8",
+    "global_model_hash": "ae2d775e8b4a31fdf4b8f26bc9a2be9d28247b59d560bd3f971078653de89ba2",
+    "global_metrics": {
+      "accuracy": 0.86,
+      "f1": 0.86
+    },
+    "timestamp": 1783595467.131975
+  },
+  "ROUND::2::REWARD::hospital_1": {
+    "reward_id": "ROUND::2::REWARD::hospital_1",
+    "round_number": 2,
+    "hospital_id": "hospital_1",
+    "reward_score": 0.25,
+    "policy": "normalized accepted contribution score",
+    "timestamp": 1783595467.131975
+  },
+  "ROUND::2::REWARD::hospital_2": {
+    "reward_id": "ROUND::2::REWARD::hospital_2",
+    "round_number": 2,
+    "hospital_id": "hospital_2",
+    "reward_score": 0.25,
+    "policy": "normalized accepted contribution score",
+    "timestamp": 1783595467.131975
+  },
+  "ROUND::2::REWARD::hospital_3": {
+    "reward_id": "ROUND::2::REWARD::hospital_3",
+    "round_number": 2,
+    "hospital_id": "hospital_3",
+    "reward_score": 0.25,
+    "policy": "normalized accepted contribution score",
+    "timestamp": 1783595467.131975
+  },
+  "ROUND::2::REWARD::hospital_4": {
+    "reward_id": "ROUND::2::REWARD::hospital_4",
+    "round_number": 2,
+    "hospital_id": "hospital_4",
+    "reward_score": 0.25,
+    "policy": "normalized accepted contribution score",
+    "timestamp": 1783595467.131975
+  },
+  "ROUND::3::UPDATE::hospital_1": {
+    "update_id": "ROUND::3::UPDATE::hospital_1",
+    "round_number": 3,
+    "hospital_id": "hospital_1",
+    "update_hash": "20bcbab1beebd957d65dac86e78bcbef8466f07bc33cb0b57a17aaa8e62c3863",
+    "encrypted_update_hash": "a895fd18ec678de7d370a70e55305a0d478cadd1633f1f4bfcfe3bca9d263458",
+    "sample_count": 400,
+    "local_metrics": {
+      "accuracy_proxy": 0.89
+    },
+    "accepted": true,
+    "timestamp": 1783595467.131975
+  },
+  "ROUND::3::UPDATE::hospital_2": {
+    "update_id": "ROUND::3::UPDATE::hospital_2",
+    "round_number": 3,
+    "hospital_id": "hospital_2",
+    "update_hash": "5597e0ea57aa6766bca2917f6204b3ef1153a143bc7494e3bde822ae49ac772f",
+    "encrypted_update_hash": "16aa7fb5b2e0ae73b4560ec1b7a7d9020b50437ed3de87597e68fd5ccd533390",
+    "sample_count": 400,
+    "local_metrics": {
+      "accuracy_proxy": 0.89
+    },
+    "accepted": true,
+    "timestamp": 1783595467.131975
+  },
+  "ROUND::3::UPDATE::hospital_3": {
+    "update_id": "ROUND::3::UPDATE::hospital_3",
+    "round_number": 3,
+    "hospital_id": "hospital_3",
+    "update_hash": "c5d0eaf21f26d88beac90c2a5b986a8d48a7d3abfd3d28124a4b0d572d043fa8",
+    "encrypted_update_hash": "1e2ab5f64b7e7fa2ad9b09a4dd7b2e32518f214a7da03ca215cbfbd7e9573dcf",
+    "sample_count": 400,
+    "local_metrics": {
+      "accuracy_proxy": 0.89
+    },
+    "accepted": true,
+    "timestamp": 1783595467.131975
+  },
+  "ROUND::3::UPDATE::hospital_4": {
+    "update_id": "ROUND::3::UPDATE::hospital_4",
+    "round_number": 3,
+    "hospital_id": "hospital_4",
+    "update_hash": "992fe538d9c3f15e1fe3a72c62d250435aa2577222a974640e58183ef7e786cc",
+    "encrypted_update_hash": "f648543b7c9e6a9ce8c796ea2ca16b531f156849fd68495e901e73ffbbb62c7f",
+    "sample_count": 400,
+    "local_metrics": {
+      "accuracy_proxy": 0.89
+    },
+    "accepted": true,
+    "timestamp": 1783595467.131975
+  },
+  "ROUND::3::AGGREGATION": {
+    "aggregation_id": "ROUND::3::AGGREGATION",
+    "round_number": 3,
+    "edge_server_id": "edge_server_1",
+    "algorithm": "EfficientNet-B0 + Multi-Krum + ILA CKKS + Fabric-style Blockchain",
+    "selected_hospitals": [
+      "hospital_1",
+      "hospital_2",
+      "hospital_3",
+      "hospital_4"
+    ],
+    "aggregation_hash": "02e6fedc9fb8bf525d8fce379283673d31761ffc9891aca9c163d1cc440eb324",
+    "global_model_hash": "56345f9a9a69c95ff0fd853bb6b3f3250debc9954880222583857223e2b0ebe1",
+    "global_metrics": {
+      "accuracy": 0.89,
+      "f1": 0.89
+    },
+    "timestamp": 1783595467.131975
+  },
+  "ROUND::3::REWARD::hospital_1": {
+    "reward_id": "ROUND::3::REWARD::hospital_1",
+    "round_number": 3,
+    "hospital_id": "hospital_1",
+    "reward_score": 0.25,
+    "policy": "normalized accepted contribution score",
+    "timestamp": 1783595467.131975
+  },
+  "ROUND::3::REWARD::hospital_2": {
+    "reward_id": "ROUND::3::REWARD::hospital_2",
+    "round_number": 3,
+    "hospital_id": "hospital_2",
+    "reward_score": 0.25,
+    "policy": "normalized accepted contribution score",
+    "timestamp": 1783595467.131975
+  },
+  "ROUND::3::REWARD::hospital_3": {
+    "reward_id": "ROUND::3::REWARD::hospital_3",
+    "round_number": 3,
+    "hospital_id": "hospital_3",
+    "reward_score": 0.25,
+    "policy": "normalized accepted contribution score",
+    "timestamp": 1783595467.131975
+  },
+  "ROUND::3::REWARD::hospital_4": {
+    "reward_id": "ROUND::3::REWARD::hospital_4",
+    "round_number": 3,
+    "hospital_id": "hospital_4",
+    "reward_score": 0.25,
+    "policy": "normalized accepted contribution score",
+    "timestamp": 1783595467.131975
+  },
+  "ROUND::4::UPDATE::hospital_1": {
+    "update_id": "ROUND::4::UPDATE::hospital_1",
+    "round_number": 4,
+    "hospital_id": "hospital_1",
+    "update_hash": "4545828e58cb47a5b14489ab8c845d5a0def4b75844ec05901872ced877b60af",
+    "encrypted_update_hash": "8709181b5957ab27b5228ea448941f4995a2f5e15b6fc74080e2c1273534f803",
+    "sample_count": 400,
+    "local_metrics": {
+      "accuracy_proxy": 0.92
+    },
+    "accepted": true,
+    "timestamp": 1783595467.131975
+  },
+  "ROUND::4::UPDATE::hospital_2": {
+    "update_id": "ROUND::4::UPDATE::hospital_2",
+    "round_number": 4,
+    "hospital_id": "hospital_2",
+    "update_hash": "106e6d9846d1fd53ef90ef97ac46b7275876d6fa41380d58cc183ef444cd12f9",
+    "encrypted_update_hash": "61605c8a5034b42b5745c58f1825711cd75da20d749a5e56ab7fa1344b982189",
+    "sample_count": 400,
+    "local_metrics": {
+      "accuracy_proxy": 0.92
+    },
+    "accepted": true,
+    "timestamp": 1783595467.131975
+  },
+  "ROUND::4::UPDATE::hospital_3": {
+    "update_id": "ROUND::4::UPDATE::hospital_3",
+    "round_number": 4,
+    "hospital_id": "hospital_3",
+    "update_hash": "08d8746462c4ec574a9e08a5c55ea668db798f3781c6b398a41632ed805ad359",
+    "encrypted_update_hash": "f49140d6e7eda80bc9c0ee2da485a8a7832da0d636b519442e9e18839fea43bc",
+    "sample_count": 400,
+    "local_metrics": {
+      "accuracy_proxy": 0.92
+    },
+    "accepted": true,
+    "timestamp": 1783595467.131975
+  },
+  "ROUND::4::UPDATE::hospital_4": {
+    "update_id": "ROUND::4::UPDATE::hospital_4",
+    "round_number": 4,
+    "hospital_id": "hospital_4",
+    "update_hash": "fafccf943f80808b45ed89f22d319cb37e590fc0c8a5acbaa0e2513b763a28fc",
+    "encrypted_update_hash": "e1513621f2b0748231534c158706c7aebe6c3b593ea1fb12410c99a2a16aa37e",
+    "sample_count": 400,
+    "local_metrics": {
+      "accuracy_proxy": 0.92
+    },
+    "accepted": true,
+    "timestamp": 1783595467.131975
+  },
+  "ROUND::4::AGGREGATION": {
+    "aggregation_id": "ROUND::4::AGGREGATION",
+    "round_number": 4,
+    "edge_server_id": "edge_server_1",
+    "algorithm": "EfficientNet-B0 + Multi-Krum + ILA CKKS + Fabric-style Blockchain",
+    "selected_hospitals": [
+      "hospital_1",
+      "hospital_2",
+      "hospital_3",
+      "hospital_4"
+    ],
+    "aggregation_hash": "d90090859aeb5d769413ae9e7677f57179cd709ef550e631fe12335063587766",
+    "global_model_hash": "be656d96d52f328aae60feaf7e089b773fdcfc0927ef411e2df1c81311983c4e",
+    "global_metrics": {
+      "accuracy": 0.92,
+      "f1": 0.92
+    },
+    "timestamp": 1783595467.131975
+  },
+  "ROUND::4::REWARD::hospital_1": {
+    "reward_id": "ROUND::4::REWARD::hospital_1",
+    "round_number": 4,
+    "hospital_id": "hospital_1",
+    "reward_score": 0.25,
+    "policy": "normalized accepted contribution score",
+    "timestamp": 1783595467.131975
+  },
+  "ROUND::4::REWARD::hospital_2": {
+    "reward_id": "ROUND::4::REWARD::hospital_2",
+    "round_number": 4,
+    "hospital_id": "hospital_2",
+    "reward_score": 0.25,
+    "policy": "normalized accepted contribution score",
+    "timestamp": 1783595467.131975
+  },
+  "ROUND::4::REWARD::hospital_3": {
+    "reward_id": "ROUND::4::REWARD::hospital_3",
+    "round_number": 4,
+    "hospital_id": "hospital_3",
+    "reward_score": 0.25,
+    "policy": "normalized accepted contribution score",
+    "timestamp": 1783595467.131975
+  },
+  "ROUND::4::REWARD::hospital_4": {
+    "reward_id": "ROUND::4::REWARD::hospital_4",
+    "round_number": 4,
+    "hospital_id": "hospital_4",
+    "reward_score": 0.25,
+    "policy": "normalized accepted contribution score",
+    "timestamp": 1783595467.131975
+  },
+  "ROUND::5::UPDATE::hospital_1": {
+    "update_id": "ROUND::5::UPDATE::hospital_1",
+    "round_number": 5,
+    "hospital_id": "hospital_1",
+    "update_hash": "a951718beac2f6080c0d3af6bf381edc976422754967ef72a9ab2f9da813cdcc",
+    "encrypted_update_hash": "472dfdc6a64e3e7fdfd36abc31a9ba15e097280ea8af7f8b351eef3510cf1473",
+    "sample_count": 400,
+    "local_metrics": {
+      "accuracy_proxy": 0.95
+    },
+    "accepted": true,
+    "timestamp": 1783595467.131975
+  },
+  "ROUND::5::UPDATE::hospital_2": {
+    "update_id": "ROUND::5::UPDATE::hospital_2",
+    "round_number": 5,
+    "hospital_id": "hospital_2",
+    "update_hash": "559c8595a00eba5a36cf2fa3dff6330ed3a809138f0bca632a9cc358c538280e",
+    "encrypted_update_hash": "a1f05aeb04b96af7ba435ee4e728e99e53c2bc6c7b2c609cdfc77a3788a79a30",
+    "sample_count": 400,
+    "local_metrics": {
+      "accuracy_proxy": 0.95
+    },
+    "accepted": true,
+    "timestamp": 1783595467.131975
+  },
+  "ROUND::5::UPDATE::hospital_3": {
+    "update_id": "ROUND::5::UPDATE::hospital_3",
+    "round_number": 5,
+    "hospital_id": "hospital_3",
+    "update_hash": "8d0c69fe3303e8ab71f6590c920c70c91ed5f4556be3991a7f8d3911de6965c7",
+    "encrypted_update_hash": "52f366729edc3e9ccac7618896cdef74ddc5160d940966613567aacd384c43f3",
+    "sample_count": 400,
+    "local_metrics": {
+      "accuracy_proxy": 0.95
+    },
+    "accepted": true,
+    "timestamp": 1783595467.131975
+  },
+  "ROUND::5::UPDATE::hospital_4": {
+    "update_id": "ROUND::5::UPDATE::hospital_4",
+    "round_number": 5,
+    "hospital_id": "hospital_4",
+    "update_hash": "f78d852f713c6fbbbf1c6417948e5b2279d2891a34f043c2c6d8f050464179ee",
+    "encrypted_update_hash": "c84f0b99b75f8f1398f5ddf10d7b5988ad3dc733dfd3784dce88bdb38175d245",
+    "sample_count": 400,
+    "local_metrics": {
+      "accuracy_proxy": 0.95
+    },
+    "accepted": true,
+    "timestamp": 1783595467.131975
+  },
+  "ROUND::5::AGGREGATION": {
+    "aggregation_id": "ROUND::5::AGGREGATION",
+    "round_number": 5,
+    "edge_server_id": "edge_server_1",
+    "algorithm": "EfficientNet-B0 + Multi-Krum + ILA CKKS + Fabric-style Blockchain",
+    "selected_hospitals": [
+      "hospital_1",
+      "hospital_2",
+      "hospital_3",
+      "hospital_4"
+    ],
+    "aggregation_hash": "61bcfd7aa3fa7e315d2214ea5de702e8e9bbd3c4266ffff301ce61488b80e7a6",
+    "global_model_hash": "d900778786bebf376d5342a14b6e14c6a8915cf7be08d75bcb6256bb127c6ec3",
+    "global_metrics": {
+      "accuracy": 0.95,
+      "f1": 0.95
+    },
+    "timestamp": 1783595467.131975
+  },
+  "ROUND::5::REWARD::hospital_1": {
+    "reward_id": "ROUND::5::REWARD::hospital_1",
+    "round_number": 5,
+    "hospital_id": "hospital_1",
+    "reward_score": 0.25,
+    "policy": "normalized accepted contribution score",
+    "timestamp": 1783595467.131975
+  },
+  "ROUND::5::REWARD::hospital_2": {
+    "reward_id": "ROUND::5::REWARD::hospital_2",
+    "round_number": 5,
+    "hospital_id": "hospital_2",
+    "reward_score": 0.25,
+    "policy": "normalized accepted contribution score",
+    "timestamp": 1783595467.131975
+  },
+  "ROUND::5::REWARD::hospital_3": {
+    "reward_id": "ROUND::5::REWARD::hospital_3",
+    "round_number": 5,
+    "hospital_id": "hospital_3",
+    "reward_score": 0.25,
+    "policy": "normalized accepted contribution score",
+    "timestamp": 1783595467.131975
+  },
+  "ROUND::5::REWARD::hospital_4": {
+    "reward_id": "ROUND::5::REWARD::hospital_4",
+    "round_number": 5,
+    "hospital_id": "hospital_4",
+    "reward_score": 0.25,
+    "policy": "normalized accepted contribution score",
+    "timestamp": 1783595467.131975
+  }
+}

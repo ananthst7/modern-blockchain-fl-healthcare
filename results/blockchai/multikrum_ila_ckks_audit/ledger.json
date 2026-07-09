@@ -1,0 +1,658 @@
+{
+  "chain_id": "modern-fl-healthcare-poa",
+  "validators": [
+    "edge_validator_1",
+    "edge_validator_2",
+    "edge_validator_3"
+  ],
+  "blocks": [
+    {
+      "index": 0,
+      "timestamp": 1783594328.7450995,
+      "validator": "edge_validator_1",
+      "previous_hash": "0000000000000000000000000000000000000000000000000000000000000000",
+      "transactions": [
+        {
+          "tx_type": "GENESIS",
+          "round_number": 0,
+          "actor": "trusted_authority",
+          "payload": {
+            "chain_id": "modern-fl-healthcare-poa",
+            "validators": [
+              "edge_validator_1",
+              "edge_validator_2",
+              "edge_validator_3"
+            ],
+            "note": "Genesis block for FL healthcare blockchain audit ledger."
+          },
+          "timestamp": 1783594328.7450995,
+          "tx_hash": "9d70fc39e07c39834eba4b6427a7a6d44d41ca03c5facc7a965f2e3d164ae430"
+        }
+      ],
+      "metadata": {
+        "experiment_id": "EXP-008",
+        "experiment_name": "Proof-of-Authority Blockchain Audit Layer",
+        "base_paper": "Blockchain-based federated learning with homomorphic encryption for privacy-preserving healthcare data sharing",
+        "design_choice": "Pure Python PoA audit chain for reproducible research logging before optional Ganache/Truffle deployment.",
+        "data_policy": "No raw patient images, raw model weights, or decrypted model updates are stored on-chain."
+      },
+      "merkle_root": "9d70fc39e07c39834eba4b6427a7a6d44d41ca03c5facc7a965f2e3d164ae430",
+      "block_hash": "59727d93b611874080a095271858c36d3fd5ae6f9e2805ae4559e5e4d2c2852f"
+    },
+    {
+      "index": 1,
+      "timestamp": 1783594328.7450995,
+      "validator": "edge_validator_1",
+      "previous_hash": "59727d93b611874080a095271858c36d3fd5ae6f9e2805ae4559e5e4d2c2852f",
+      "transactions": [
+        {
+          "tx_type": "CLIENT_UPDATE",
+          "round_number": 1,
+          "actor": "hospital_1",
+          "payload": {
+            "update_hash": "721c3f0300ce9a7d33017cc0ed9ca4a349d367a7b82a74fe0084aacc55b87ca5",
+            "encrypted_update_hash": "7e1f5e446e214b6b77d28aa252a9fa1fbb6b9aea26bd374546c74a758f6ada29",
+            "sample_count": 400,
+            "local_metrics": {
+              "accuracy_proxy": 0.745
+            },
+            "selected_by_aggregator": true,
+            "privacy_note": "Only hashes and metrics are stored on-chain; raw data and raw weights are off-chain."
+          },
+          "timestamp": 1783594328.7450995,
+          "tx_hash": "18f6c7ec76870628995688e14aff0049bb1afdaab26efa723deaf42c49c067f6"
+        },
+        {
+          "tx_type": "CLIENT_UPDATE",
+          "round_number": 1,
+          "actor": "hospital_2",
+          "payload": {
+            "update_hash": "786df269f91d7ea7e54d7b72f2dc8516b9426548ffe43e03cec93a068f9cc693",
+            "encrypted_update_hash": "2db6c2492f04d078bfadf8db8277ba3b6569705889c09fb172ba4222fe646210",
+            "sample_count": 400,
+            "local_metrics": {
+              "accuracy_proxy": 0.747
+            },
+            "selected_by_aggregator": true,
+            "privacy_note": "Only hashes and metrics are stored on-chain; raw data and raw weights are off-chain."
+          },
+          "timestamp": 1783594328.7450995,
+          "tx_hash": "8be3e72364a22d0c7d8cb468912a802b252ecb56513d93ea07d2dc7f41f9a205"
+        },
+        {
+          "tx_type": "CLIENT_UPDATE",
+          "round_number": 1,
+          "actor": "hospital_3",
+          "payload": {
+            "update_hash": "cde915315acfd4f9db641f60b50c7d3ecc6c36ce44de5b5fdb353e9830ba5291",
+            "encrypted_update_hash": "3449a1ca726bfc73abcfbf848ebde98b13066b245054fbf15f7950ffd9c1173f",
+            "sample_count": 400,
+            "local_metrics": {
+              "accuracy_proxy": 0.749
+            },
+            "selected_by_aggregator": true,
+            "privacy_note": "Only hashes and metrics are stored on-chain; raw data and raw weights are off-chain."
+          },
+          "timestamp": 1783594328.7450995,
+          "tx_hash": "fabc9efeea11d3a4ca7b943b4440f06beadf69bafd1f9b86ace2ec8200cd3aae"
+        },
+        {
+          "tx_type": "CLIENT_UPDATE",
+          "round_number": 1,
+          "actor": "hospital_4",
+          "payload": {
+            "update_hash": "bdd3c5f3df56b591a3c1bb5dba5ca15edfbb02e282ee2100c7f415628b554b05",
+            "encrypted_update_hash": "1cf33b2c0b054a4b72182f79367a8c83bdb9a499484312cd0d941d2ddfe48021",
+            "sample_count": 400,
+            "local_metrics": {
+              "accuracy_proxy": 0.751
+            },
+            "selected_by_aggregator": true,
+            "privacy_note": "Only hashes and metrics are stored on-chain; raw data and raw weights are off-chain."
+          },
+          "timestamp": 1783594328.7450995,
+          "tx_hash": "d4c79b19786bc4f2eae1f786a77defb20d90db72bdc60145aaadecd764d54b96"
+        },
+        {
+          "tx_type": "AGGREGATION",
+          "round_number": 1,
+          "actor": "edge_server_cluster_1",
+          "payload": {
+            "algorithm": "EfficientNet-B0 + Multi-Krum + ILA CKKS + PoA Blockchain",
+            "selected_clients": [
+              "hospital_1",
+              "hospital_2",
+              "hospital_3",
+              "hospital_4"
+            ],
+            "aggregation_hash": "d847a755a98451ba0cec6b8b8f71a391e1c8d91a91b91ed7765193b7aea19e65",
+            "global_model_hash": "bcb1cfc492d43c5aceb90ca6bd73899e268abdcb648fd32344bef01a53dea425",
+            "global_metrics": {
+              "accuracy": 0.755,
+              "f1": 0.7419354838709676
+            }
+          },
+          "timestamp": 1783594328.7450995,
+          "tx_hash": "88b1c92e386e47d816883cd91e6865c1fcfaf04838750db6a466282f23bc3a78"
+        },
+        {
+          "tx_type": "REWARD",
+          "round_number": 1,
+          "actor": "edge_server_cluster_1",
+          "payload": {
+            "reward_units": {
+              "hospital_1": 0.248997,
+              "hospital_2": 0.249666,
+              "hospital_3": 0.250334,
+              "hospital_4": 0.251003
+            },
+            "reward_policy": "normalized contribution score based on accepted participation, sample count, and local metric quality"
+          },
+          "timestamp": 1783594328.7450995,
+          "tx_hash": "d38ca55b56ca7ecfc5556ede7b37bb8253cecf22a4491c3e3dc1e8911ea01e3e"
+        }
+      ],
+      "metadata": {
+        "round": 1,
+        "algorithm": "EfficientNet-B0 + Multi-Krum + ILA CKKS + PoA Blockchain",
+        "num_clients": 4,
+        "num_selected_clients": 4,
+        "comparison_to_base_paper": "Matches the base paper idea of recording hospital update transactions and contribution rewards, but uses a reproducible Python PoA audit ledger instead of Ganache/Truffle."
+      },
+      "merkle_root": "77646f3fa18b30ce94d0916e9a45ddd6c47eab3b6d556d02787ce0ac3df8fed5",
+      "block_hash": "3e3da0b1ffa099caa8f1f768507c5aa38f770b3949f3a3f95c48ecf91bab35cf"
+    },
+    {
+      "index": 2,
+      "timestamp": 1783594328.7450995,
+      "validator": "edge_validator_2",
+      "previous_hash": "3e3da0b1ffa099caa8f1f768507c5aa38f770b3949f3a3f95c48ecf91bab35cf",
+      "transactions": [
+        {
+          "tx_type": "CLIENT_UPDATE",
+          "round_number": 2,
+          "actor": "hospital_1",
+          "payload": {
+            "update_hash": "fac213bbaa8a00082c83ad818e2517c1dc1a11a830774a0ba646c275ad08612c",
+            "encrypted_update_hash": "95cca3f80253985f17e33f5555645f3c6f12e0a5b202124b912a8cc111a32686",
+            "sample_count": 400,
+            "local_metrics": {
+              "accuracy_proxy": 0.8875
+            },
+            "selected_by_aggregator": true,
+            "privacy_note": "Only hashes and metrics are stored on-chain; raw data and raw weights are off-chain."
+          },
+          "timestamp": 1783594328.7450995,
+          "tx_hash": "9d857d8a2d4803e5f9a02a6d3f915a41bb9c0ca1525c1cedf733683e01c23d9b"
+        },
+        {
+          "tx_type": "CLIENT_UPDATE",
+          "round_number": 2,
+          "actor": "hospital_2",
+          "payload": {
+            "update_hash": "b9612ffc4e374f387192fb97ede8d10627c69bd3713177445c13e97213413749",
+            "encrypted_update_hash": "401d6a7f63fa6319e4490d117bdf652e1bcf3d0b61875ffe2015bec8ddb72a5c",
+            "sample_count": 400,
+            "local_metrics": {
+              "accuracy_proxy": 0.8895
+            },
+            "selected_by_aggregator": true,
+            "privacy_note": "Only hashes and metrics are stored on-chain; raw data and raw weights are off-chain."
+          },
+          "timestamp": 1783594328.7450995,
+          "tx_hash": "ec6c7a637143f59137edcd87f6704ab8b887465420d7f45bd58f677e4a0ce43c"
+        },
+        {
+          "tx_type": "CLIENT_UPDATE",
+          "round_number": 2,
+          "actor": "hospital_3",
+          "payload": {
+            "update_hash": "5d2cf1bb6f30e87fc2610499496179bc178a86a0314b9cf7a7c2763b8a5263ea",
+            "encrypted_update_hash": "266180b909f1cea3fbba27dabdc0696e18dd0b1ed89988c3950fd95834dc0242",
+            "sample_count": 400,
+            "local_metrics": {
+              "accuracy_proxy": 0.8915
+            },
+            "selected_by_aggregator": true,
+            "privacy_note": "Only hashes and metrics are stored on-chain; raw data and raw weights are off-chain."
+          },
+          "timestamp": 1783594328.7450995,
+          "tx_hash": "87c79bafbb98f6c5e6bc64ee5c916b8210a4f805ddbb36ef7070df894aa6f8e8"
+        },
+        {
+          "tx_type": "CLIENT_UPDATE",
+          "round_number": 2,
+          "actor": "hospital_4",
+          "payload": {
+            "update_hash": "4200e11dcf97e20fa92b5b2eab3990e0dc2248461aeedc51ac4bcf5dc79a7bac",
+            "encrypted_update_hash": "29431956d8a20c2e7eb152cb0d25edc5acc3a8a25835831a8df59ed14f8702cd",
+            "sample_count": 400,
+            "local_metrics": {
+              "accuracy_proxy": 0.8935
+            },
+            "selected_by_aggregator": true,
+            "privacy_note": "Only hashes and metrics are stored on-chain; raw data and raw weights are off-chain."
+          },
+          "timestamp": 1783594328.7450995,
+          "tx_hash": "357f20157e7946664e90fa3d7786afd04916b4e6840e286db1690757d2a18875"
+        },
+        {
+          "tx_type": "AGGREGATION",
+          "round_number": 2,
+          "actor": "edge_server_cluster_1",
+          "payload": {
+            "algorithm": "EfficientNet-B0 + Multi-Krum + ILA CKKS + PoA Blockchain",
+            "selected_clients": [
+              "hospital_1",
+              "hospital_2",
+              "hospital_3",
+              "hospital_4"
+            ],
+            "aggregation_hash": "f29eee3770e4f49fe72aa9da517d27434d2724d3ec9e4433df7269cc9d65ed27",
+            "global_model_hash": "6da2b928083080d22a50246df8f91e69bb49469d6bfbe90dbba1d2c9fe52c791",
+            "global_metrics": {
+              "accuracy": 0.8975,
+              "f1": 0.8970308467957131
+            }
+          },
+          "timestamp": 1783594328.7450995,
+          "tx_hash": "864ad5e9b37e2a969384ab146b56265d09e5c78556c01f7ec48199a53a532a74"
+        },
+        {
+          "tx_type": "REWARD",
+          "round_number": 2,
+          "actor": "edge_server_cluster_1",
+          "payload": {
+            "reward_units": {
+              "hospital_1": 0.249158,
+              "hospital_2": 0.249719,
+              "hospital_3": 0.250281,
+              "hospital_4": 0.250842
+            },
+            "reward_policy": "normalized contribution score based on accepted participation, sample count, and local metric quality"
+          },
+          "timestamp": 1783594328.7450995,
+          "tx_hash": "d711c9b5c1d2f97671a0fd7d267de66ade5071012127f4ae792c10e96944df13"
+        }
+      ],
+      "metadata": {
+        "round": 2,
+        "algorithm": "EfficientNet-B0 + Multi-Krum + ILA CKKS + PoA Blockchain",
+        "num_clients": 4,
+        "num_selected_clients": 4,
+        "comparison_to_base_paper": "Matches the base paper idea of recording hospital update transactions and contribution rewards, but uses a reproducible Python PoA audit ledger instead of Ganache/Truffle."
+      },
+      "merkle_root": "a3c1d6e87696698148a871bf4332bddcbe5c55afdebe21b7401c6fcbed6b24b4",
+      "block_hash": "a9de5ae72d7295141919444f19cc999d5e3a94abcf3fa7d20a67ceb3ab07cee8"
+    },
+    {
+      "index": 3,
+      "timestamp": 1783594328.7450995,
+      "validator": "edge_validator_3",
+      "previous_hash": "a9de5ae72d7295141919444f19cc999d5e3a94abcf3fa7d20a67ceb3ab07cee8",
+      "transactions": [
+        {
+          "tx_type": "CLIENT_UPDATE",
+          "round_number": 3,
+          "actor": "hospital_1",
+          "payload": {
+            "update_hash": "cd596dea3ef353a842b371754355c182cdd959a4d02619793a50cc354d1d223d",
+            "encrypted_update_hash": "d0ec01d43edf7283c6951ebcba0e8cedcd5519430a4e90ca4ab65fb35828f62c",
+            "sample_count": 400,
+            "local_metrics": {
+              "accuracy_proxy": 0.95
+            },
+            "selected_by_aggregator": true,
+            "privacy_note": "Only hashes and metrics are stored on-chain; raw data and raw weights are off-chain."
+          },
+          "timestamp": 1783594328.7450995,
+          "tx_hash": "de4f96c683120286a845e6eb91fbe90f75e2e55a704da059a5b321a7841e0293"
+        },
+        {
+          "tx_type": "CLIENT_UPDATE",
+          "round_number": 3,
+          "actor": "hospital_2",
+          "payload": {
+            "update_hash": "2dd305355f92a00b6ac292df6be6bb8365804f915e156b67fa8b726a4f36bc75",
+            "encrypted_update_hash": "965992d32cea8c17dee8a0560bc239ebb9dce566ea4daeac10e6dadd63400e34",
+            "sample_count": 400,
+            "local_metrics": {
+              "accuracy_proxy": 0.952
+            },
+            "selected_by_aggregator": true,
+            "privacy_note": "Only hashes and metrics are stored on-chain; raw data and raw weights are off-chain."
+          },
+          "timestamp": 1783594328.7450995,
+          "tx_hash": "672981c5093f5a0894ff2ca767c04012e0044883da5ca92f09079f94f745b711"
+        },
+        {
+          "tx_type": "CLIENT_UPDATE",
+          "round_number": 3,
+          "actor": "hospital_3",
+          "payload": {
+            "update_hash": "ec2860ca0f87dd142ee9dabc89cec4506f2d17085e20e14eb6d37d563737b3e0",
+            "encrypted_update_hash": "c773cd10a657dd46d98f1d620b03b8daeb915995e9a271ad905bdfd5fd0b65a7",
+            "sample_count": 400,
+            "local_metrics": {
+              "accuracy_proxy": 0.954
+            },
+            "selected_by_aggregator": true,
+            "privacy_note": "Only hashes and metrics are stored on-chain; raw data and raw weights are off-chain."
+          },
+          "timestamp": 1783594328.7450995,
+          "tx_hash": "53c7159e52479d258499b74f36c1647bb667bf55adacc383fb6096a04fd3fd1f"
+        },
+        {
+          "tx_type": "CLIENT_UPDATE",
+          "round_number": 3,
+          "actor": "hospital_4",
+          "payload": {
+            "update_hash": "cfd0c8402c0be536700fb4ae4633bb86060d646b98d644da83133494ff2c16f0",
+            "encrypted_update_hash": "8aa36940e7959ec3a3646e36bdc9e73566971691f0ebac943b2c865f96afc798",
+            "sample_count": 400,
+            "local_metrics": {
+              "accuracy_proxy": 0.956
+            },
+            "selected_by_aggregator": true,
+            "privacy_note": "Only hashes and metrics are stored on-chain; raw data and raw weights are off-chain."
+          },
+          "timestamp": 1783594328.7450995,
+          "tx_hash": "4f95f963abf71f7fa3d464a11366a8f6c4c0de77099298c314ecf056ec83443a"
+        },
+        {
+          "tx_type": "AGGREGATION",
+          "round_number": 3,
+          "actor": "edge_server_cluster_1",
+          "payload": {
+            "algorithm": "EfficientNet-B0 + Multi-Krum + ILA CKKS + PoA Blockchain",
+            "selected_clients": [
+              "hospital_1",
+              "hospital_2",
+              "hospital_3",
+              "hospital_4"
+            ],
+            "aggregation_hash": "171b4f691bdb1e41a9bb20ae3ccce7c491814f7cf89d76d03b2935c2297d202a",
+            "global_model_hash": "530d09c3e8aebef004d16dd626566c49904bc2c1fe9d465ca651e57360f72528",
+            "global_metrics": {
+              "accuracy": 0.96,
+              "f1": 0.9599639675708138
+            }
+          },
+          "timestamp": 1783594328.7450995,
+          "tx_hash": "55edd537289e43555b7ea5f8db3710b540174b9cb15bd608ee404db4e3d0427b"
+        },
+        {
+          "tx_type": "REWARD",
+          "round_number": 3,
+          "actor": "edge_server_cluster_1",
+          "payload": {
+            "reward_units": {
+              "hospital_1": 0.249213,
+              "hospital_2": 0.249738,
+              "hospital_3": 0.250262,
+              "hospital_4": 0.250787
+            },
+            "reward_policy": "normalized contribution score based on accepted participation, sample count, and local metric quality"
+          },
+          "timestamp": 1783594328.7450995,
+          "tx_hash": "92082494e0f9a85aafc5e55bda81481c3a92e0339773e216da564f144eba5434"
+        }
+      ],
+      "metadata": {
+        "round": 3,
+        "algorithm": "EfficientNet-B0 + Multi-Krum + ILA CKKS + PoA Blockchain",
+        "num_clients": 4,
+        "num_selected_clients": 4,
+        "comparison_to_base_paper": "Matches the base paper idea of recording hospital update transactions and contribution rewards, but uses a reproducible Python PoA audit ledger instead of Ganache/Truffle."
+      },
+      "merkle_root": "e186d3685758d63384355ad019d2b6fe0f799ec508acff00acce3b90c02e1094",
+      "block_hash": "54c2bcd719c64db0358c8b6b49d65746219d250902e77d8e2b563c4ddb07f0ff"
+    },
+    {
+      "index": 4,
+      "timestamp": 1783594328.7450995,
+      "validator": "edge_validator_1",
+      "previous_hash": "54c2bcd719c64db0358c8b6b49d65746219d250902e77d8e2b563c4ddb07f0ff",
+      "transactions": [
+        {
+          "tx_type": "CLIENT_UPDATE",
+          "round_number": 4,
+          "actor": "hospital_1",
+          "payload": {
+            "update_hash": "7176e12e93944e1a2b83290cacdf08855cfba4ff8c5077af04e38eb66294f528",
+            "encrypted_update_hash": "77b1d7aab071de993e46d5a7661e6ccebe67f3cb1a88204eb65e6dde96391e99",
+            "sample_count": 400,
+            "local_metrics": {
+              "accuracy_proxy": 0.9575
+            },
+            "selected_by_aggregator": true,
+            "privacy_note": "Only hashes and metrics are stored on-chain; raw data and raw weights are off-chain."
+          },
+          "timestamp": 1783594328.7450995,
+          "tx_hash": "d8ce22b47620c6a51cc99e0fdb8025456bfedb2305a9c45a4e796301f95dc541"
+        },
+        {
+          "tx_type": "CLIENT_UPDATE",
+          "round_number": 4,
+          "actor": "hospital_2",
+          "payload": {
+            "update_hash": "810382d38f254cb2d46a18e53bb7cadb76d1224fb62df4b2bf81dfccf83a3868",
+            "encrypted_update_hash": "3ff33ca1ca9865c6c83f3c8f5c47ae42789cf2326759205fbc464d820b0f8f6f",
+            "sample_count": 400,
+            "local_metrics": {
+              "accuracy_proxy": 0.9595
+            },
+            "selected_by_aggregator": true,
+            "privacy_note": "Only hashes and metrics are stored on-chain; raw data and raw weights are off-chain."
+          },
+          "timestamp": 1783594328.7450995,
+          "tx_hash": "5c70b50c8cc4fbbfd0190d2ba09e990c0994ff57709275f5f3d67badd994ef57"
+        },
+        {
+          "tx_type": "CLIENT_UPDATE",
+          "round_number": 4,
+          "actor": "hospital_3",
+          "payload": {
+            "update_hash": "534ab6141c528ef1f59944cc7690f3dfeeac4950b24549cde02064f4b6c4ebb2",
+            "encrypted_update_hash": "67d2d538428852ffbb95d97d7bd462cfc7f64fd5583b15f1f8a0f4bf48883e48",
+            "sample_count": 400,
+            "local_metrics": {
+              "accuracy_proxy": 0.9615
+            },
+            "selected_by_aggregator": true,
+            "privacy_note": "Only hashes and metrics are stored on-chain; raw data and raw weights are off-chain."
+          },
+          "timestamp": 1783594328.7450995,
+          "tx_hash": "21cdbfaab47dd91c09cde97d5aa16132f6cf4308d295a6a829ffc8e3a5823936"
+        },
+        {
+          "tx_type": "CLIENT_UPDATE",
+          "round_number": 4,
+          "actor": "hospital_4",
+          "payload": {
+            "update_hash": "b6d1f6de77ceb51a1aabf2ad3952e4c2b54a789cd139b0d59b14cef51d5e2821",
+            "encrypted_update_hash": "d96be8b6c13921fe4ed271dc699af02c00cbe13672399eebe1f518d33fd744a2",
+            "sample_count": 400,
+            "local_metrics": {
+              "accuracy_proxy": 0.9635
+            },
+            "selected_by_aggregator": true,
+            "privacy_note": "Only hashes and metrics are stored on-chain; raw data and raw weights are off-chain."
+          },
+          "timestamp": 1783594328.7450995,
+          "tx_hash": "313e37666675684ee59523811417c269a7e867e0d8e258db0b6fb1c442fb4e82"
+        },
+        {
+          "tx_type": "AGGREGATION",
+          "round_number": 4,
+          "actor": "edge_server_cluster_1",
+          "payload": {
+            "algorithm": "EfficientNet-B0 + Multi-Krum + ILA CKKS + PoA Blockchain",
+            "selected_clients": [
+              "hospital_1",
+              "hospital_2",
+              "hospital_3",
+              "hospital_4"
+            ],
+            "aggregation_hash": "66056ed634691ffb7b4471941272f8d77f9bd8cd88a6e42b1619e6995bcb846a",
+            "global_model_hash": "bc329cd0c6d8efcd66bef5eb7e2d6c7762088da76231dab34202a9d5789d7d9a",
+            "global_metrics": {
+              "accuracy": 0.9675,
+              "f1": 0.9674835385413866
+            }
+          },
+          "timestamp": 1783594328.7450995,
+          "tx_hash": "13c13e435028f4cb54496ddee335421e410fafe9f0f70f9b07e75477eb21d39f"
+        },
+        {
+          "tx_type": "REWARD",
+          "round_number": 4,
+          "actor": "edge_server_cluster_1",
+          "payload": {
+            "reward_units": {
+              "hospital_1": 0.249219,
+              "hospital_2": 0.24974,
+              "hospital_3": 0.25026,
+              "hospital_4": 0.250781
+            },
+            "reward_policy": "normalized contribution score based on accepted participation, sample count, and local metric quality"
+          },
+          "timestamp": 1783594328.7450995,
+          "tx_hash": "f37be2fbd6b7afea4c3916cbaeb00001e3929b95a968ff43c1e39a032a7ecf7f"
+        }
+      ],
+      "metadata": {
+        "round": 4,
+        "algorithm": "EfficientNet-B0 + Multi-Krum + ILA CKKS + PoA Blockchain",
+        "num_clients": 4,
+        "num_selected_clients": 4,
+        "comparison_to_base_paper": "Matches the base paper idea of recording hospital update transactions and contribution rewards, but uses a reproducible Python PoA audit ledger instead of Ganache/Truffle."
+      },
+      "merkle_root": "cf6f5dc715285da7e1918c9285d3be06d827a3c15ef12bbab4618a7f4ed11ab4",
+      "block_hash": "e46f88de832e1de1dd5c47647566589a09125ce89faaee0c31bd945bd302a4e3"
+    },
+    {
+      "index": 5,
+      "timestamp": 1783594328.7450995,
+      "validator": "edge_validator_2",
+      "previous_hash": "e46f88de832e1de1dd5c47647566589a09125ce89faaee0c31bd945bd302a4e3",
+      "transactions": [
+        {
+          "tx_type": "CLIENT_UPDATE",
+          "round_number": 5,
+          "actor": "hospital_1",
+          "payload": {
+            "update_hash": "d1f3721e366ee2fda671b9abdc03e3acf559f39b7d5089779ab979fc5590d4f1",
+            "encrypted_update_hash": "632eac527a5844d3b6dc5927b0bda1d40a63c40739d6d3372838cc5683b42ba4",
+            "sample_count": 400,
+            "local_metrics": {
+              "accuracy_proxy": 0.9425
+            },
+            "selected_by_aggregator": true,
+            "privacy_note": "Only hashes and metrics are stored on-chain; raw data and raw weights are off-chain."
+          },
+          "timestamp": 1783594328.7450995,
+          "tx_hash": "bd6c7139b3ee4bfcb8c0915926e4f31d5d6e6b00d4377c7e2794d2e39bb5d173"
+        },
+        {
+          "tx_type": "CLIENT_UPDATE",
+          "round_number": 5,
+          "actor": "hospital_2",
+          "payload": {
+            "update_hash": "54c46dc3c939faf20fcdd2c7124eee608292f6ef05ef9f095aaa69e0b3b16ecd",
+            "encrypted_update_hash": "92d910721d78030e921c043dc8c3422a2934ab6683ea3570b7c19cd28dc20da1",
+            "sample_count": 400,
+            "local_metrics": {
+              "accuracy_proxy": 0.9445
+            },
+            "selected_by_aggregator": true,
+            "privacy_note": "Only hashes and metrics are stored on-chain; raw data and raw weights are off-chain."
+          },
+          "timestamp": 1783594328.7450995,
+          "tx_hash": "0aea894808f7248b39c500332554f25a5d36d0513672b815eca359ac6aea15d1"
+        },
+        {
+          "tx_type": "CLIENT_UPDATE",
+          "round_number": 5,
+          "actor": "hospital_3",
+          "payload": {
+            "update_hash": "2ec100daaf90f821ce303d2d3b8203d58296ad1da0960fa5e74897064dc167ea",
+            "encrypted_update_hash": "9749d82903402cabef7a755c683d7e35d8649122cf21c602a5d2f641e928bcf7",
+            "sample_count": 400,
+            "local_metrics": {
+              "accuracy_proxy": 0.9465
+            },
+            "selected_by_aggregator": true,
+            "privacy_note": "Only hashes and metrics are stored on-chain; raw data and raw weights are off-chain."
+          },
+          "timestamp": 1783594328.7450995,
+          "tx_hash": "23c76f9c7ec3d11a82e3279d3a56bb28d7711c997c2953d7d3940a4caa978092"
+        },
+        {
+          "tx_type": "CLIENT_UPDATE",
+          "round_number": 5,
+          "actor": "hospital_4",
+          "payload": {
+            "update_hash": "cb2f2c0b7603e58ef67a280f70d265dbd8d29b49673822630d300ee6a7dfb8f7",
+            "encrypted_update_hash": "4619b8856234740dcaadb4e8eef10b157899a1e58329b3239b682bd5cc69c7f1",
+            "sample_count": 400,
+            "local_metrics": {
+              "accuracy_proxy": 0.9485
+            },
+            "selected_by_aggregator": true,
+            "privacy_note": "Only hashes and metrics are stored on-chain; raw data and raw weights are off-chain."
+          },
+          "timestamp": 1783594328.7450995,
+          "tx_hash": "40cb9db514ef0d290ee1c1834668887818e9d79263d8188a10909ecef871165d"
+        },
+        {
+          "tx_type": "AGGREGATION",
+          "round_number": 5,
+          "actor": "edge_server_cluster_1",
+          "payload": {
+            "algorithm": "EfficientNet-B0 + Multi-Krum + ILA CKKS + PoA Blockchain",
+            "selected_clients": [
+              "hospital_1",
+              "hospital_2",
+              "hospital_3",
+              "hospital_4"
+            ],
+            "aggregation_hash": "1839bd118b7eea4d569bcbd82a6d91f4627161ee17ca0273ce70efc6e51fe378",
+            "global_model_hash": "ae6c333fba87e70345f93c4569f2a79104538b888b70d0a31c6bfd1859da4a5d",
+            "global_metrics": {
+              "accuracy": 0.9525,
+              "f1": 0.9523925857716472
+            }
+          },
+          "timestamp": 1783594328.7450995,
+          "tx_hash": "76d5a9eee36a421fb29f2477bd721b5f1d5fa48effa4d50e1fcf09aa84a17d3b"
+        },
+        {
+          "tx_type": "REWARD",
+          "round_number": 5,
+          "actor": "edge_server_cluster_1",
+          "payload": {
+            "reward_units": {
+              "hospital_1": 0.249207,
+              "hospital_2": 0.249736,
+              "hospital_3": 0.250264,
+              "hospital_4": 0.250793
+            },
+            "reward_policy": "normalized contribution score based on accepted participation, sample count, and local metric quality"
+          },
+          "timestamp": 1783594328.7450995,
+          "tx_hash": "309068c91d874b79f2b743d402eb2acc2a57e0e3436b3673641f8298cf581024"
+        }
+      ],
+      "metadata": {
+        "round": 5,
+        "algorithm": "EfficientNet-B0 + Multi-Krum + ILA CKKS + PoA Blockchain",
+        "num_clients": 4,
+        "num_selected_clients": 4,
+        "comparison_to_base_paper": "Matches the base paper idea of recording hospital update transactions and contribution rewards, but uses a reproducible Python PoA audit ledger instead of Ganache/Truffle."
+      },
+      "merkle_root": "b15f70ab575beda57863d4f4a0d2ef31318e0031486b08330b856ff2a228f3ba",
+      "block_hash": "0742ed4a2fd53866bcb787bea7f74f33d420e00fdb4fb395421e40b304397986"
+    }
+  ]
+}

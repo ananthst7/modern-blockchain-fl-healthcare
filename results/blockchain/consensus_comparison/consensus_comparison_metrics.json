@@ -1,0 +1,51 @@
+{
+  "experiment_id": "EXP-009",
+  "experiment_name": "PoA vs PoW Blockchain Consensus Comparison",
+  "rounds": 5,
+  "num_clients": 4,
+  "pow_difficulty": 3,
+  "base_paper_gap": "The base paper uses Ganache/Truffle and a consortium blockchain setting but does not explicitly compare consensus mechanisms.",
+  "our_novelty": "This experiment evaluates consensus suitability and shows why PoA is more appropriate for permissioned healthcare FL than PoW.",
+  "poa": {
+    "consensus": "PoA",
+    "chain_valid": true,
+    "tamper_detected": true,
+    "num_blocks_including_genesis": 6,
+    "num_training_round_blocks": 5,
+    "num_transactions": 31,
+    "avg_block_creation_time_ms": 0.09064,
+    "max_block_creation_time_ms": 0.1048,
+    "verification_time_ms": 0.4323,
+    "block_creation_times_ms": [
+      0.1048,
+      0.0941,
+      0.0847,
+      0.0837,
+      0.0859
+    ]
+  },
+  "pow": {
+    "consensus": "PoW",
+    "chain_valid": true,
+    "tamper_detected": true,
+    "num_blocks_including_genesis": 6,
+    "num_training_round_blocks": 5,
+    "num_transactions": 31,
+    "avg_block_creation_time_ms": 116.01598,
+    "max_block_creation_time_ms": 260.7508,
+    "verification_time_ms": 0.4595,
+    "block_creation_times_ms": [
+      69.4991,
+      88.7917,
+      35.1232,
+      125.9151,
+      260.7508
+    ]
+  },
+  "summary": {
+    "poa_avg_block_time_ms": 0.09064,
+    "pow_avg_block_time_ms": 116.01598,
+    "pow_to_poa_slowdown": 1279.9645,
+    "recommendation": "Use PoA for cross-silo healthcare FL because hospitals and edge servers are known permissioned participants."
+  }
+}

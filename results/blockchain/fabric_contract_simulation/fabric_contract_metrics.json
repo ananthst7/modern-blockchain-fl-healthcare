@@ -1,0 +1,40 @@
+{
+  "experiment_id": "EXP-010",
+  "experiment_name": "Hyperledger Fabric-style FL Smart Contract Abstraction",
+  "rounds": 5,
+  "num_hospitals": 4,
+  "algorithm": "EfficientNet-B0 + Multi-Krum + ILA CKKS + Fabric-style Blockchain",
+  "channel_name": "fl-healthcare-channel",
+  "world_state_assets": 49,
+  "history_transactions": 49,
+  "world_state_root_hash": "9966c22a67e8034593f6eb39d116474d12d3ebdbf72379991a6fe8c1f397df6d",
+  "history_root_hash": "b13fb4be541d0c884f603da10d3dd1392a4bbb20e9fd75c12307fcea45112bc7",
+  "avg_register_hospital_ms": 0.05685,
+  "avg_submit_update_ms": 0.04186,
+  "avg_submit_aggregation_ms": 0.05494,
+  "avg_issue_rewards_ms": 0.0954,
+  "avg_query_round_ms": 0.00426,
+  "fabric_style_functions": [
+    "RegisterHospital",
+    "SubmitUpdateHash",
+    "SubmitAggregation",
+    "IssueRewards",
+    "QueryRound",
+    "QueryHospitalHistory",
+    "VerifyContractState"
+  ],
+  "access_control": {
+    "trusted_authority": [
+      "RegisterHospital"
+    ],
+    "hospital": [
+      "SubmitUpdateHash"
+    ],
+    "edge_server": [
+      "SubmitAggregation",
+      "IssueRewards"
+    ]
+  },
+  "base_paper_extension": "Models the base paper's hospitals, edge servers, encrypted update transactions, aggregation records, and contribution rewards as Fabric-style smart contract assets.",
+  "limitation": "This is a Fabric-style chaincode abstraction, not a deployed Hyperledger Fabric network with Docker peers/orderers."
+}

@@ -1,0 +1,586 @@
+[
+  {
+    "tx_id": "771a85f6c9c989c5e2421fa872c2734b6397211e74ae3d550f5d31c3e2d8113f",
+    "tx_type": "RegisterHospital",
+    "key": "HOSPITAL::hospital_1",
+    "value_hash": "209dcbb6a8de8958f9eac38d3cd7f8b037155a1776354e8ab25f78e7c92684b7",
+    "invoker": {
+      "role": "trusted_authority",
+      "msp": "HealthcareTA"
+    },
+    "timestamp": 1783595467.131975
+  },
+  {
+    "tx_id": "ed82acd7081be7518691ea20a686a301d618ef6aea3c48a1e97044cff32b7700",
+    "tx_type": "RegisterHospital",
+    "key": "HOSPITAL::hospital_2",
+    "value_hash": "cd30cca25dac610f0b2e78676651600b05ad2d3b4136db24b4615c431280f492",
+    "invoker": {
+      "role": "trusted_authority",
+      "msp": "HealthcareTA"
+    },
+    "timestamp": 1783595467.131975
+  },
+  {
+    "tx_id": "c7d4392a40960a53aa0ba108b8ff7cb392780e37751d63b518c4c7e1a275b22e",
+    "tx_type": "RegisterHospital",
+    "key": "HOSPITAL::hospital_3",
+    "value_hash": "143dbd1895807443c15d58fe5bb0dc8c7982d7e040e41c6ba0b37f4707daa8ab",
+    "invoker": {
+      "role": "trusted_authority",
+      "msp": "HealthcareTA"
+    },
+    "timestamp": 1783595467.131975
+  },
+  {
+    "tx_id": "d7f1db89512711546ed3129188ef629b8285effcb2a9393e432532aaf6d6f32a",
+    "tx_type": "RegisterHospital",
+    "key": "HOSPITAL::hospital_4",
+    "value_hash": "22220c5ffdd1102b6fa0ec248fc510645d3480c5611a04945f0e7b65b6278d46",
+    "invoker": {
+      "role": "trusted_authority",
+      "msp": "HealthcareTA"
+    },
+    "timestamp": 1783595467.131975
+  },
+  {
+    "tx_id": "063ec63bd27339b3369be616d3e4b7ea073adf8e9d46c98dfd60eb53b81ad0ce",
+    "tx_type": "SubmitUpdateHash",
+    "key": "ROUND::1::UPDATE::hospital_1",
+    "value_hash": "e3c234f635c5170f390eb0248a9ebaca9c7c99546e789d3a00fa3bc03e6de586",
+    "invoker": {
+      "role": "hospital",
+      "msp": "hospital_1MSP",
+      "hospital_id": "hospital_1"
+    },
+    "timestamp": 1783595467.131975
+  },
+  {
+    "tx_id": "4bd1bd4aa801679909ed7a82236eb26725d45d83b61f342d81651dc5e7323a32",
+    "tx_type": "SubmitUpdateHash",
+    "key": "ROUND::1::UPDATE::hospital_2",
+    "value_hash": "7485cdaace303884c5a18c308436d6d8a1c2325e37531885ff1a3c5dcd85c4de",
+    "invoker": {
+      "role": "hospital",
+      "msp": "hospital_2MSP",
+      "hospital_id": "hospital_2"
+    },
+    "timestamp": 1783595467.131975
+  },
+  {
+    "tx_id": "26751bdd24cb86646b6227beb6e4eaa16fb08a7d1f7cd3e94d930bae1c18efd8",
+    "tx_type": "SubmitUpdateHash",
+    "key": "ROUND::1::UPDATE::hospital_3",
+    "value_hash": "27f761a8ae96d7d64ff1306e9c4b1be532b752b4b5d2a5938636c574b880438b",
+    "invoker": {
+      "role": "hospital",
+      "msp": "hospital_3MSP",
+      "hospital_id": "hospital_3"
+    },
+    "timestamp": 1783595467.131975
+  },
+  {
+    "tx_id": "87d71be87683d89e2de6be6d9aa86e98ce9caad6eb63a77a071e19e01f52ac8f",
+    "tx_type": "SubmitUpdateHash",
+    "key": "ROUND::1::UPDATE::hospital_4",
+    "value_hash": "fbebd57c4b52dae91fd934294a461517bc2d0fdff632770c4523be37bc592dd8",
+    "invoker": {
+      "role": "hospital",
+      "msp": "hospital_4MSP",
+      "hospital_id": "hospital_4"
+    },
+    "timestamp": 1783595467.131975
+  },
+  {
+    "tx_id": "f4b471c4857e8b38b60c385284488b5ef73c0145e698f7e641b95b463ea30ad2",
+    "tx_type": "SubmitAggregation",
+    "key": "ROUND::1::AGGREGATION",
+    "value_hash": "ee59c6e2cd709de76431b3665aa99a943e866f249b6d634ff5cf5a6dcd136556",
+    "invoker": {
+      "role": "edge_server",
+      "msp": "EdgeOrg",
+      "edge_server_id": "edge_server_1"
+    },
+    "timestamp": 1783595467.131975
+  },
+  {
+    "tx_id": "6431ee7e1baf21b313f1b4565931bf43d47870d8de66809131de04ff57cb8a5a",
+    "tx_type": "IssueReward",
+    "key": "ROUND::1::REWARD::hospital_1",
+    "value_hash": "435c2572737d4789f81a57cfa1d21e5245f90be45eb61a9232cb00aa37616687",
+    "invoker": {
+      "role": "edge_server",
+      "msp": "EdgeOrg",
+      "edge_server_id": "edge_server_1"
+    },
+    "timestamp": 1783595467.131975
+  },
+  {
+    "tx_id": "d6373da022d60576cc3f3adf21cc6dfbadef07187582f8791644b89acd2343d3",
+    "tx_type": "IssueReward",
+    "key": "ROUND::1::REWARD::hospital_2",
+    "value_hash": "9e68031839f81f1b15ebf94ff351f3e7eb48956130c415528b31d14d1ae05132",
+    "invoker": {
+      "role": "edge_server",
+      "msp": "EdgeOrg",
+      "edge_server_id": "edge_server_1"
+    },
+    "timestamp": 1783595467.131975
+  },
+  {
+    "tx_id": "d95e7951a5443fe5e64b10839d80eb2e7908f8620c642e89e1d34d094e290617",
+    "tx_type": "IssueReward",
+    "key": "ROUND::1::REWARD::hospital_3",
+    "value_hash": "04e19415fdbc5a10a58aa0e963213f5e80f34e4e8e968edf799207ccba7171e3",
+    "invoker": {
+      "role": "edge_server",
+      "msp": "EdgeOrg",
+      "edge_server_id": "edge_server_1"
+    },
+    "timestamp": 1783595467.131975
+  },
+  {
+    "tx_id": "5d1478fe3f3b5db5539190319deab4861db5ce962d86469abb252ec63e135c37",
+    "tx_type": "IssueReward",
+    "key": "ROUND::1::REWARD::hospital_4",
+    "value_hash": "67d97dfed626c1cccf0a2d64d939ed3dd4a23f31d5de343db253736578466d77",
+    "invoker": {
+      "role": "edge_server",
+      "msp": "EdgeOrg",
+      "edge_server_id": "edge_server_1"
+    },
+    "timestamp": 1783595467.131975
+  },
+  {
+    "tx_id": "40298e924a024ebf5df7d587f9179e6ab2d9e07ff03cad177e79618d4c914d0a",
+    "tx_type": "SubmitUpdateHash",
+    "key": "ROUND::2::UPDATE::hospital_1",
+    "value_hash": "120c582a0f210d01fb2b3967dc79bc8b7acb1c3de1a3987f84656e009ad0ee00",
+    "invoker": {
+      "role": "hospital",
+      "msp": "hospital_1MSP",
+      "hospital_id": "hospital_1"
+    },
+    "timestamp": 1783595467.131975
+  },
+  {
+    "tx_id": "14b602aad98d25a9084b8c5357c5fbeb2be1829c8a97bcf677c15062d04f8863",
+    "tx_type": "SubmitUpdateHash",
+    "key": "ROUND::2::UPDATE::hospital_2",
+    "value_hash": "3d875ec960754b5121fd2ee4e2b3c68495ec983d020da1241844aa020bf65e54",
+    "invoker": {
+      "role": "hospital",
+      "msp": "hospital_2MSP",
+      "hospital_id": "hospital_2"
+    },
+    "timestamp": 1783595467.131975
+  },
+  {
+    "tx_id": "206859f47575d14c42920c7bf376d5a97c7f2952555f84a625dd598a91e9bee8",
+    "tx_type": "SubmitUpdateHash",
+    "key": "ROUND::2::UPDATE::hospital_3",
+    "value_hash": "c9589de69f45168b6f9e8224751a3a02a494d4da06a47ddbb661ca134c124f5e",
+    "invoker": {
+      "role": "hospital",
+      "msp": "hospital_3MSP",
+      "hospital_id": "hospital_3"
+    },
+    "timestamp": 1783595467.131975
+  },
+  {
+    "tx_id": "fee27fad591f19bae75db9b291341ad7ff66e73350c53e96e6a662beeb2dfe66",
+    "tx_type": "SubmitUpdateHash",
+    "key": "ROUND::2::UPDATE::hospital_4",
+    "value_hash": "5cccb5d4c4a55ad72d47c6452517d92536c37c9554507237dd01a197666a2bbd",
+    "invoker": {
+      "role": "hospital",
+      "msp": "hospital_4MSP",
+      "hospital_id": "hospital_4"
+    },
+    "timestamp": 1783595467.131975
+  },
+  {
+    "tx_id": "513d0e3bfec011bd674dd1f0c0d95eaafccb52d8d8f6f148f765275805709ae6",
+    "tx_type": "SubmitAggregation",
+    "key": "ROUND::2::AGGREGATION",
+    "value_hash": "28af4ccf1827470b7badd4d087bfbd679237a64460a148cd35aca461f36d7960",
+    "invoker": {
+      "role": "edge_server",
+      "msp": "EdgeOrg",
+      "edge_server_id": "edge_server_1"
+    },
+    "timestamp": 1783595467.131975
+  },
+  {
+    "tx_id": "3fa781ec54eca879ba24797821fb99be44896527e950805b0dfdc3c28842800d",
+    "tx_type": "IssueReward",
+    "key": "ROUND::2::REWARD::hospital_1",
+    "value_hash": "4010ee71037bd25cfbf3c0b2a23cc01d3b7aab2c5377d9196a9939038027c77e",
+    "invoker": {
+      "role": "edge_server",
+      "msp": "EdgeOrg",
+      "edge_server_id": "edge_server_1"
+    },
+    "timestamp": 1783595467.131975
+  },
+  {
+    "tx_id": "ab7eba4f384fdf6ceb96e2b083a9b1e3cb24321f5b902c9642fd5012b903ed0a",
+    "tx_type": "IssueReward",
+    "key": "ROUND::2::REWARD::hospital_2",
+    "value_hash": "9621d0273b6a430581bf02072b456b34307b3610a751e371077a98b5524e0fba",
+    "invoker": {
+      "role": "edge_server",
+      "msp": "EdgeOrg",
+      "edge_server_id": "edge_server_1"
+    },
+    "timestamp": 1783595467.131975
+  },
+  {
+    "tx_id": "3e6eaa3ca34287e8b485ec9d682f980a1c9e38126f31c85a548489d1543b4741",
+    "tx_type": "IssueReward",
+    "key": "ROUND::2::REWARD::hospital_3",
+    "value_hash": "df6e5338fe627b32010635a3c07d50c2e7c41f0e36f89fdb4585d60b269990a3",
+    "invoker": {
+      "role": "edge_server",
+      "msp": "EdgeOrg",
+      "edge_server_id": "edge_server_1"
+    },
+    "timestamp": 1783595467.131975
+  },
+  {
+    "tx_id": "86dda3cdefb226bfef732f18cf79696464a13d7151429f89e1d34966414d8cc5",
+    "tx_type": "IssueReward",
+    "key": "ROUND::2::REWARD::hospital_4",
+    "value_hash": "d14d2fc744f3f4cbcacbb35af04dd37ba7efb7bce6358cad9545e827150bd4a8",
+    "invoker": {
+      "role": "edge_server",
+      "msp": "EdgeOrg",
+      "edge_server_id": "edge_server_1"
+    },
+    "timestamp": 1783595467.131975
+  },
+  {
+    "tx_id": "0fdeeebba9f29ce645f7ebed1a855e772e5a95c99e5655e6d080e3003f1d9ab7",
+    "tx_type": "SubmitUpdateHash",
+    "key": "ROUND::3::UPDATE::hospital_1",
+    "value_hash": "86aa68f30a6752cd69593b06a7cf06490ebce6d0604e26301e959fe8197db5e9",
+    "invoker": {
+      "role": "hospital",
+      "msp": "hospital_1MSP",
+      "hospital_id": "hospital_1"
+    },
+    "timestamp": 1783595467.131975
+  },
+  {
+    "tx_id": "2e6de2b7c316277374da525f2cbc1a4f37e22443354a5c9c3fbd3cd2d6449f2c",
+    "tx_type": "SubmitUpdateHash",
+    "key": "ROUND::3::UPDATE::hospital_2",
+    "value_hash": "8cedc7080c57235c488941730bf32ce73092c33fa228d9f26413310fa728deb6",
+    "invoker": {
+      "role": "hospital",
+      "msp": "hospital_2MSP",
+      "hospital_id": "hospital_2"
+    },
+    "timestamp": 1783595467.131975
+  },
+  {
+    "tx_id": "070b026241ef0e14ba1425661bfdb39ac152d6147538532ca416fe8a03612ede",
+    "tx_type": "SubmitUpdateHash",
+    "key": "ROUND::3::UPDATE::hospital_3",
+    "value_hash": "daac2408c3ff3e6762c4621fedad1170cd2b09faed5b530c6081473612832d9c",
+    "invoker": {
+      "role": "hospital",
+      "msp": "hospital_3MSP",
+      "hospital_id": "hospital_3"
+    },
+    "timestamp": 1783595467.131975
+  },
+  {
+    "tx_id": "c78b008f8ba9e6e73ea64bfd5ce22dbdc2148af9a98e52eaf2becf05c9a21964",
+    "tx_type": "SubmitUpdateHash",
+    "key": "ROUND::3::UPDATE::hospital_4",
+    "value_hash": "e8d8815513f9cfafce5aaa266bcfae5b13d40a0a86e7c6433040c51675dfdf5e",
+    "invoker": {
+      "role": "hospital",
+      "msp": "hospital_4MSP",
+      "hospital_id": "hospital_4"
+    },
+    "timestamp": 1783595467.131975
+  },
+  {
+    "tx_id": "15ba5ca571ded23929dce093aff4bca93ccca698a087a94b1163b032985f94d6",
+    "tx_type": "SubmitAggregation",
+    "key": "ROUND::3::AGGREGATION",
+    "value_hash": "77c7bcf9a7de9d889b6fc325e8e676aff95541687923193e0f2cd068fe42b87e",
+    "invoker": {
+      "role": "edge_server",
+      "msp": "EdgeOrg",
+      "edge_server_id": "edge_server_1"
+    },
+    "timestamp": 1783595467.131975
+  },
+  {
+    "tx_id": "6156e957fbc6055edc6427a22b93706791e50dade0d464a8d9fe6bf9f1c1e7cc",
+    "tx_type": "IssueReward",
+    "key": "ROUND::3::REWARD::hospital_1",
+    "value_hash": "1bbe03eaf519c330bb24823906ea40cc2d219b4947435914c9912ec54ff1c803",
+    "invoker": {
+      "role": "edge_server",
+      "msp": "EdgeOrg",
+      "edge_server_id": "edge_server_1"
+    },
+    "timestamp": 1783595467.131975
+  },
+  {
+    "tx_id": "b422b5a2e9e2247875fe1475ea87558a8453751dae60e7a1a8d96dd4c578d6c8",
+    "tx_type": "IssueReward",
+    "key": "ROUND::3::REWARD::hospital_2",
+    "value_hash": "b97accd050ba831e963430820f55501e0b47187034da5029152992563e11e162",
+    "invoker": {
+      "role": "edge_server",
+      "msp": "EdgeOrg",
+      "edge_server_id": "edge_server_1"
+    },
+    "timestamp": 1783595467.131975
+  },
+  {
+    "tx_id": "b7d766b0becdfc58affb8983ea763b7f88067d2f6cc77bc366679a37ff630c05",
+    "tx_type": "IssueReward",
+    "key": "ROUND::3::REWARD::hospital_3",
+    "value_hash": "9128ca8d79260b966e74ae21f262481ad5fba2e2af9a33ad63ff7da15c98cc14",
+    "invoker": {
+      "role": "edge_server",
+      "msp": "EdgeOrg",
+      "edge_server_id": "edge_server_1"
+    },
+    "timestamp": 1783595467.131975
+  },
+  {
+    "tx_id": "07cec39edf269ad1bacacf1ba092f229cf689fa934b8cdfd5061eab165462a41",
+    "tx_type": "IssueReward",
+    "key": "ROUND::3::REWARD::hospital_4",
+    "value_hash": "4d79b64ccf37821921afe77187e5e1b1e0d0f09a544f155cb29704937611eb84",
+    "invoker": {
+      "role": "edge_server",
+      "msp": "EdgeOrg",
+      "edge_server_id": "edge_server_1"
+    },
+    "timestamp": 1783595467.131975
+  },
+  {
+    "tx_id": "f64fe32ea2bc6a5cb0a27833e70a01e4140e3cfb0321056913acad00b3def0c9",
+    "tx_type": "SubmitUpdateHash",
+    "key": "ROUND::4::UPDATE::hospital_1",
+    "value_hash": "d48f66effedfa0fe54399155946fd1bfe30ae38b04d47578921d5887cfb93e27",
+    "invoker": {
+      "role": "hospital",
+      "msp": "hospital_1MSP",
+      "hospital_id": "hospital_1"
+    },
+    "timestamp": 1783595467.131975
+  },
+  {
+    "tx_id": "b6802f1ad2ca5873155de097a43be8864d2d1bca612c42a3a5ec9d5b020ad350",
+    "tx_type": "SubmitUpdateHash",
+    "key": "ROUND::4::UPDATE::hospital_2",
+    "value_hash": "a6ba463ae044f9784c7d2a103f30563e337da8bcd11a3e2349f1396ac023151f",
+    "invoker": {
+      "role": "hospital",
+      "msp": "hospital_2MSP",
+      "hospital_id": "hospital_2"
+    },
+    "timestamp": 1783595467.131975
+  },
+  {
+    "tx_id": "23e539184b5c07eb21a5edbe2b03d315df91ec801e32f0e741027c9b057b00a5",
+    "tx_type": "SubmitUpdateHash",
+    "key": "ROUND::4::UPDATE::hospital_3",
+    "value_hash": "3d7f4982b1e8e7a9a46a700f5bc25f126e2b8c170ddb0a8837867e9ed4ae6fa1",
+    "invoker": {
+      "role": "hospital",
+      "msp": "hospital_3MSP",
+      "hospital_id": "hospital_3"
+    },
+    "timestamp": 1783595467.131975
+  },
+  {
+    "tx_id": "10670ed2f35dc6c617452d7f6e7d4435c031336b38e2ff32fe97668deaa8c666",
+    "tx_type": "SubmitUpdateHash",
+    "key": "ROUND::4::UPDATE::hospital_4",
+    "value_hash": "ceac9d6e3d362a5e1a5d0346843044cdd5ff0add9dbabcaeb80186f773570dbc",
+    "invoker": {
+      "role": "hospital",
+      "msp": "hospital_4MSP",
+      "hospital_id": "hospital_4"
+    },
+    "timestamp": 1783595467.131975
+  },
+  {
+    "tx_id": "5ac2f5d5896aa3a288707d02660c9f95b1d22f6a83e82956924955b9c7474c23",
+    "tx_type": "SubmitAggregation",
+    "key": "ROUND::4::AGGREGATION",
+    "value_hash": "a376dd5f14d23591609837e9ebaf22f238b46452bdfeec514be6e8ddfb515be3",
+    "invoker": {
+      "role": "edge_server",
+      "msp": "EdgeOrg",
+      "edge_server_id": "edge_server_1"
+    },
+    "timestamp": 1783595467.131975
+  },
+  {
+    "tx_id": "b1dbd0d385131d2400ffc696859e0d0cc232751cafd16964ac3ec743ec5b2668",
+    "tx_type": "IssueReward",
+    "key": "ROUND::4::REWARD::hospital_1",
+    "value_hash": "79d66520153908417ada611c2949c9758393f92d72eec6273f5954f4134a23c3",
+    "invoker": {
+      "role": "edge_server",
+      "msp": "EdgeOrg",
+      "edge_server_id": "edge_server_1"
+    },
+    "timestamp": 1783595467.131975
+  },
+  {
+    "tx_id": "c3f62fe0a8d8a906e3c8b9742188b4f0f053c5086efa66b12499fd2f17d582b3",
+    "tx_type": "IssueReward",
+    "key": "ROUND::4::REWARD::hospital_2",
+    "value_hash": "1caaeaf926ba21a1ceffa65f143a329a9a3c8ab65bbe1cf32588a3ca8a636755",
+    "invoker": {
+      "role": "edge_server",
+      "msp": "EdgeOrg",
+      "edge_server_id": "edge_server_1"
+    },
+    "timestamp": 1783595467.131975
+  },
+  {
+    "tx_id": "4ca038e1977411ee6b2e1dacfacaac0b54075162760f1498a89f330aee3ed772",
+    "tx_type": "IssueReward",
+    "key": "ROUND::4::REWARD::hospital_3",
+    "value_hash": "fb0d6745d8996126cf22d99ee8498f23efe4ea2c2650fea3924f9cda0f712a71",
+    "invoker": {
+      "role": "edge_server",
+      "msp": "EdgeOrg",
+      "edge_server_id": "edge_server_1"
+    },
+    "timestamp": 1783595467.131975
+  },
+  {
+    "tx_id": "54d4ef1ca4a18e4ff3378674527148e57ba2b1e4b2dd837829a10b7f4e9789e7",
+    "tx_type": "IssueReward",
+    "key": "ROUND::4::REWARD::hospital_4",
+    "value_hash": "27248bfa2c26f3496bf8da541bfc4315f0b71ab59abb7fcc6d8e4af475a880e1",
+    "invoker": {
+      "role": "edge_server",
+      "msp": "EdgeOrg",
+      "edge_server_id": "edge_server_1"
+    },
+    "timestamp": 1783595467.131975
+  },
+  {
+    "tx_id": "c903b7c6e2d30eff9a4b22409b7d8b7bd28019a3865fbb7884e546dc817c6e52",
+    "tx_type": "SubmitUpdateHash",
+    "key": "ROUND::5::UPDATE::hospital_1",
+    "value_hash": "b3501604e732814a0b01fd86b14f3893d5c82e4faf39353b2922cbbb5d43effb",
+    "invoker": {
+      "role": "hospital",
+      "msp": "hospital_1MSP",
+      "hospital_id": "hospital_1"
+    },
+    "timestamp": 1783595467.131975
+  },
+  {
+    "tx_id": "ee23affd350ac03133e95ac8da1fb0475c17ecee087afad90f7dbd4c8e457289",
+    "tx_type": "SubmitUpdateHash",
+    "key": "ROUND::5::UPDATE::hospital_2",
+    "value_hash": "3c4071863cf98c088aacad421f69112656ec864863499ae71e603af98c226014",
+    "invoker": {
+      "role": "hospital",
+      "msp": "hospital_2MSP",
+      "hospital_id": "hospital_2"
+    },
+    "timestamp": 1783595467.131975
+  },
+  {
+    "tx_id": "f1632854c0f6c1ce57fad62ddc63cc05af5061a4eaaa6798d5d4ac46ef30061d",
+    "tx_type": "SubmitUpdateHash",
+    "key": "ROUND::5::UPDATE::hospital_3",
+    "value_hash": "2cd5d8c0cb542343da88531b29e99050d657152e3768f46248bff3f3a2850c8c",
+    "invoker": {
+      "role": "hospital",
+      "msp": "hospital_3MSP",
+      "hospital_id": "hospital_3"
+    },
+    "timestamp": 1783595467.131975
+  },
+  {
+    "tx_id": "9a20a6c873ce2a10326755379399cfc3137fea5b7f6a7ea1725246ec7b44913c",
+    "tx_type": "SubmitUpdateHash",
+    "key": "ROUND::5::UPDATE::hospital_4",
+    "value_hash": "495a09f59425397f44449845599391ab1df477a817b6a0b395d38852583f4fd1",
+    "invoker": {
+      "role": "hospital",
+      "msp": "hospital_4MSP",
+      "hospital_id": "hospital_4"
+    },
+    "timestamp": 1783595467.131975
+  },
+  {
+    "tx_id": "aec492321ec8b4b2f6a1d9b4ec2c0904f3cee6d91017b99fc51c008d601ed817",
+    "tx_type": "SubmitAggregation",
+    "key": "ROUND::5::AGGREGATION",
+    "value_hash": "63593ad7b73860dfcf2ce4d800e42d6c5d6b8c9fbb20574a0d60af5e5998ebfe",
+    "invoker": {
+      "role": "edge_server",
+      "msp": "EdgeOrg",
+      "edge_server_id": "edge_server_1"
+    },
+    "timestamp": 1783595467.131975
+  },
+  {
+    "tx_id": "05183c92d6f489b13b07ed26518690f785df72d9e566adf37271a28ed1d77b35",
+    "tx_type": "IssueReward",
+    "key": "ROUND::5::REWARD::hospital_1",
+    "value_hash": "41535d4cf39d016ffd7ff486c6fd7df71f80a4792aa6e9ef2d43713ddbf198bc",
+    "invoker": {
+      "role": "edge_server",
+      "msp": "EdgeOrg",
+      "edge_server_id": "edge_server_1"
+    },
+    "timestamp": 1783595467.131975
+  },
+  {
+    "tx_id": "8e0a5a2d8601e86beca562f1739ea974673fba03adadec663d3356ba2bb816b2",
+    "tx_type": "IssueReward",
+    "key": "ROUND::5::REWARD::hospital_2",
+    "value_hash": "068ebbd2ed78f82e14d88f7b3ee45a91725d5e663e1a7b03ff7100704c37e82f",
+    "invoker": {
+      "role": "edge_server",
+      "msp": "EdgeOrg",
+      "edge_server_id": "edge_server_1"
+    },
+    "timestamp": 1783595467.131975
+  },
+  {
+    "tx_id": "b4c115227191aea5f57b3396a08dbc4b705a18563fe0b39a087b4d24d22cfc0f",
+    "tx_type": "IssueReward",
+    "key": "ROUND::5::REWARD::hospital_3",
+    "value_hash": "3c7475b5d6881c833120d00445fca209d57ff71664ae50589be70701a5a12a66",
+    "invoker": {
+      "role": "edge_server",
+      "msp": "EdgeOrg",
+      "edge_server_id": "edge_server_1"
+    },
+    "timestamp": 1783595467.131975
+  },
+  {
+    "tx_id": "80291f1d7b8ca783a29ed71d32edeb23401b15e0c7bdabfbb1e43324ea13c397",
+    "tx_type": "IssueReward",
+    "key": "ROUND::5::REWARD::hospital_4",
+    "value_hash": "f89cc510751d8b4e0cbc7455d8cc74e68d4bbbd71998e76c486ef12b26242b31",
+    "invoker": {
+      "role": "edge_server",
+      "msp": "EdgeOrg",
+      "edge_server_id": "edge_server_1"
+    },
+    "timestamp": 1783595467.131975
+  }
+]
