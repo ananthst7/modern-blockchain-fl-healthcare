@@ -401,3 +401,114 @@ EXP-007 introduces a selective and adaptive CKKS-based encrypted aggregation str
 The strongest contribution is the privacy-focused budgeted adaptive CKKS experiment, which shows that the encrypted subset can be increased from an ultra-lightweight setting to a more privacy-oriented setting while maintaining high model utility and manageable overhead.
 
 This makes the proposed framework configurable: hospitals or consortium administrators can select an encryption budget depending on whether the priority is low latency, high privacy coverage, or a balanced trade-off.
+
+
+---
+
+# EXP-007G — Adaptive CKKS Budget Sweep Analysis
+
+## Objective
+
+Evaluate the impact of increasing the adaptive CKKS encryption budget on:
+
+- Model utility
+- Privacy coverage
+- Communication cost
+- Cryptographic overhead
+- Adaptive encryption efficiency
+
+Three adaptive encryption budgets were evaluated:
+
+| Budget | Plaintext Encryption Budget |
+|---------|----------------------------:|
+| Budget A | 1 MB |
+| Budget B | 2 MB |
+| Budget C | 4 MB |
+
+## Experimental Results
+
+| Metric | 1 MB | 2 MB | 4 MB |
+|--------|------:|------:|------:|
+| Accuracy | **96.00%** | 95.75% | 93.75% |
+| F1 Score | **96.00%** | 95.74% | 93.73% |
+| Parameter Encryption Ratio (PER) | 6.23% | 12.46% | 24.94% |
+| Information Coverage Ratio (ICR) *(formerly UCR)* | 18.31% | **32.43%** | 32.04% |
+| Residual Leakage Risk (RLR) *(formerly RRS)* | 81.69% | **67.57%** | 67.96% |
+| Adaptive Encryption Quality (AEQ) | **2.94** | 2.60 | 1.29 |
+| Cryptographic Overhead | 2.74% | 4.78% | 8.91% |
+| Encrypted Upload Size | 79 MB | 156 MB | 312 MB |
+
+## Observation
+
+Increasing the adaptive encryption budget from **1 MB** to **2 MB** substantially improved privacy coverage, with the Information Coverage Ratio (ICR) increasing from **18.31%** to **32.43%**.
+
+However, further increasing the budget from **2 MB** to **4 MB** resulted in only a marginal improvement in ICR despite approximately doubling the encrypted parameter ratio, communication cost, and cryptographic overhead.
+
+This indicates that the current adaptive selector reaches an **information saturation point**, where encrypting additional parameters contributes very little additional privacy protection.
+
+## Key Findings
+
+- Parameter Encryption Ratio (PER) increases almost linearly.
+- Communication cost increases almost linearly.
+- Cryptographic overhead also increases steadily.
+- Information Coverage Ratio (ICR) quickly reaches saturation.
+
+This suggests that the majority of privacy-sensitive information is concentrated within a relatively small subset of model parameters.
+
+## Research Limitation Identified
+
+The current adaptive selection strategy ranks tensors solely according to update magnitude:
+
+\[
+\text{Score} = ||\Delta W||
+\]
+
+The budget sweep demonstrates that this assumption eventually reaches diminishing returns.
+
+## Proposed Improvement (Next Experiment)
+
+### Privacy-Aware Adaptive CKKS
+
+Instead of
+
+\[
+\text{Score}=||\Delta W||
+\]
+
+the next selector will use
+
+\[
+\text{Score}
+=
+\alpha ||\Delta W||
++
+\beta \cdot \text{LayerImportance}
++
+\gamma \cdot \text{HistoricalImportance}
+\]
+
+where:
+
+- **Update Magnitude** measures optimization significance.
+- **Layer Importance** approximates information density.
+- **Historical Importance** is computed using an Exponential Moving Average (EMA) of previous update magnitudes.
+
+### Expected Benefits
+
+- Higher Information Coverage Ratio (ICR)
+- Lower Residual Leakage Risk (RLR)
+- More stable layer selection across communication rounds
+- Similar communication overhead
+- Better privacy-efficiency trade-off
+
+## Novelty Statement
+
+The proposed **Privacy-Aware Adaptive CKKS** extends selective homomorphic encryption by prioritizing tensors according to both optimization dynamics and privacy relevance rather than update magnitude alone.
+
+Unlike existing selective CKKS approaches, the proposed method aims to **maximize protected information under a fixed encryption budget**, instead of simply maximizing encrypted parameter count.
+
+## Conclusion
+
+The budget sweep demonstrates that increasing the encryption budget alone cannot indefinitely improve privacy coverage.
+
+Instead, **adaptive selection quality becomes the primary limiting factor**, motivating the transition from budget-aware adaptive encryption to **Privacy-Aware Adaptive CKKS**, which will form the next major contribution of this work.
