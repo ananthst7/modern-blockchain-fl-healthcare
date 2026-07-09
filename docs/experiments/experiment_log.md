@@ -534,11 +534,11 @@ The original 2025 paper uses homomorphic encryption but does not evaluate differ
 
 ---
 
-# EXP-006A: FedAvg with Approximate Update-Level Differential Privacy
+# EXP-006A: FedAvg with Approximate Classifier-Only Update Perturbation
 
 ## Objective
 
-Evaluate whether lightweight update-level perturbation can preserve utility in IID federated learning.
+Evaluate whether lightweight classifier-level update perturbation can preserve utility in IID federated learning while providing an approximate differential privacy interpretation.
 
 ## Setup
 
@@ -548,11 +548,30 @@ Evaluate whether lightweight update-level perturbation can preserve utility in I
 | Clients | 4 |
 | Model | EfficientNet-B0 |
 | Aggregation | FedAvg |
-| DP Type | Classifier-only update-level perturbation |
+| Perturbed Parameters | Classifier layer only |
+| Noise Mechanism | Gaussian update perturbation |
 | Noise Std | 1×10⁻⁶ |
 | Clip Norm | 100.0 |
-| Formal Epsilon | Not available |
+| Delta | 1×10⁻⁵ |
+| Privacy Accounting | Approximate Gaussian mechanism |
 | Global Rounds | 5 |
+
+## Approximate Privacy Accounting
+
+Using the Gaussian mechanism,
+
+ε ≈ sensitivity × √(2 ln(1.25/δ)) / σ
+
+For this configuration:
+
+| Sensitivity Assumption | Approximate ε |
+|---|---:|
+| Add/remove update | 484,480,526.26 |
+| Replace-one update | 968,961,052.52 |
+
+Privacy Grade:
+
+> Negligible / utility-focused.
 
 ## Results
 
@@ -566,16 +585,17 @@ Evaluate whether lightweight update-level perturbation can preserve utility in I
 
 ## Comparison
 
-| Method | Accuracy | F1 Score | Formal DP |
+| Method | Accuracy | Approximate ε | Formal DP |
 |---|---:|---:|---|
-| EXP-002 FedAvg, No DP | 97.50% | 97.50% | No |
-| EXP-006A Approximate DP | **97.50%** | **97.50%** | No |
+| FedAvg | 97.50% | N/A | No |
+| Classifier-only Update Perturbation | **97.50%** | 9.69×10⁸ | No |
 
 ## Observations
 
-- Classifier-only update-level perturbation preserved the baseline FedAvg performance.
-- This method does not provide formal ε-DP guarantees.
-- The result shows that lightweight update perturbation can preserve utility, but should be described as approximate privacy rather than strict differential privacy.
+- The classifier-only perturbation preserved baseline accuracy.
+- The approximate ε is extremely large because the injected noise is intentionally very small.
+- Therefore this experiment should be interpreted as a lightweight robustness perturbation rather than a strong differential privacy mechanism.
+- No formal (ε,δ)-DP guarantee is claimed.
 
 ---
 
@@ -622,6 +642,23 @@ Evaluate whether approximate update-level DP affects the robustness gains achiev
 - Approximate DP did not reduce the final FedDyn performance.
 - FedDyn retained its extreme Non-IID robustness even after classifier-level perturbation.
 - This result is useful as a lightweight privacy-preserving mechanism, but it cannot be claimed as formal DP.
+
+## Privacy Budget Investigation
+
+To understand whether stronger privacy could be achieved using update-level perturbation, an epsilon sweep was performed.
+
+| Target ε | Accuracy | F1 Score |
+|---:|---:|---:|
+| 10 | 88.75% | 88.64% |
+| 5 | 89.75% | 89.75% |
+| 2 | 88.75% | 88.73% |
+| 1 | 87.50% | 87.49% |
+
+During validation, an implementation analysis showed that update perturbation is applied only to the classifier layer, while the EfficientNet feature extractor remains unchanged.
+
+Consequently, these results demonstrate the utility impact of classifier-only perturbation rather than whole-model update differential privacy.
+
+Future work can extend this experiment by applying clipping and Gaussian noise to all trainable parameters, enabling a stronger evaluation of whole-model update-level differential privacy.
 
 ---
 
