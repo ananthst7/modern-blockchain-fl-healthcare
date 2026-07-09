@@ -8,7 +8,7 @@ It is based on and extends the 2025 paper:
 
 > **Blockchain-based Federated Learning with Homomorphic Encryption for Privacy-Preserving Healthcare Data Sharing**
 
-The original paper proposed a healthcare FL system using:
+The original paper proposed a healthcare federated learning system using:
 
 - Federated Learning
 - Homomorphic Encryption
@@ -48,11 +48,15 @@ However, standard FL still has security and privacy issues:
 - There may be no transparent audit trail.
 - Contribution tracking is difficult.
 
-This project builds a more complete healthcare FL framework with:
+This project builds a more complete healthcare FL framework:
 
-\[
-\text{Federated Learning} + \text{Byzantine Defense} + \text{CKKS Encryption} + \text{Privacy Analysis} + \text{Blockchain Audit}
-\]
+```text
+Federated Learning
++ Byzantine Defense
++ CKKS Homomorphic Encryption
++ Differential Privacy Analysis
++ Blockchain Audit
+```
 
 ---
 
@@ -101,7 +105,7 @@ Dataset preparation used:
 
 ### Missing Dataset Result
 
-The base paper also used a Brain Tumor MRI dataset. Brain MRI validation is not present in the uploaded/current documented logs and should be treated as future work unless those runs are added later.
+The base paper also used a Brain Tumor MRI dataset. Brain MRI validation is not present in the currently documented logs and should be treated as future work unless those runs are added later.
 
 ---
 
@@ -111,33 +115,33 @@ The base paper also used a Brain Tumor MRI dataset. Brain MRI validation is not 
 
 Federated Learning trains a global model without moving raw data from hospitals.
 
-For each round \(t\):
+For each round `t`:
 
-1. Server sends global model \(w_t\).
-2. Hospital \(i\) trains locally on private data.
-3. Hospital returns update \(w_i^t\) or \(\Delta w_i^t\).
+1. Server sends global model `w_t`.
+2. Hospital `i` trains locally on private data.
+3. Hospital returns local model `w_i^t` or update `Delta w_i^t`.
 4. Server aggregates updates.
 
 ### FedAvg
 
-FedAvg computes a weighted average of local client models:
+FedAvg computes a weighted average of local client models.
 
-\[
-w_{t+1} = \sum_{i=1}^{K} \frac{n_i}{N} w_i^t
-\]
+```text
+w_(t+1) = sum over clients i of (n_i / N) * w_i^t
+```
 
 where:
 
-- \(K\) = number of clients
-- \(n_i\) = samples at client \(i\)
-- \(N = \sum_i n_i\)
-- \(w_i^t\) = locally trained model from client \(i\)
+- `K` = number of clients
+- `n_i` = samples at client `i`
+- `N = sum_i n_i`
+- `w_i^t` = locally trained model from client `i`
 
 ### Non-IID Data
 
 Non-IID means hospitals do not have the same class distribution.
 
-Example:
+Example extreme Non-IID split:
 
 | Client | COVID | Normal |
 |---|---:|---:|
@@ -156,13 +160,17 @@ FedDyn modifies local training with dynamic regularization to reduce client drif
 
 A Byzantine client sends malicious model updates.
 
-This project uses sign-flip attack:
+This project uses a sign-flip attack:
 
-\[
-\Delta W_{malicious} = -s \cdot \Delta W
-\]
+```text
+Delta W_malicious = -s * Delta W
+```
 
-where \(s = 5.0\).
+where:
+
+```text
+s = 5.0
+```
 
 ### Multi-Krum
 
@@ -178,11 +186,11 @@ This helps prevent poisoned updates from damaging the global model.
 
 Homomorphic Encryption allows computation on encrypted values.
 
-For an encryption function \(Enc\):
+For an encryption function `Enc` and decryption function `Dec`:
 
-\[
-Dec(Enc(a) + Enc(b)) \approx a + b
-\]
+```text
+Dec(Enc(a) + Enc(b)) ≈ a + b
+```
 
 This means encrypted model updates can be aggregated without exposing plaintext values.
 
@@ -200,7 +208,7 @@ This project uses **TenSEAL CKKS** because neural network weights and updates ar
 | Library | TenSEAL |
 | Polynomial Modulus Degree | 8192 |
 | Coefficient Modulus Bits | [60, 40, 40, 60] |
-| Global Scale | \(2^{40}\) |
+| Global Scale | 2^40 |
 | Model | EfficientNet-B0 |
 
 ---
@@ -232,9 +240,9 @@ Selective CKKS tries to answer:
 
 Earlier adaptive CKKS used:
 
-\[
-Score_i = \|\Delta W_i\|
-\]
+```text
+Score_i = ||Delta W_i||
+```
 
 This selects tensors that changed the most, but large changes are not always the most privacy-sensitive.
 
@@ -242,67 +250,72 @@ This selects tensors that changed the most, but large changes are not always the
 
 Information Leakage-Aware CKKS uses:
 
-\[
-ILA_i = \|\Delta W_i\| \times F_i \times V_i
-\]
+```text
+ILA_i = ||Delta W_i|| * F_i * V_i
+```
 
 where:
 
 | Term | Meaning |
 |---|---|
-| \(\|\Delta W_i\|\) | Update magnitude |
-| \(F_i\) | Fisher-like sensitivity |
-| \(V_i\) | Gradient variance |
+| `||Delta W_i||` | Update magnitude |
+| `F_i` | Fisher-like sensitivity |
+| `V_i` | Gradient variance |
 
 ### Fisher Proxy
 
-\[
-F_i \approx \mathbb{E}[g_i^2]
-\]
+```text
+F_i ≈ E[g_i^2]
+```
 
-where \(g_i\) is the gradient for parameter tensor \(i\).
+where `g_i` is the gradient for parameter tensor `i`.
 
-High Fisher score means that parameter strongly affects the loss.
+High Fisher score means that the parameter strongly affects the loss.
 
 ### Gradient Variance
 
-\[
-V_i = Var(\|g_i\|)
-\]
+```text
+V_i = Var(||g_i||)
+```
 
 High variance suggests client-specific or unstable gradients.
 
 ### Budget Constraint
 
-ILA-CKKS selects tensors under a fixed plaintext byte budget:
+ILA-CKKS selects tensors under a fixed plaintext byte budget.
 
-\[
-\max_S \sum_{i \in S} ILA_i
-\]
+Objective:
 
-subject to:
+```text
+maximize over selected tensor set S:
+sum over i in S of ILA_i
+```
 
-\[
-\sum_{i \in S} Bytes_i \le B
-\]
+Subject to:
 
-where \(B = 2,000,000\) bytes in the final ILA experiment.
+```text
+sum over i in S of Bytes_i <= B
+```
+
+where:
+
+```text
+B = 2,000,000 bytes
+```
+
+in the final ILA experiment.
 
 ---
 
----
+## 9. CKKS Privacy Metrics
 
-# 9. CKKS Privacy Metrics
-
-Unlike Differential Privacy, CKKS Homomorphic Encryption does **not** provide a single numerical privacy guarantee such as ε (epsilon).
+Unlike Differential Privacy, CKKS Homomorphic Encryption does **not** provide a single numerical privacy guarantee such as epsilon.
 
 Instead, this project evaluates **how much potentially sensitive information is protected by encryption** using a collection of proxy coverage metrics.
 
 These metrics measure **what fraction of important model updates are encrypted**, rather than attempting to estimate cryptographic security.
 
----
-
-## Why These Metrics?
+### Why These Metrics?
 
 Simply reporting the **percentage of encrypted parameters** is not sufficient.
 
@@ -317,51 +330,41 @@ Therefore, this project evaluates encryption quality from multiple perspectives:
 - Update magnitude coverage
 - Fisher Information coverage
 - Gradient variance coverage
-- Information Leakage-Aware (ILA) coverage
+- Information Leakage-Aware coverage
 
----
+### Privacy Coverage Metrics
 
-## Privacy Coverage Metrics
+| Metric | Formula in GitHub-friendly text | Meaning | Higher is Better? | Notes |
+|---|---|---|---|---|
+| **PER** Parameter Encryption Ratio | Encrypted Parameters / Total Trainable Parameters | Percentage of model parameters encrypted | Yes | Does not consider parameter importance |
+| **ICR** Importance Coverage Ratio | Sum of Selected Update Magnitudes / Sum of All Update Magnitudes | Fraction of update movement protected | Yes | Based only on update magnitude |
+| **PCR** Privacy Coverage Ratio | Sum of Selected ILA Scores / Sum of All ILA Scores | Fraction of estimated privacy-sensitive information protected | Yes | Primary metric for ILA-CKKS |
+| **RPL** Residual Privacy Leakage | 1 - PCR | Estimated remaining information not encrypted | No, lower is better | Proxy leakage estimate |
+| **LCR** Leakage Coverage Ratio | Sum of Selected Fisher Scores / Sum of All Fisher Scores | Coverage of Fisher-sensitive parameters | Yes | Fisher Information is a proxy |
+| **VCR** Variance Coverage Ratio | Sum of Selected Gradient Variances / Sum of All Gradient Variances | Coverage of unstable or client-specific gradients | Yes | High variance often indicates sensitive updates |
+| **InfCR** Influence Coverage Ratio | Sum of Selected Update Magnitude times Fisher / Sum of All Update Magnitude times Fisher | Coverage of influential parameter updates | Yes | Combines update size with Fisher Information |
+| **GER** Gradient Energy Retention | Square Root of Selected Gradient Energy / Total Gradient Energy | Amount of gradient energy preserved after selection | Yes | Indicates how much optimization signal is retained |
 
-| Metric | Formula (Plain Text) | Meaning | Higher is Better? | Notes |
-|---------|----------------------|---------|-------------------|-------|
-| **PER** (Parameter Encryption Ratio) | Encrypted Parameters / Total Trainable Parameters | Percentage of model parameters encrypted | ✅ Yes | Does not consider parameter importance |
-| **ICR** (Importance Coverage Ratio) | Sum of Selected Update Magnitudes / Sum of All Update Magnitudes | Fraction of update movement protected | ✅ Yes | Based only on update magnitude |
-| **PCR** (Privacy Coverage Ratio) | Sum of Selected ILA Scores / Sum of All ILA Scores | Fraction of estimated privacy-sensitive information protected | ✅ Yes | Primary metric for ILA-CKKS |
-| **RPL** (Residual Privacy Leakage) | 1 − PCR | Estimated remaining information not encrypted | ❌ Lower is Better | Proxy leakage estimate |
-| **LCR** (Leakage Coverage Ratio) | Sum of Selected Fisher Scores / Sum of All Fisher Scores | Coverage of Fisher-sensitive parameters | ✅ Yes | Fisher Information is a proxy |
-| **VCR** (Variance Coverage Ratio) | Sum of Selected Gradient Variances / Sum of All Gradient Variances | Coverage of unstable or client-specific gradients | ✅ Yes | High variance often indicates sensitive updates |
-| **InfCR** (Influence Coverage Ratio) | Sum of (Selected Update Magnitude × Fisher) / Sum of (All Update Magnitude × Fisher) | Coverage of influential parameter updates | ✅ Yes | Combines update size with Fisher Information |
-| **GER** (Gradient Energy Retention) | Square Root of (Selected Gradient Energy / Total Gradient Energy) | Amount of gradient energy preserved after selection | ✅ Yes | Indicates how much optimization signal is retained |
+### Explanation of Each Metric
 
----
-
-## Explanation of Each Metric
-
-### 1. PER — Parameter Encryption Ratio
+#### 1. PER — Parameter Encryption Ratio
 
 Measures **how much of the model is encrypted**.
 
-Calculation:
-
-```
+```text
 PER = Encrypted Parameters / Total Trainable Parameters
 ```
 
 Interpretation:
 
 - Higher PER means more parameters are encrypted.
-- Does **not** indicate whether the encrypted parameters are actually important.
+- PER does not indicate whether the encrypted parameters are actually important.
 
----
-
-### 2. ICR — Importance Coverage Ratio
+#### 2. ICR — Importance Coverage Ratio
 
 Measures how much **model update magnitude** is protected.
 
-Calculation:
-
-```
+```text
 ICR =
 Sum of Selected Update Magnitudes
 ---------------------------------
@@ -375,30 +378,23 @@ Interpretation:
 
 Limitation:
 
-Magnitude alone does not necessarily correspond to privacy leakage.
+- Magnitude alone does not necessarily correspond to privacy leakage.
 
----
-
-### 3. PCR — Privacy Coverage Ratio
+#### 3. PCR — Privacy Coverage Ratio
 
 The primary metric introduced for **Information Leakage-Aware CKKS (ILA-CKKS)**.
 
-Calculation:
-
-```
+```text
 PCR =
 Sum of Selected ILA Scores
 --------------------------
 Sum of All ILA Scores
 ```
 
-where
+where:
 
-```
-ILA Score =
-Update Magnitude
-× Fisher Information
-× Gradient Variance
+```text
+ILA Score = Update Magnitude * Fisher Information * Gradient Variance
 ```
 
 Interpretation:
@@ -406,16 +402,12 @@ Interpretation:
 - Higher PCR indicates that the encryption process protects a larger fraction of estimated privacy-sensitive information.
 - This is the most important metric for evaluating ILA-CKKS.
 
----
-
-### 4. RPL — Residual Privacy Leakage
+#### 4. RPL — Residual Privacy Leakage
 
 Measures the estimated fraction of information **not protected**.
 
-Calculation:
-
-```
-RPL = 1 − PCR
+```text
+RPL = 1 - PCR
 ```
 
 Interpretation:
@@ -423,15 +415,11 @@ Interpretation:
 - Lower values are better.
 - An RPL of 0 means all estimated sensitive information is encrypted.
 
----
-
-### 5. LCR — Leakage Coverage Ratio
+#### 5. LCR — Leakage Coverage Ratio
 
 Measures coverage of parameters with high Fisher Information.
 
-Calculation:
-
-```
+```text
 LCR =
 Sum of Selected Fisher Scores
 -----------------------------
@@ -443,15 +431,11 @@ Interpretation:
 - Fisher Information estimates how strongly a parameter affects model predictions.
 - Encrypting high-Fisher tensors generally provides better privacy protection.
 
----
-
-### 6. VCR — Variance Coverage Ratio
+#### 6. VCR — Variance Coverage Ratio
 
 Measures protection of parameters with large gradient variance.
 
-Calculation:
-
-```
+```text
 VCR =
 Sum of Selected Gradient Variances
 ----------------------------------
@@ -463,19 +447,15 @@ Interpretation:
 - Large gradient variance often indicates client-specific information.
 - Encrypting these parameters reduces potential information leakage.
 
----
-
-### 7. InfCR — Influence Coverage Ratio
+#### 7. InfCR — Influence Coverage Ratio
 
 Combines update magnitude with Fisher Information.
 
-Calculation:
-
-```
+```text
 InfCR =
-Sum of (Selected Update Magnitude × Fisher)
+Sum of Selected (Update Magnitude * Fisher)
 -------------------------------------------
-Sum of (All Update Magnitude × Fisher)
+Sum of All (Update Magnitude * Fisher)
 ```
 
 Interpretation:
@@ -484,20 +464,16 @@ Interpretation:
   - change significantly, and
   - strongly affect the model.
 
----
-
-### 8. GER — Gradient Energy Retention
+#### 8. GER — Gradient Energy Retention
 
 Measures how much optimization signal remains after parameter selection.
 
-Calculation:
-
-```
+```text
 GER =
 Square Root(
-Selected Gradient Energy
-------------------------
-Total Gradient Energy
+    Selected Gradient Energy
+    ------------------------
+    Total Gradient Energy
 )
 ```
 
@@ -506,44 +482,40 @@ Interpretation:
 - Higher GER means the selected encrypted tensors retain more learning information.
 - Useful for understanding communication-efficiency versus optimization quality.
 
----
+### Relationship Between the Metrics
 
-## Relationship Between the Metrics
-
-```
+```text
 Parameter Coverage
-        │
-        ▼
+        |
+        v
        PER
-        │
-        ▼
+        |
+        v
 Importance Coverage
-        │
-        ├────────► ICR
-        │
-        ├────────► LCR
-        │
-        ├────────► VCR
-        │
-        └────────► InfCR
-                     │
-                     ▼
+        |
+        +--------> ICR
+        |
+        +--------> LCR
+        |
+        +--------> VCR
+        |
+        +--------> InfCR
+                     |
+                     v
                  ILA Score
-                     │
-                     ▼
+                     |
+                     v
                     PCR
-                     │
-                     ▼
-               RPL = 1 − PCR
+                     |
+                     v
+               RPL = 1 - PCR
 ```
 
----
-
-## Important Note
+### Important Note
 
 These metrics **do not replace formal Differential Privacy**.
 
-They estimate **how much potentially sensitive model information is encrypted**, but they do **not** provide mathematical privacy guarantees like ε-Differential Privacy.
+They estimate **how much potentially sensitive model information is encrypted**, but they do **not** provide mathematical privacy guarantees like epsilon-Differential Privacy.
 
 Therefore:
 
@@ -552,6 +524,8 @@ Therefore:
 - The metrics above evaluate the **effectiveness of selective encryption**, not formal privacy.
 
 For this reason, they should be interpreted as **privacy coverage metrics** rather than **formal privacy guarantees**.
+
+---
 
 ## 10. Differential Privacy Analysis
 
@@ -565,26 +539,26 @@ This is useful for utility-preserving perturbation, but it is not whole-model DP
 
 Approximate Gaussian mechanism:
 
-\[
-\epsilon \approx \frac{S \sqrt{2\ln(1.25/\delta)}}{\sigma}
-\]
+```text
+epsilon ≈ S * sqrt(2 * ln(1.25 / delta)) / sigma
+```
 
 where:
 
-- \(S\) = sensitivity
-- \(\sigma\) = noise standard deviation
-- \(\delta = 10^{-5}\)
-- replace-one update sensitivity \(S = 2C\)
-- add/remove update sensitivity \(S = C\)
+- `S` = sensitivity
+- `sigma` = noise standard deviation
+- `delta = 10^-5`
+- replace-one update sensitivity: `S = 2C`
+- add/remove update sensitivity: `S = C`
 
 Original configuration:
 
 | Parameter | Value |
 |---|---:|
 | Clip norm | 100 |
-| Noise std | 1×10⁻⁶ |
-| Replace-one ε | 968,961,052.52 |
-| Add/remove ε | 484,480,526.26 |
+| Noise std | 1 x 10^-6 |
+| Replace-one epsilon | 968,961,052.52 |
+| Add/remove epsilon | 484,480,526.26 |
 
 Interpretation:
 
@@ -655,9 +629,9 @@ No raw patient data or raw model weights are stored on-chain.
 
 PoW slowdown:
 
-\[
-\frac{116.01598}{0.09064} \approx 1279.96
-\]
+```text
+PoW slowdown = 116.01598 / 0.09064 ≈ 1279.96 times slower
+```
 
 Conclusion:
 
@@ -774,8 +748,6 @@ The strongest accurate claim for this project is:
 ---
 
 ## 17. Current Final Status
-
-The project is now strong enough to be presented as a completed research prototype.
 
 The only major missing item, if strict replication of the base paper is required, is Brain MRI validation.
 
