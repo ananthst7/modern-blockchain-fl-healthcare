@@ -290,234 +290,268 @@ where \(B = 2,000,000\) bytes in the final ILA experiment.
 
 ---
 
-## 9. CKKS Privacy Metrics
+---
 
-CKKS does not provide an epsilon value like Differential Privacy. CKKS is a cryptographic confidentiality mechanism: encrypted tensors remain hidden from parties that do not possess the secret key. Because this project uses **selective CKKS**, only a subset of tensors is encrypted. Therefore, additional metrics are needed to measure **how much important update information is protected**.
+# 9. CKKS Privacy Metrics
 
-These metrics are **proxy privacy-coverage metrics**, not formal differential privacy guarantees.
+Unlike Differential Privacy, CKKS Homomorphic Encryption does **not** provide a single numerical privacy guarantee such as ε (epsilon).
+
+Instead, this project evaluates **how much potentially sensitive information is protected by encryption** using a collection of proxy coverage metrics.
+
+These metrics measure **what fraction of important model updates are encrypted**, rather than attempting to estimate cryptographic security.
 
 ---
 
-### 9.1 Parameter Encryption Ratio (PER)
+## Why These Metrics?
 
-\[
-PER =
-\frac{
-\text{Number of encrypted parameters}
-}{
-\text{Total number of trainable parameters}
-}
-\]
+Simply reporting the **percentage of encrypted parameters** is not sufficient.
 
-**Meaning:** Measures what fraction of trainable model parameters are encrypted.
+For example:
 
-**Interpretation:**
+- Encrypting 10% of parameters could protect almost all important information.
+- Encrypting 50% of parameters could still miss the most privacy-sensitive tensors.
+
+Therefore, this project evaluates encryption quality from multiple perspectives:
+
+- Parameter coverage
+- Update magnitude coverage
+- Fisher Information coverage
+- Gradient variance coverage
+- Information Leakage-Aware (ILA) coverage
+
+---
+
+## Privacy Coverage Metrics
+
+| Metric | Formula (Plain Text) | Meaning | Higher is Better? | Notes |
+|---------|----------------------|---------|-------------------|-------|
+| **PER** (Parameter Encryption Ratio) | Encrypted Parameters / Total Trainable Parameters | Percentage of model parameters encrypted | ✅ Yes | Does not consider parameter importance |
+| **ICR** (Importance Coverage Ratio) | Sum of Selected Update Magnitudes / Sum of All Update Magnitudes | Fraction of update movement protected | ✅ Yes | Based only on update magnitude |
+| **PCR** (Privacy Coverage Ratio) | Sum of Selected ILA Scores / Sum of All ILA Scores | Fraction of estimated privacy-sensitive information protected | ✅ Yes | Primary metric for ILA-CKKS |
+| **RPL** (Residual Privacy Leakage) | 1 − PCR | Estimated remaining information not encrypted | ❌ Lower is Better | Proxy leakage estimate |
+| **LCR** (Leakage Coverage Ratio) | Sum of Selected Fisher Scores / Sum of All Fisher Scores | Coverage of Fisher-sensitive parameters | ✅ Yes | Fisher Information is a proxy |
+| **VCR** (Variance Coverage Ratio) | Sum of Selected Gradient Variances / Sum of All Gradient Variances | Coverage of unstable or client-specific gradients | ✅ Yes | High variance often indicates sensitive updates |
+| **InfCR** (Influence Coverage Ratio) | Sum of (Selected Update Magnitude × Fisher) / Sum of (All Update Magnitude × Fisher) | Coverage of influential parameter updates | ✅ Yes | Combines update size with Fisher Information |
+| **GER** (Gradient Energy Retention) | Square Root of (Selected Gradient Energy / Total Gradient Energy) | Amount of gradient energy preserved after selection | ✅ Yes | Indicates how much optimization signal is retained |
+
+---
+
+## Explanation of Each Metric
+
+### 1. PER — Parameter Encryption Ratio
+
+Measures **how much of the model is encrypted**.
+
+Calculation:
+
+```
+PER = Encrypted Parameters / Total Trainable Parameters
+```
+
+Interpretation:
 
 - Higher PER means more parameters are encrypted.
-- Lower PER means lower communication and encryption cost.
-- PER alone does not tell whether the encrypted parameters are important.
+- Does **not** indicate whether the encrypted parameters are actually important.
 
 ---
 
-### 9.2 Information Coverage Ratio (ICR)
+### 2. ICR — Importance Coverage Ratio
 
-\[
+Measures how much **model update magnitude** is protected.
+
+Calculation:
+
+```
 ICR =
-\frac{
-\sum_{i \in S} \|\Delta W_i\|
-}{
-\sum_i \|\Delta W_i\|
-}
-\]
+Sum of Selected Update Magnitudes
+---------------------------------
+Sum of All Update Magnitudes
+```
 
-where:
+Interpretation:
 
-- \(S\) = selected encrypted tensor set
-- \(\Delta W_i\) = model update for tensor \(i\)
+- Large model updates often contain important learning information.
+- Higher ICR means more update movement is encrypted.
 
-**Meaning:** Measures how much of the total update movement is encrypted.
+Limitation:
 
-**Interpretation:**
-
-- High ICR means the encrypted tensors contain a large portion of the model update signal.
-- Low ICR means most update movement remains visible.
-- ICR measures optimization-signal coverage, not direct privacy leakage.
+Magnitude alone does not necessarily correspond to privacy leakage.
 
 ---
 
-### 9.3 Privacy Coverage Ratio (PCR)
+### 3. PCR — Privacy Coverage Ratio
 
-\[
+The primary metric introduced for **Information Leakage-Aware CKKS (ILA-CKKS)**.
+
+Calculation:
+
+```
 PCR =
-\frac{
-\sum_{i \in S} ILA_i
-}{
-\sum_i ILA_i
-}
-\]
+Sum of Selected ILA Scores
+--------------------------
+Sum of All ILA Scores
+```
 
-where:
+where
 
-\[
-ILA_i =
-\|\Delta W_i\| \times F_i \times V_i
-\]
+```
+ILA Score =
+Update Magnitude
+× Fisher Information
+× Gradient Variance
+```
 
-**Meaning:** Measures how much of the ILA-estimated privacy-sensitive signal is encrypted.
+Interpretation:
 
-**Interpretation:**
-
-- High PCR means the selector captured most tensors that the ILA score considers privacy-sensitive.
-- In the final ILA-CKKS experiment, PCR was very high because the selector directly optimizes this score.
-- PCR should be interpreted together with independent metrics such as LCR, VCR, and InfCR.
+- Higher PCR indicates that the encryption process protects a larger fraction of estimated privacy-sensitive information.
+- This is the most important metric for evaluating ILA-CKKS.
 
 ---
 
-### 9.4 Residual Privacy Leakage (RPL)
+### 4. RPL — Residual Privacy Leakage
 
-\[
-RPL = 1 - PCR
-\]
+Measures the estimated fraction of information **not protected**.
 
-**Meaning:** Estimates the portion of ILA-scored privacy signal that remains unencrypted.
+Calculation:
 
-**Interpretation:**
+```
+RPL = 1 − PCR
+```
 
-- Lower RPL is better.
-- RPL is a proxy metric, not a formal information-theoretic leakage bound.
+Interpretation:
+
+- Lower values are better.
+- An RPL of 0 means all estimated sensitive information is encrypted.
 
 ---
 
-### 9.5 Leakage Coverage Ratio (LCR)
+### 5. LCR — Leakage Coverage Ratio
 
-\[
+Measures coverage of parameters with high Fisher Information.
+
+Calculation:
+
+```
 LCR =
-\frac{
-\sum_{i \in S} F_i
-}{
-\sum_i F_i
-}
-\]
+Sum of Selected Fisher Scores
+-----------------------------
+Sum of All Fisher Scores
+```
 
-where:
+Interpretation:
 
-- \(F_i\) = Fisher-like sensitivity score for tensor \(i\)
-
-**Meaning:** Measures how much Fisher-sensitive information is encrypted.
-
-**Why it matters:** Fisher Information is commonly used as a parameter-sensitivity proxy. A high LCR indicates that the encrypted subset captures parameters that strongly influence the loss.
+- Fisher Information estimates how strongly a parameter affects model predictions.
+- Encrypting high-Fisher tensors generally provides better privacy protection.
 
 ---
 
-### 9.6 Variance Coverage Ratio (VCR)
+### 6. VCR — Variance Coverage Ratio
 
-\[
+Measures protection of parameters with large gradient variance.
+
+Calculation:
+
+```
 VCR =
-\frac{
-\sum_{i \in S} V_i
-}{
-\sum_i V_i
-}
-\]
+Sum of Selected Gradient Variances
+----------------------------------
+Sum of All Gradient Variances
+```
 
-where:
+Interpretation:
 
-- \(V_i\) = gradient variance score for tensor \(i\)
-
-**Meaning:** Measures how much client-specific or unstable gradient behavior is protected.
-
-**Interpretation:**
-
-- High VCR means tensors with high gradient variability are mostly encrypted.
-- This is useful in federated settings because high gradient variance may indicate client-specific information.
+- Large gradient variance often indicates client-specific information.
+- Encrypting these parameters reduces potential information leakage.
 
 ---
 
-### 9.7 Influence Coverage Ratio (InfCR)
+### 7. InfCR — Influence Coverage Ratio
 
-\[
+Combines update magnitude with Fisher Information.
+
+Calculation:
+
+```
 InfCR =
-\frac{
-\sum_{i \in S} \|\Delta W_i\| F_i
-}{
-\sum_i \|\Delta W_i\| F_i
-}
-\]
+Sum of (Selected Update Magnitude × Fisher)
+-------------------------------------------
+Sum of (All Update Magnitude × Fisher)
+```
 
-**Meaning:** Measures how much update-weighted Fisher influence is encrypted.
+Interpretation:
 
-**Interpretation:**
-
-- High InfCR means selected tensors are both changing during learning and sensitive to the loss.
-- This is one of the strongest independent validation metrics for ILA-CKKS.
+- Gives higher importance to parameters that both:
+  - change significantly, and
+  - strongly affect the model.
 
 ---
 
-### 9.8 Gradient Energy Ratio (GER)
+### 8. GER — Gradient Energy Retention
 
-The current implementation field previously named `avg_gradient_cosine_similarity` is better interpreted as Gradient Energy Ratio:
+Measures how much optimization signal remains after parameter selection.
 
-\[
+Calculation:
+
+```
 GER =
-\sqrt{
-\frac{
-\sum_{i \in S} \|\Delta W_i\|^2
-}{
-\sum_i \|\Delta W_i\|^2
-}
-}
-\]
+Square Root(
+Selected Gradient Energy
+------------------------
+Total Gradient Energy
+)
+```
 
-**Meaning:** Measures the fraction of squared update energy contained in the encrypted subset.
+Interpretation:
 
-**Important note:** This is not true cosine similarity. True cosine similarity should be computed as:
-
-\[
-\cos(\theta) =
-\frac{
-g_S \cdot g
-}{
-\|g_S\| \|g\|
-}
-\]
-
-Therefore, the current field should either be renamed to `gradient_energy_ratio` or recomputed as true cosine similarity in future work.
+- Higher GER means the selected encrypted tensors retain more learning information.
+- Useful for understanding communication-efficiency versus optimization quality.
 
 ---
 
-### 9.9 Metric Summary
+## Relationship Between the Metrics
 
-| Metric | Formula | Measures | Higher is Better? | Limitation |
-|---|---|---|---|---|
-| PER | \( \frac{\text{Encrypted Parameters}}{\text{Total Trainable Parameters}} \) | Encryption amount | Depends | Does not measure importance |
-| ICR | \( \frac{\sum_{i \in S}\|\Delta W_i\|}{\sum_i\|\Delta W_i\|} \) | Update movement coverage | Yes | Not privacy-specific |
-| PCR | \( \frac{\sum_{i \in S} ILA_i}{\sum_i ILA_i} \) | ILA privacy-score coverage | Yes | Selector-aligned |
-| RPL | \( 1 - PCR \) | Remaining ILA leakage proxy | No | Proxy only |
-| LCR | \( \frac{\sum_{i \in S}F_i}{\sum_iF_i} \) | Fisher-sensitive coverage | Yes | Fisher is still a proxy |
-| VCR | \( \frac{\sum_{i \in S}V_i}{\sum_iV_i} \) | Gradient-variance coverage | Yes | Variance can be noisy |
-| InfCR | \( \frac{\sum_{i \in S}\|\Delta W_i\|F_i}{\sum_i\|\Delta W_i\|F_i} \) | Update-sensitive Fisher influence | Yes | Excludes variance |
-| GER | \( \sqrt{\frac{\sum_{i \in S}\|\Delta W_i\|^2}{\sum_i\|\Delta W_i\|^2}} \) | Update energy coverage | Yes | Not true cosine similarity |
+```
+Parameter Coverage
+        │
+        ▼
+       PER
+        │
+        ▼
+Importance Coverage
+        │
+        ├────────► ICR
+        │
+        ├────────► LCR
+        │
+        ├────────► VCR
+        │
+        └────────► InfCR
+                     │
+                     ▼
+                 ILA Score
+                     │
+                     ▼
+                    PCR
+                     │
+                     ▼
+               RPL = 1 − PCR
+```
 
 ---
 
-### 9.10 Final ILA-CKKS Metric Results
+## Important Note
 
-| Metric | Final / Average Result |
-|---|---:|
-| Parameter Encryption Ratio (PER) | 12.47% |
-| Information Coverage Ratio (ICR) | 27.01% average |
-| Privacy Coverage Ratio (PCR) | 99.95% average |
-| Residual Privacy Leakage (RPL) | 0.05% average |
-| Leakage Coverage Ratio (LCR) | 99.45% average |
-| Variance Coverage Ratio (VCR) | 86.27% average |
-| Influence Coverage Ratio (InfCR) | 97.34% average |
-| Gradient Energy Ratio (GER) | 0.3885 average |
-| Encrypted Upload | 156.85 MB / round |
-| Crypto Overhead | 8.36% average |
+These metrics **do not replace formal Differential Privacy**.
 
-**Key interpretation:**
+They estimate **how much potentially sensitive model information is encrypted**, but they do **not** provide mathematical privacy guarantees like ε-Differential Privacy.
 
-ILA-CKKS encrypted only about **12.47%** of trainable parameters, but captured approximately **99.45% Fisher-sensitive leakage coverage** and **97.34% update-sensitive Fisher influence**. This supports the claim that leakage-aware selective encryption can protect the most privacy-relevant tensors without requiring full-model encryption.
+Therefore:
+
+- CKKS provides **cryptographic protection** for encrypted computations.
+- Differential Privacy provides **mathematical privacy guarantees**.
+- The metrics above evaluate the **effectiveness of selective encryption**, not formal privacy.
+
+For this reason, they should be interpreted as **privacy coverage metrics** rather than **formal privacy guarantees**.
 
 ## 10. Differential Privacy Analysis
 
