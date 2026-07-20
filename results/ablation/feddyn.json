@@ -1,0 +1,236 @@
+{
+    "experiment": "EXP-012",
+    "method": "FedDyn under Byzantine sign-flip attack",
+    "setting": "Moderate Non-IID + 1 Byzantine client",
+    "history": [
+        {
+            "round": 1,
+            "avg_client_loss": 0.5619576320052146,
+            "client_losses": [
+                0.578094482421875,
+                0.5761531019210815,
+                0.5568670046329498,
+                0.5367159390449524
+            ],
+            "client_sizes": [
+                400,
+                400,
+                400,
+                400
+            ],
+            "round_time_sec": 59.6311981678009,
+            "communication_cost_mb": 123.6640625,
+            "alpha": 0.005,
+            "loss": NaN,
+            "accuracy": 0.5,
+            "precision": 0.25,
+            "recall": 0.5,
+            "f1": 0.33333333333333326,
+            "confusion_matrix": [
+                [
+                    200,
+                    0
+                ],
+                [
+                    200,
+                    0
+                ]
+            ],
+            "classes": [
+                "COVID",
+                "Normal"
+            ]
+        },
+        {
+            "round": 2,
+            "avg_client_loss": 2077.127084529362,
+            "client_losses": [
+                8256.5801953125,
+                30.05842269897461,
+                13.03080912590027,
+                8.838910980075598
+            ],
+            "client_sizes": [
+                400,
+                400,
+                400,
+                400
+            ],
+            "round_time_sec": 66.00852489471436,
+            "communication_cost_mb": 123.6640625,
+            "alpha": 0.005,
+            "loss": NaN,
+            "accuracy": 0.5,
+            "precision": 0.25,
+            "recall": 0.5,
+            "f1": 0.33333333333333326,
+            "confusion_matrix": [
+                [
+                    200,
+                    0
+                ],
+                [
+                    200,
+                    0
+                ]
+            ],
+            "classes": [
+                "COVID",
+                "Normal"
+            ]
+        },
+        {
+            "round": 3,
+            "avg_client_loss": 2559.1393111008406,
+            "client_losses": [
+                10227.0326171875,
+                1.6996794247627258,
+                3.6967188215255735,
+                4.128228969573975
+            ],
+            "client_sizes": [
+                400,
+                400,
+                400,
+                400
+            ],
+            "round_time_sec": 63.04636001586914,
+            "communication_cost_mb": 123.6640625,
+            "alpha": 0.005,
+            "loss": NaN,
+            "accuracy": 0.5,
+            "precision": 0.25,
+            "recall": 0.5,
+            "f1": 0.33333333333333326,
+            "confusion_matrix": [
+                [
+                    200,
+                    0
+                ],
+                [
+                    200,
+                    0
+                ]
+            ],
+            "classes": [
+                "COVID",
+                "Normal"
+            ]
+        },
+        {
+            "round": 4,
+            "avg_client_loss": 5385.81918656215,
+            "client_losses": [
+                21446.742578125,
+                51.76918388366699,
+                27.183356895446778,
+                17.581627344489096
+            ],
+            "client_sizes": [
+                400,
+                400,
+                400,
+                400
+            ],
+            "round_time_sec": 56.59454536437988,
+            "communication_cost_mb": 123.6640625,
+            "alpha": 0.005,
+            "loss": NaN,
+            "accuracy": 0.5,
+            "precision": 0.25,
+            "recall": 0.5,
+            "f1": 0.33333333333333326,
+            "confusion_matrix": [
+                [
+                    200,
+                    0
+                ],
+                [
+                    200,
+                    0
+                ]
+            ],
+            "classes": [
+                "COVID",
+                "Normal"
+            ]
+        },
+        {
+            "round": 5,
+            "avg_client_loss": 9655.444883304834,
+            "client_losses": [
+                38603.9309375,
+                3.3754281187057495,
+                6.69596194267273,
+                7.7772056579589846
+            ],
+            "client_sizes": [
+                400,
+                400,
+                400,
+                400
+            ],
+            "round_time_sec": 59.481456995010376,
+            "communication_cost_mb": 123.6640625,
+            "alpha": 0.005,
+            "loss": NaN,
+            "accuracy": 0.5,
+            "precision": 0.25,
+            "recall": 0.5,
+            "f1": 0.33333333333333326,
+            "confusion_matrix": [
+                [
+                    200,
+                    0
+                ],
+                [
+                    200,
+                    0
+                ]
+            ],
+            "classes": [
+                "COVID",
+                "Normal"
+            ]
+        }
+    ],
+    "final_metrics": {
+        "round": 5,
+        "avg_client_loss": 9655.444883304834,
+        "client_losses": [
+            38603.9309375,
+            3.3754281187057495,
+            6.69596194267273,
+            7.7772056579589846
+        ],
+        "client_sizes": [
+            400,
+            400,
+            400,
+            400
+        ],
+        "round_time_sec": 59.481456995010376,
+        "communication_cost_mb": 123.6640625,
+        "alpha": 0.005,
+        "loss": NaN,
+        "accuracy": 0.5,
+        "precision": 0.25,
+        "recall": 0.5,
+        "f1": 0.33333333333333326,
+        "confusion_matrix": [
+            [
+                200,
+                0
+            ],
+            [
+                200,
+                0
+            ]
+        ],
+        "classes": [
+            "COVID",
+            "Normal"
+        ]
+    },
+    "total_time_sec": 304.7702476978302
+}

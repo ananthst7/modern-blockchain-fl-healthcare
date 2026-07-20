@@ -1,0 +1,416 @@
+{
+    "experiment": "EXP-012",
+    "method": "FedDyn + Multi-Krum",
+    "setting": "Moderate Non-IID + 1 Byzantine client",
+    "history": [
+        {
+            "round": 1,
+            "avg_client_loss": 0.5556645914912224,
+            "client_losses": [
+                0.5444500696659088,
+                0.574403989315033,
+                0.5553295612335205,
+                0.5484747457504272
+            ],
+            "client_sizes": [
+                400,
+                400,
+                400,
+                400
+            ],
+            "selected_indices": [
+                2,
+                3
+            ],
+            "krum_scores": [
+                [
+                    12650.87109375,
+                    2
+                ],
+                [
+                    12650.87109375,
+                    3
+                ],
+                [
+                    23074.80859375,
+                    1
+                ],
+                [
+                    787187776.0,
+                    0
+                ]
+            ],
+            "round_time_sec": 69.81430172920227,
+            "communication_cost_mb": 123.6640625,
+            "alpha": 0.005,
+            "ckks_enabled": false,
+            "selected_layer_scope": "none",
+            "avg_encryption_time_sec": 0.0,
+            "encrypted_aggregation_time_sec": 0.0,
+            "decryption_time_sec": 0.0,
+            "crypto_overhead_percent": 0.0,
+            "selective_encrypted_upload_mb": 0.0,
+            "selective_plain_upload_mb": 0.0,
+            "loss": 0.5568668937683106,
+            "accuracy": 0.7725,
+            "precision": 0.8069471431387458,
+            "recall": 0.7725,
+            "f1": 0.765932956511115,
+            "confusion_matrix": [
+                [
+                    121,
+                    79
+                ],
+                [
+                    12,
+                    188
+                ]
+            ],
+            "classes": [
+                "COVID",
+                "Normal"
+            ]
+        },
+        {
+            "round": 2,
+            "avg_client_loss": -1030.135568897128,
+            "client_losses": [
+                -4121.77669921875,
+                0.5553864717483521,
+                0.3503966319561005,
+                0.3286405265331268
+            ],
+            "client_sizes": [
+                400,
+                400,
+                400,
+                400
+            ],
+            "selected_indices": [
+                1,
+                2
+            ],
+            "krum_scores": [
+                [
+                    20134.974609375,
+                    1
+                ],
+                [
+                    20134.974609375,
+                    2
+                ],
+                [
+                    23510.705078125,
+                    3
+                ],
+                [
+                    800122496.0,
+                    0
+                ]
+            ],
+            "round_time_sec": 55.19604992866516,
+            "communication_cost_mb": 123.6640625,
+            "alpha": 0.005,
+            "ckks_enabled": false,
+            "selected_layer_scope": "none",
+            "avg_encryption_time_sec": 0.0,
+            "encrypted_aggregation_time_sec": 0.0,
+            "decryption_time_sec": 0.0,
+            "crypto_overhead_percent": 0.0,
+            "selective_encrypted_upload_mb": 0.0,
+            "selective_plain_upload_mb": 0.0,
+            "loss": 0.3880662536621094,
+            "accuracy": 0.88,
+            "precision": 0.8846543172385869,
+            "recall": 0.88,
+            "f1": 0.8796358985932445,
+            "confusion_matrix": [
+                [
+                    165,
+                    35
+                ],
+                [
+                    13,
+                    187
+                ]
+            ],
+            "classes": [
+                "COVID",
+                "Normal"
+            ]
+        },
+        {
+            "round": 3,
+            "avg_client_loss": -2065.0615403626116,
+            "client_losses": [
+                -8261.150234375,
+                0.3779237884283066,
+                0.2528420016169548,
+                0.2733071345090866
+            ],
+            "client_sizes": [
+                400,
+                400,
+                400,
+                400
+            ],
+            "selected_indices": [
+                2,
+                3
+            ],
+            "krum_scores": [
+                [
+                    17965.912109375,
+                    2
+                ],
+                [
+                    17965.912109375,
+                    3
+                ],
+                [
+                    47534.0703125,
+                    1
+                ],
+                [
+                    811583616.0,
+                    0
+                ]
+            ],
+            "round_time_sec": 55.36912751197815,
+            "communication_cost_mb": 123.6640625,
+            "alpha": 0.005,
+            "ckks_enabled": false,
+            "selected_layer_scope": "none",
+            "avg_encryption_time_sec": 0.0,
+            "encrypted_aggregation_time_sec": 0.0,
+            "decryption_time_sec": 0.0,
+            "crypto_overhead_percent": 0.0,
+            "selective_encrypted_upload_mb": 0.0,
+            "selective_plain_upload_mb": 0.0,
+            "loss": 0.269272773116827,
+            "accuracy": 0.8975,
+            "precision": 0.9149377593360996,
+            "recall": 0.8975,
+            "f1": 0.8964116751621725,
+            "confusion_matrix": [
+                [
+                    159,
+                    41
+                ],
+                [
+                    0,
+                    200
+                ]
+            ],
+            "classes": [
+                "COVID",
+                "Normal"
+            ]
+        },
+        {
+            "round": 4,
+            "avg_client_loss": -3099.8297903572025,
+            "client_losses": [
+                -12400.0973828125,
+                0.46874357223510743,
+                0.17079865142703057,
+                0.13867916002869607
+            ],
+            "client_sizes": [
+                400,
+                400,
+                400,
+                400
+            ],
+            "selected_indices": [
+                2,
+                3
+            ],
+            "krum_scores": [
+                [
+                    28717.365234375,
+                    2
+                ],
+                [
+                    28717.365234375,
+                    3
+                ],
+                [
+                    44031.88671875,
+                    1
+                ],
+                [
+                    819994496.0,
+                    0
+                ]
+            ],
+            "round_time_sec": 55.181116342544556,
+            "communication_cost_mb": 123.6640625,
+            "alpha": 0.005,
+            "ckks_enabled": false,
+            "selected_layer_scope": "none",
+            "avg_encryption_time_sec": 0.0,
+            "encrypted_aggregation_time_sec": 0.0,
+            "decryption_time_sec": 0.0,
+            "crypto_overhead_percent": 0.0,
+            "selective_encrypted_upload_mb": 0.0,
+            "selective_plain_upload_mb": 0.0,
+            "loss": 0.1795146641880274,
+            "accuracy": 0.9375,
+            "precision": 0.9433634820501128,
+            "recall": 0.9375,
+            "f1": 0.9372926739030922,
+            "confusion_matrix": [
+                [
+                    176,
+                    24
+                ],
+                [
+                    1,
+                    199
+                ]
+            ],
+            "classes": [
+                "COVID",
+                "Normal"
+            ]
+        },
+        {
+            "round": 5,
+            "avg_client_loss": -4134.53977161549,
+            "client_losses": [
+                -16538.876796875,
+                0.5452448600530624,
+                0.09055771455168724,
+                0.08190783843398095
+            ],
+            "client_sizes": [
+                400,
+                400,
+                400,
+                400
+            ],
+            "selected_indices": [
+                2,
+                3
+            ],
+            "krum_scores": [
+                [
+                    16334.0947265625,
+                    2
+                ],
+                [
+                    16334.0947265625,
+                    3
+                ],
+                [
+                    54792.76171875,
+                    1
+                ],
+                [
+                    836751040.0,
+                    0
+                ]
+            ],
+            "round_time_sec": 55.57023572921753,
+            "communication_cost_mb": 123.6640625,
+            "alpha": 0.005,
+            "ckks_enabled": false,
+            "selected_layer_scope": "none",
+            "avg_encryption_time_sec": 0.0,
+            "encrypted_aggregation_time_sec": 0.0,
+            "decryption_time_sec": 0.0,
+            "crypto_overhead_percent": 0.0,
+            "selective_encrypted_upload_mb": 0.0,
+            "selective_plain_upload_mb": 0.0,
+            "loss": 0.13255337305366993,
+            "accuracy": 0.955,
+            "precision": 0.9579307568438002,
+            "recall": 0.955,
+            "f1": 0.9549278846153847,
+            "confusion_matrix": [
+                [
+                    183,
+                    17
+                ],
+                [
+                    1,
+                    199
+                ]
+            ],
+            "classes": [
+                "COVID",
+                "Normal"
+            ]
+        }
+    ],
+    "final_metrics": {
+        "round": 5,
+        "avg_client_loss": -4134.53977161549,
+        "client_losses": [
+            -16538.876796875,
+            0.5452448600530624,
+            0.09055771455168724,
+            0.08190783843398095
+        ],
+        "client_sizes": [
+            400,
+            400,
+            400,
+            400
+        ],
+        "selected_indices": [
+            2,
+            3
+        ],
+        "krum_scores": [
+            [
+                16334.0947265625,
+                2
+            ],
+            [
+                16334.0947265625,
+                3
+            ],
+            [
+                54792.76171875,
+                1
+            ],
+            [
+                836751040.0,
+                0
+            ]
+        ],
+        "round_time_sec": 55.57023572921753,
+        "communication_cost_mb": 123.6640625,
+        "alpha": 0.005,
+        "ckks_enabled": false,
+        "selected_layer_scope": "none",
+        "avg_encryption_time_sec": 0.0,
+        "encrypted_aggregation_time_sec": 0.0,
+        "decryption_time_sec": 0.0,
+        "crypto_overhead_percent": 0.0,
+        "selective_encrypted_upload_mb": 0.0,
+        "selective_plain_upload_mb": 0.0,
+        "loss": 0.13255337305366993,
+        "accuracy": 0.955,
+        "precision": 0.9579307568438002,
+        "recall": 0.955,
+        "f1": 0.9549278846153847,
+        "confusion_matrix": [
+            [
+                183,
+                17
+            ],
+            [
+                1,
+                199
+            ]
+        ],
+        "classes": [
+            "COVID",
+            "Normal"
+        ]
+    },
+    "total_time_sec": 291.144150018692
+}

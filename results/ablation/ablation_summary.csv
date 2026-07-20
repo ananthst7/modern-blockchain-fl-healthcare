@@ -1,0 +1,7 @@
+method,accuracy,f1,best_accuracy,best_f1,byzantine_defense,ckks,ila_selection,blockchain,main_purpose
+FedAvg,0.5,0.33333333333333326,0.5,0.33333333333333326,No,No,No,No,Basic FL baseline under attack
+FedDyn,0.5,0.33333333333333326,0.5,0.33333333333333326,No,No,No,No,Non-IID robustness under attack
+FedDyn + Multi-Krum,0.955,0.9549278846153847,0.955,0.9549278846153847,Yes,No,No,No,Byzantine robustness
+FedDyn + Multi-Krum + CKKS,0.96,0.9599509399013791,0.96,0.9599509399013791,Yes,"Yes, classifier-only CKKS profiling",No,No,Encrypted update transmission profiling
+FedDyn + Multi-Krum + ILA-CKKS,0.9675,0.9674835385413866,0.9675,0.9674835385413866,Yes,Yes,Yes,No,Privacy-aware selective encryption
+Full Framework + Blockchain,0.9675,0.9674835385413866,0.9675,0.9674835385413866,Yes,Yes,Yes,"Yes, PoA audit ledger",Auditable secure FL system
