@@ -1,0 +1,15 @@
+{
+    "blockchain_type": "Proof-of-Authority audit ledger",
+    "consensus": "Authorized rotating validators",
+    "num_validators": 3,
+    "num_blocks_including_genesis": 6,
+    "num_training_round_blocks": 5,
+    "num_transactions": 31,
+    "avg_block_creation_time_ms": 0.24813998024910688,
+    "max_block_creation_time_ms": 0.2828999422490597,
+    "verification_time_ms": 1.3766000047326088,
+    "ledger_size_kb": 28.5654296875,
+    "chain_valid": true,
+    "tamper_detected": true,
+    "data_policy": "Only hashes, metrics, selected-client metadata, distance-result metadata and reward records are stored on-chain."
+}
