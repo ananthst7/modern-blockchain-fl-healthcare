@@ -1,0 +1,49 @@
+{
+    "experiments": [
+        {
+            "budget_bytes": 2000000,
+            "active_key_count": 69,
+            "active_bytes": 2000000,
+            "active_parameter_encryption_ratio": 0.1246848590188299,
+            "final_accuracy": 0.765,
+            "final_f1": 0.7512635283533116,
+            "best_accuracy": 0.765,
+            "best_f1": 0.7512635283533116,
+            "final_encrypted_upload_mb": 156.8420639038086,
+            "final_crypto_overhead_percent": 20.338482029712306,
+            "final_round_time_sec": 46.54332518577576,
+            "chain_valid": true,
+            "tamper_detected": true
+        },
+        {
+            "budget_bytes": 4000000,
+            "active_key_count": 102,
+            "active_bytes": 4000000,
+            "active_parameter_encryption_ratio": 0.2493697180376598,
+            "final_accuracy": 0.8875,
+            "final_f1": 0.8860579205570501,
+            "best_accuracy": 0.8875,
+            "best_f1": 0.8860579205570501,
+            "final_encrypted_upload_mb": 312.418288230896,
+            "final_crypto_overhead_percent": 31.252100175920578,
+            "final_round_time_sec": 58.93116807937622,
+            "chain_valid": true,
+            "tamper_detected": true
+        },
+        {
+            "budget_bytes": 8000000,
+            "active_key_count": 109,
+            "active_bytes": 7999992,
+            "active_parameter_encryption_ratio": 0.49873893733588354,
+            "final_accuracy": 0.9525,
+            "final_f1": 0.9524497750749228,
+            "best_accuracy": 0.9525,
+            "best_f1": 0.9524497750749228,
+            "final_encrypted_upload_mb": 623.5568037033081,
+            "final_crypto_overhead_percent": 45.95769873513822,
+            "final_round_time_sec": 81.51071310043335,
+            "chain_valid": true,
+            "tamper_detected": true
+        }
+    ]
+}
